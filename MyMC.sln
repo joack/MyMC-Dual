@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 4.4
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMC", "MyMC\MyMC.csproj", "{C150EC9C-2852-4401-BB2E-640A33F99485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Output_Test", "Output_Test\Output_Test.csproj", "{0400DE6F-3264-4FCF-8E49-86506A6A7DFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C150EC9C-2852-4401-BB2E-640A33F99485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C150EC9C-2852-4401-BB2E-640A33F99485}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{C150EC9C-2852-4401-BB2E-640A33F99485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C150EC9C-2852-4401-BB2E-640A33F99485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0400DE6F-3264-4FCF-8E49-86506A6A7DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0400DE6F-3264-4FCF-8E49-86506A6A7DFE}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{0400DE6F-3264-4FCF-8E49-86506A6A7DFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0400DE6F-3264-4FCF-8E49-86506A6A7DFE}.Release|Any CPU.ActiveCfg = Release|x86
+		{0400DE6F-3264-4FCF-8E49-86506A6A7DFE}.Debug|x86.Build.0 = Debug|Any CPU
+		{0400DE6F-3264-4FCF-8E49-86506A6A7DFE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C150EC9C-2852-4401-BB2E-640A33F99485}.Debug|x86.Build.0 = Debug|Any CPU
+		{C150EC9C-2852-4401-BB2E-640A33F99485}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0400DE6F-3264-4FCF-8E49-86506A6A7DFE}.Release|x86.Build.0 = Debug|Any CPU
+		{0400DE6F-3264-4FCF-8E49-86506A6A7DFE}.Release|x86.ActiveCfg = Debug|Any CPU
+		{C150EC9C-2852-4401-BB2E-640A33F99485}.Release|x86.Build.0 = Debug|Any CPU
+		{C150EC9C-2852-4401-BB2E-640A33F99485}.Release|x86.ActiveCfg = Debug|Any CPU
+	EndGlobalSection
+EndGlobal

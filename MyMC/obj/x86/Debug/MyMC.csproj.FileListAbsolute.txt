@@ -1,0 +1,8 @@
+G:\Documents\SharpDevelop Projects\MyMC\MyMC\bin\Debug\MyMC.exe.config
+G:\Documents\SharpDevelop Projects\MyMC\MyMC\bin\Debug\MyMC.exe
+G:\Documents\SharpDevelop Projects\MyMC\MyMC\bin\Debug\MyMC.pdb
+G:\Documents\SharpDevelop Projects\MyMC\MyMC\obj\x86\Debug\MyMC.MainForm.resources
+G:\Documents\SharpDevelop Projects\MyMC\MyMC\obj\x86\Debug\MyMC.csproj.GenerateResource.Cache
+G:\Documents\SharpDevelop Projects\MyMC\MyMC\obj\x86\Debug\MyMC.exe
+G:\Documents\SharpDevelop Projects\MyMC\MyMC\obj\x86\Debug\MyMC.pdb
+G:\Documents\SharpDevelop Projects\MyMC\MyMC\obj\x86\Debug\MyMC.csprojResolveAssemblyReference.cache

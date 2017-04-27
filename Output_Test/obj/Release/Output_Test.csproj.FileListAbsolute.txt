@@ -1,0 +1,4 @@
+G:\Desktop\MyMC\Output_Test\bin\Release\MyMC Dual - debug.exe.config
+G:\Desktop\MyMC\Output_Test\bin\Release\MyMC Dual - debug.exe
+G:\Desktop\MyMC\Output_Test\obj\Release\Output_Test.csprojResolveAssemblyReference.cache
+G:\Desktop\MyMC\Output_Test\obj\Release\MyMC Dual - debug.exe
