@@ -7,3 +7,12 @@ G:\Desktop\MyMC\MyMC\obj\Release\MyMC.InfoVMC.resources
 G:\Desktop\MyMC\MyMC\obj\Release\MyMC.MainForm.resources
 G:\Desktop\MyMC\MyMC\obj\Release\MyMC.csproj.GenerateResource.Cache
 G:\Desktop\MyMC\MyMC\obj\Release\MyMC Dual.exe
+G:\Documents\GitHub\MyMC-Dual\MyMC\bin\Release\MyMC Dual.exe.config
+G:\Documents\GitHub\MyMC-Dual\MyMC\bin\Release\MyMC Dual.exe
+G:\Documents\GitHub\MyMC-Dual\MyMC\obj\Release\MyMC.csprojResolveAssemblyReference.cache
+G:\Documents\GitHub\MyMC-Dual\MyMC\obj\Release\MyMC.ExportPathChooser.resources
+G:\Documents\GitHub\MyMC-Dual\MyMC\obj\Release\MyMC.GenMc.resources
+G:\Documents\GitHub\MyMC-Dual\MyMC\obj\Release\MyMC.InfoVMC.resources
+G:\Documents\GitHub\MyMC-Dual\MyMC\obj\Release\MyMC.MainForm.resources
+G:\Documents\GitHub\MyMC-Dual\MyMC\obj\Release\MyMC.csproj.GenerateResource.Cache
+G:\Documents\GitHub\MyMC-Dual\MyMC\obj\Release\MyMC Dual.exe

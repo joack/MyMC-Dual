@@ -61,7 +61,7 @@ namespace MyMC
 			
 			InitInfo();
 			
-			SetProcess(utilVMC, String.Format("{0} {1}\\{2}.bin", size, dirPath, cardName));
+			SetProcess(utilVMC, String.Format("{0} \"{1}\\{2}.bin\"", size, dirPath, cardName));
 			DoProcess();
 			Thread thread = new Thread(() => process.WaitForExit());
 			

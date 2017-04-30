@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 
+
 namespace MyMC
 {
 	/// <summary>
@@ -716,14 +717,15 @@ namespace MyMC
 					string mcPath = card.GetPath();
 					DataGridViewSelectedRowCollection savesCollection = focusedMemmoryCard.SelectedRows;
 					
+					DoBatchDelete( mcPath, savesCollection );
 					
-					foreach (DataGridViewRow row in savesCollection) 
-					{
-#region Debug
-						Console.WriteLine(row.Cells[0].Value.ToString());
-#endregion
-						util.DeleteSaveUtil(mcPath, row.Cells[0].Value.ToString());
-					}				
+//					foreach (DataGridViewRow row in savesCollection) 
+//					{
+//#region Debug
+//						Console.WriteLine(row.Cells[0].Value.ToString());
+//#endregion
+//						util.DeleteSaveUtil(mcPath, row.Cells[0].Value.ToString());
+//					}				
 									
 					return RefreshMemoryCard( card, focusedMemmoryCard);
 				}						
@@ -736,7 +738,19 @@ namespace MyMC
 
 			return card;
 		}
-	
+
+		private void DoBatchDelete( string mcPath , DataGridViewSelectedRowCollection savesCollection )
+		{
+			foreach (DataGridViewRow row in savesCollection) 
+			{
+#region Debug
+				Console.WriteLine(row.Cells[0].Value.ToString());
+#endregion
+				util.DeleteSaveUtil(mcPath, row.Cells[0].Value.ToString());
+			}		
+		
+		}
+		
 #region Others
 //		private void RefreshMemoryCard(ref MemoryCard card, DataGridView view)
 //		{
@@ -881,5 +895,66 @@ namespace MyMC
 				e.Effect = DragDropEffects.All;	
 			}
 		}
+			
+		
+		private DataGridView getDataGridView( DataGridView dgv )
+		{
+			var map = new Dictionary<string, DataGridView>()
+			{
+				{ "dataGridView1", dataGridView1 },
+				{ "dataGridView2", dataGridView2 }
+			};
+			
+			DataGridView temp;
+			
+			return map.TryGetValue(dgv.Name, out temp) ? temp : null;
+			
+		}
+		
+		
+		void DataGridViewKeyDown(object sender, KeyEventArgs e)
+		{	
+			if (e.KeyCode == Keys.Delete) 
+			{
+				DataGridView dgv = getDataGridView( sender as DataGridView );
+				MemoryCard card = getActualCard(dgv.Name);
+				
+				if (card != null) 
+				{
+					DoBatchDelete( card.GetPath(), dgv.SelectedRows );
+					UpdateCard(dgv, card);	
+				}				
+			}
+		}
+		
+		private MemoryCard getActualCard( string focusedCard )
+		{
+			var cardMap = new Dictionary<string, MemoryCard>()
+			{
+				{ "dataGridView1", memoryCardOne },
+				{ "dataGridView2", memoryCardTwo }
+			};
+			
+			MemoryCard tempCard;
+			
+			return cardMap.TryGetValue(focusedCard, out tempCard) ? tempCard : null;			
+		}
+		
+		private void UpdateCard(DataGridView slot, MemoryCard card )
+		{
+			switch (slot.Name) 
+			{
+				case "dataGridView1":
+					memoryCardOne = RefreshMemoryCard(card, slot);
+					break;
+				case "dataGridView2":
+					memoryCardTwo = RefreshMemoryCard(card, slot);
+					break;
+			}
+		}
+		
+		
+		
+
 	}
 }

@@ -436,6 +436,7 @@ namespace MyMC
 			this.dataGridView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnDragAndDrop);
 			this.dataGridView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.DataGridViewDragEnter);
 			this.dataGridView1.Enter += new System.EventHandler(this.OnFocusMemoryCard);
+			this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridViewKeyDown);
 			// 
 			// file_Name
 			// 
@@ -506,6 +507,7 @@ namespace MyMC
 			this.dataGridView2.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnDragAndDrop);
 			this.dataGridView2.DragEnter += new System.Windows.Forms.DragEventHandler(this.DataGridViewDragEnter);
 			this.dataGridView2.Enter += new System.EventHandler(this.OnFocusMemoryCard);
+			this.dataGridView2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridViewKeyDown);
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
