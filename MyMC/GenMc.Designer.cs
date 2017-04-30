@@ -73,7 +73,7 @@ namespace MyMC
 			// 
 			this.label5.Location = new System.Drawing.Point(142, 87);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(89, 14);
+			this.label5.Size = new System.Drawing.Size(32, 14);
 			this.label5.TabIndex = 6;
 			this.label5.Text = "Mb.";
 			// 
