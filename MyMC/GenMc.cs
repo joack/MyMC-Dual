@@ -24,7 +24,12 @@ namespace MyMC
 #region Vars
 		
 		Process process;
-		private string utilVMC = String.Empty;
+		private string utilVMC			= String.Empty;
+		private string utilConverter	= String.Empty;
+		private string utilTempCleaner	= String.Empty;
+		
+		private string tempFolder		= String.Empty;
+		
 		InfoVMC info;
 
 #endregion
@@ -55,17 +60,32 @@ namespace MyMC
 	
 		void CreateButtonClick(object sender, EventArgs e)
 		{
-			string size = comboBox1.SelectedItem.ToString();
-			string dirPath = textBox2.Text;
-			string cardName = FormatedMcName( textBox1.Text );
+			string 	size 		= comboBox1.SelectedItem.ToString();
+			string 	dirPath 	= textBox2.Text;
+			string 	cardName	= FormatedMcName( textBox1.Text );
+			bool	isECC		= eccBlockCheck.Checked;
+			
 			
 			InitInfo();
 			
-			SetProcess(utilVMC, String.Format("{0} \"{1}\\{2}.bin\"", size, dirPath, cardName));
-			DoProcess();
-			Thread thread = new Thread(() => process.WaitForExit());
 			
-			thread.Start();
+			// Si isECC es true:
+			// Creo una memory card en la carpeta temp
+			// convierto esa memory card 
+			// muevo la memory card a su destino.
+			
+			if (isECC) 
+			{
+				Update("\nMemory card with ECC Block.\n");
+				
+				DoCreate( utilVMC,  String.Format("{0} \"{1}\\{2}.bin\"", size, tempFolder, cardName) );
+				DoConvert( utilConverter, String.Format("\"{0}\\{1}.bin\" -2p \"{2}\\{3}.bin\"", tempFolder, cardName, dirPath, cardName ));
+				DoDeleteTemp( utilTempCleaner, String.Format("{0}.bin", cardName));
+					
+			}else{
+				DoCreate( utilVMC,  String.Format("{0} \"{1}\\{2}.bin\"", size, dirPath, cardName) );
+			}
+			
 		}
 		
 		void CloseButtonClick(object sender, EventArgs e)
@@ -81,7 +101,22 @@ namespace MyMC
 		{
 			set{ this.utilVMC = value;}
 		}
+		
+		public string SetConverter
+		{
+			set{this.utilConverter = value;}
+		}
 
+		public string SetTempFolder
+		{
+			set{this.tempFolder = value;}
+		}
+		
+		public string SetTempCleaner
+		{
+			set{this.utilTempCleaner = value;}
+		}
+		
 #endregion
 				
 #region Interface Method		
@@ -118,7 +153,9 @@ namespace MyMC
 		private void DoProcess()
 		{
 			process.Start();
-			process.BeginOutputReadLine();			
+			process.WaitForExit();
+			process.BeginOutputReadLine();
+			
 		}
 
 		private void Update( string updateText )
@@ -140,6 +177,37 @@ namespace MyMC
 			info.Show(this);
 		}
 
+		private void DoCreate(string utility, string args )
+		{
+			SetProcess(utility, args);
+			DoProcess();
+			//Thread thread = new Thread(() => process.WaitForExit());
+			
+			//thread.Start();
+			//thread.Join();
+		}
+		
+		private void DoConvert( string utility, string args )
+		{
+			DoCreate(utility, args);
+		}
+		
+		private void DoDeleteTemp( string utility,  string tempFile )
+		{
+			Process p = new Process();
+			p.StartInfo.FileName = utility;
+			p.StartInfo.WorkingDirectory = tempFolder;
+			p.StartInfo.Arguments = tempFile;
+			
+			p.StartInfo.UseShellExecute = false;
+			p.StartInfo.CreateNoWindow = true;
+			p.StartInfo.RedirectStandardOutput = true;			
+			
+			p.Start();
+			p.WaitForExit();
+
+		}
+		
 #endregion
 		
 	}
