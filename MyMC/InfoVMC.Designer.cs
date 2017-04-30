@@ -67,6 +67,7 @@ namespace MyMC
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.richTextBox1);
 			this.Name = "InfoVMC";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "InfoVMC";
 			this.ResumeLayout(false);
 		}

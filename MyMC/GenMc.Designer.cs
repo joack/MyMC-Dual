@@ -37,6 +37,7 @@ namespace MyMC
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.eccBlockCheck = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@ namespace MyMC
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.eccBlockCheck);
 			this.groupBox1.Controls.Add(this.label5);
 			this.groupBox1.Controls.Add(this.label4);
 			this.groupBox1.Controls.Add(this.label3);
@@ -68,6 +70,15 @@ namespace MyMC
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "groupBox1";
+			// 
+			// eccBlockCheck
+			// 
+			this.eccBlockCheck.Location = new System.Drawing.Point(181, 86);
+			this.eccBlockCheck.Name = "eccBlockCheck";
+			this.eccBlockCheck.Size = new System.Drawing.Size(91, 17);
+			this.eccBlockCheck.TabIndex = 8;
+			this.eccBlockCheck.Text = "ECC Block";
+			this.eccBlockCheck.UseVisualStyleBackColor = true;
 			// 
 			// label5
 			// 
@@ -185,6 +196,7 @@ namespace MyMC
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.CheckBox eccBlockCheck;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Label label1;

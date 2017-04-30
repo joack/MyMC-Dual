@@ -18,12 +18,17 @@ namespace MyMC
 	{
 #region Variables
 
-		private static string 	rootPath	  = Application.StartupPath + "\\";
-		private static string	utilPath	  = rootPath + "Util\\";
-		private static string  	util_MyMc 	  = utilPath + "mymc.exe";
-		private static string	util_VMC	  = utilPath + "genvmc.exe";
-		private static string	tempFolder 	  = rootPath + "temp"; 
-		private static string	exportFolder  = rootPath + "Exported Files";
+		private static string 	rootPath	  	= Application.StartupPath + "\\";
+		private static string	utilPath	  	= rootPath + "Util\\";
+		private static string	tempFolder 	  	= rootPath + "temp";
+		private static string	exportFolder  	= rootPath + "Exported Files";
+
+		private static string  	util_MyMc 	  		= utilPath + "mymc.exe";
+		private static string	util_VMC	  		= utilPath + "genvmc.exe";
+		private static string	util_Converter		= utilPath + "convpcsx.exe";
+		private static string	util_ECCChecker 	= utilPath + "ECC_Checker.exe";
+		private static string	util_TempCleaner	= tempFolder + "\\Cleaner.bat"; 
+		
 		
 		private MemoryCard memoryCardOne;
 		private MemoryCard memoryCardTwo;
