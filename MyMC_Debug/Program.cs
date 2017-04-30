@@ -7,13 +7,9 @@
  * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
  */
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Collections;
 using System.IO;
 using System.Reflection;
-using System.Runtime.Hosting;
-using System.Text;
 
 namespace MyMC_Debug
 {
