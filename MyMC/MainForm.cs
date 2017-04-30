@@ -117,8 +117,12 @@ namespace MyMC
 			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
                   			  "Create Mc button click.");
 #endregion
-			GenMc vmcForm = new GenMc();
-			vmcForm.SetUtil = util_VMC;
+			GenMc vmcForm			= new GenMc();
+			vmcForm.SetUtil			= util_VMC;
+			vmcForm.SetConverter	= util_Converter;
+			vmcForm.SetTempCleaner  = util_TempCleaner;
+			vmcForm.SetTempFolder	= tempFolder;
+					
 			vmcForm.ShowDialog();
 #region Debug
 			Console.WriteLine("Create Mc button click - Exit." +
