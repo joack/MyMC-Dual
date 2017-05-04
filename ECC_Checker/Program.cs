@@ -64,9 +64,9 @@ namespace ECC_Checker
 			result = map.TryGetValue(list[0], out result);
 		 	
 		 	if (!result) {
-				list = ProcessData(list[3], ' ');
+				list = ProcessData(list[0], ' ');
 				
-		 		return !map.TryGetValue(list[4], out result);	
+		 		return map.TryGetValue(list[4], out result);	
 		 	}
 			
 			return !result;
