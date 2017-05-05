@@ -18,10 +18,11 @@ namespace MyMC
 	/// <summary>
 	/// Description of Util.
 	/// </summary>
-	public class Util
+	public partial class Util
 	{
 		private static Util instance;
-		private Process process;
+		private Process process;		
+		
 		
 		private const int aSize = 1;
 		private const int aDate = 2;
@@ -37,6 +38,12 @@ namespace MyMC
 				process.StartInfo.RedirectStandardOutput = true; 
 		}
 		
+		public string SetECCChecker
+		{
+			set{Util_ECCChecker = value;}
+		}
+		
+		
 		public static Util getUtil( string path )
 		{
 			if( instance == null )
@@ -48,12 +55,10 @@ namespace MyMC
 		}
 		
 		public List<SaveFile> loadFiles( string mcPath )
-		{
-			
-			
+		{			
 			process.StartInfo.Arguments = mcPath + " ls";
 			process.Start();
-			
+				
 			return ProcessOutPut( mcPath);
 		}
 		
@@ -99,7 +104,7 @@ namespace MyMC
 		{
 			StartProcess( mcPath, "dir" );
 			
-			return GetFreeSpace( process.StandardOutput.ReadToEnd() );
+			return GetFreeSpace( process.StandardOutput.ReadToEnd(), mcPath );
 		}
 
 		public void AddRawFile( string mcPath, string folderPath )
@@ -127,14 +132,14 @@ namespace MyMC
 //===============================================================================================================
 
 
-		private string GetFreeSpace( string output )
+		private string GetFreeSpace( string output, string mcPath )
 		{
-			List<string> list = GetInfo(output);
+			List<string> list = GetInfo(output, mcPath);
 			
 			return list[list.Count -1];
 		}
 			
-		private List<SaveFile> ProcessOutPut( string mcPath)
+		private List<SaveFile> ProcessOutPut( string mcPath )
 		{				
 			return UpdateFiles(mcPath, MakeFiles( mcPath ));
 		}	
@@ -143,19 +148,19 @@ namespace MyMC
 		{
 			StartProcess(mcPath, "ls");
 		
-			return DoFiles(GetInfo( process.StandardOutput.ReadToEnd()));
+			return DoFiles(GetInfo( process.StandardOutput.ReadToEnd(), mcPath ));
 		}
 		
 		private List<SaveFile> UpdateFiles( string mcPath, List<SaveFile> files )
 		{
 			StartProcess(mcPath, "dir");
 			
-			return UpdateSaves(files, process.StandardOutput.ReadToEnd());
+			return UpdateSaves(files, process.StandardOutput.ReadToEnd(), mcPath);
 		}
 
-		private List<SaveFile> UpdateSaves( List<SaveFile> files, string output )
+		private List<SaveFile> UpdateSaves( List<SaveFile> files, string output, string mcPath )
 		{
-			List<string> saveStringList = GetInfo( output );
+			List<string> saveStringList = GetInfo( output, mcPath );
 			
 			StringBuilder _aDescrip = new StringBuilder();
 			string _aDirName = String.Empty;
@@ -208,13 +213,20 @@ namespace MyMC
 			process.Start();			
 		}
 		
-		private List<string> GetInfo( string outPutText)
+		private List<string> GetInfo( string outPutText, string mcPath)
 		{
 			List<string> result;
 			
 			result = ProcessData( outPutText, '\r', '\n' );
 			
-			return result;		
+			if (ECCCheck(mcPath)) 
+			{
+				return result;	
+			}else{
+				result.RemoveRange(0,3);
+				return result;
+			}
+					
 		}
 
 		private List<SaveFile> DoFiles( List<string> information )
@@ -226,8 +238,6 @@ namespace MyMC
 				saveFiles.Add(CreateFile( element ));
 			}
 
-			
-			
 			return saveFiles;
 		}
 				
@@ -272,5 +282,27 @@ namespace MyMC
 		}
 
 
+//===============================================================================================================
+
+		private Boolean ECCCheck( string mcPath )
+		{
+			Process p = new Process();
+			
+			p.StartInfo.FileName = Util_ECCChecker;
+			
+			p.StartInfo.Arguments = String.Format( "\"{0}\"", mcPath );
+			p.StartInfo.UseShellExecute = false;
+			p.StartInfo.CreateNoWindow = true;
+			p.StartInfo.RedirectStandardOutput = true; 			
+			
+			p.Start();
+			
+			//string result = p.StandardOutput.ReadToEnd();
+			return Boolean.Parse(p.StandardOutput.ReadToEnd());	
+		}
+		
+		
 	}
+	
+	
 }

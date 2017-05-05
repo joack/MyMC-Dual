@@ -95,6 +95,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveFile.cs" />
     <Compile Include="Util.cs" />
+    <Compile Include="Util.Vars.cs">
+      <DependentUpon>Util.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

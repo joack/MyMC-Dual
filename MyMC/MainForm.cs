@@ -31,6 +31,8 @@ namespace MyMC
 		{
 			hourLabel.Text = DateTime.Now.ToString( "HH:mm:ss" );
 			util = Util.getUtil( util_MyMc );
+			util.SetECCChecker = util_ECCChecker;
+			
 			
 			label1.Text = "Memory Card Name: ";
 			label2.Text = "Memory Card Name: ";
@@ -914,20 +916,23 @@ namespace MyMC
 			return map.TryGetValue(dgv.Name, out temp) ? temp : null;
 			
 		}
-		
-		
+				
 		void DataGridViewKeyDown(object sender, KeyEventArgs e)
 		{	
 			if (e.KeyCode == Keys.Delete) 
 			{
-				DataGridView dgv = getDataGridView( sender as DataGridView );
-				MemoryCard card = getActualCard(dgv.Name);
 				
-				if (card != null) 
-				{
-					DoBatchDelete( card.GetPath(), dgv.SelectedRows );
-					UpdateCard(dgv, card);	
-				}				
+				DeleteSaveButtonClick( sender, null );
+				
+				
+//				DataGridView dgv = getDataGridView( sender as DataGridView );
+//				MemoryCard card = getActualCard(dgv.Name);
+//				
+//				if (card != null) 
+//				{
+//					DoBatchDelete( card.GetPath(), dgv.SelectedRows );
+//					UpdateCard(dgv, card);	
+//				}				
 			}
 		}
 		

@@ -89,6 +89,7 @@ namespace MyMC
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -197,7 +198,8 @@ namespace MyMC
 			// configToolStripMenuItem
 			// 
 			this.configToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.outputDirToolStripMenuItem});
+									this.outputDirToolStripMenuItem,
+									this.preferencesToolStripMenuItem});
 			this.configToolStripMenuItem.Name = "configToolStripMenuItem";
 			this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
 			this.configToolStripMenuItem.Text = "&Config";
@@ -205,7 +207,7 @@ namespace MyMC
 			// outputDirToolStripMenuItem
 			// 
 			this.outputDirToolStripMenuItem.Name = "outputDirToolStripMenuItem";
-			this.outputDirToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+			this.outputDirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.outputDirToolStripMenuItem.Text = "Output Dir...";
 			this.outputDirToolStripMenuItem.Click += new System.EventHandler(this.OutputDirToolStripMenuItemClick);
 			// 
@@ -566,6 +568,12 @@ namespace MyMC
 			this.label2.TabIndex = 6;
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// preferencesToolStripMenuItem
+			// 
+			this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.preferencesToolStripMenuItem.Text = "Preferences...";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -598,6 +606,7 @@ namespace MyMC
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem myMcDualToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem outputDirToolStripMenuItem;
