@@ -78,6 +78,7 @@
     <Compile Include="GenMc.Designer.cs">
       <DependentUpon>GenMc.cs</DependentUpon>
     </Compile>
+    <Compile Include="IConsoleLog.cs" />
     <Compile Include="IMemoryCard.cs" />
     <Compile Include="InfoVMC.cs" />
     <Compile Include="InfoVMC.Designer.cs">

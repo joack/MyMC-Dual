@@ -15,7 +15,7 @@ namespace MyMC
 	/// <summary>
 	/// Class with program entry point.
 	/// </summary>
-	internal sealed class Program
+	internal sealed class Program: IConsoleLog
 	{
 		/// <summary>
 		/// Program entry point.
@@ -45,6 +45,19 @@ namespace MyMC
 			NativeMethods.FreeConsole();
 		}
 		
+		
+		
+
+		
+		public void AttachConsole()
+		{
+			NativeMethods.AllocConsole();
+		}
+		
+		public void DetachConsole()
+		{
+			NativeMethods.FreeConsole();;
+		}
 	}
 	
     internal static class NativeMethods

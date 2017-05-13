@@ -965,5 +965,22 @@ namespace MyMC
 		
 		
 
+		
+		void EnableToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			(sender as ToolStripMenuItem).Checked = !(sender as ToolStripMenuItem).Checked;
+		}
+		
+		void EnableToolStripMenuItemCheckedChanged(object sender, EventArgs e)
+		{
+//			IConsoleLog console =
+//			
+//			if((sender as ToolStripMenuItem).Checked)
+//			{				
+//				if( console != null ){ console.AttachConsole(); }
+//			}else{
+//				if( console != null ){ console.DetachConsole(); }
+//			}
+		}
 	}
 }

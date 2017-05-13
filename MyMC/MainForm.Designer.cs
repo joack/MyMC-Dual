@@ -53,6 +53,9 @@ namespace MyMC
 			this.asmaxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.outputDirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.enableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.myMcDualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -89,7 +92,6 @@ namespace MyMC
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -105,6 +107,7 @@ namespace MyMC
 									this.fileToolStripMenuItem,
 									this.exportToolStripMenuItem,
 									this.configToolStripMenuItem,
+									this.debugToolStripMenuItem,
 									this.aboutToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
@@ -207,9 +210,31 @@ namespace MyMC
 			// outputDirToolStripMenuItem
 			// 
 			this.outputDirToolStripMenuItem.Name = "outputDirToolStripMenuItem";
-			this.outputDirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.outputDirToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.outputDirToolStripMenuItem.Text = "Output Dir...";
 			this.outputDirToolStripMenuItem.Click += new System.EventHandler(this.OutputDirToolStripMenuItemClick);
+			// 
+			// preferencesToolStripMenuItem
+			// 
+			this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+			this.preferencesToolStripMenuItem.Text = "Preferences...";
+			// 
+			// debugToolStripMenuItem
+			// 
+			this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+									this.enableToolStripMenuItem});
+			this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+			this.debugToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+			this.debugToolStripMenuItem.Text = "Debug";
+			// 
+			// enableToolStripMenuItem
+			// 
+			this.enableToolStripMenuItem.Name = "enableToolStripMenuItem";
+			this.enableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.enableToolStripMenuItem.Text = "Enable";
+			this.enableToolStripMenuItem.CheckedChanged += new System.EventHandler(this.EnableToolStripMenuItemCheckedChanged);
+			this.enableToolStripMenuItem.Click += new System.EventHandler(this.EnableToolStripMenuItemClick);
 			// 
 			// aboutToolStripMenuItem
 			// 
@@ -568,12 +593,6 @@ namespace MyMC
 			this.label2.TabIndex = 6;
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// preferencesToolStripMenuItem
-			// 
-			this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.preferencesToolStripMenuItem.Text = "Preferences...";
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -606,6 +625,8 @@ namespace MyMC
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.ToolStripMenuItem enableToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem myMcDualToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
