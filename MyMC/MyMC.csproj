@@ -12,7 +12,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <NoWin32Manifest>False</NoWin32Manifest>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
@@ -53,9 +53,11 @@
   <ItemGroup>
     <Reference Include="log4net">
       <HintPath>bin\Debug\dll\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Nini">
       <HintPath>bin\Debug\dll\Nini.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
