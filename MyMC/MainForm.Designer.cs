@@ -231,8 +231,8 @@ namespace MyMC
 			// enableToolStripMenuItem
 			// 
 			this.enableToolStripMenuItem.Name = "enableToolStripMenuItem";
-			this.enableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.enableToolStripMenuItem.Text = "Enable";
+			this.enableToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+			this.enableToolStripMenuItem.Text = "Enable Console Log";
 			this.enableToolStripMenuItem.CheckedChanged += new System.EventHandler(this.EnableToolStripMenuItemCheckedChanged);
 			this.enableToolStripMenuItem.Click += new System.EventHandler(this.EnableToolStripMenuItemClick);
 			// 

@@ -17,7 +17,6 @@ namespace MyMC
 	partial class MainForm
 	{
 #region Variables
-
 		private static string 	rootPath	  	= Application.StartupPath + "\\";
 		private static string	utilPath	  	= rootPath + "Util\\";
 		private static string	tempFolder 	  	= rootPath + "temp";
