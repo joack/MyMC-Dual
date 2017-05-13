@@ -17,7 +17,7 @@ namespace MyMC
 	partial class MainForm
 	{
 #region Variables
-		private	ConsoleLog 		console			= ConsoleLog.getInstance();
+		//private	ConsoleLog 		console			= ConsoleLog.getInstance();
 		
 		private static string 	rootPath	  	= Application.StartupPath + "\\";
 		private static string	utilPath	  	= rootPath + "Util\\";

@@ -10,6 +10,9 @@ using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
+
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+
 namespace MyMC
 {
 	/// <summary>

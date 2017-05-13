@@ -51,6 +51,9 @@
     <FileAlignment>4096</FileAlignment>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>bin\Debug\dll\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Nini">
       <HintPath>bin\Debug\dll\Nini.dll</HintPath>
     </Reference>
@@ -88,6 +91,7 @@
     <Compile Include="ISetExportPath.cs" />
     <Compile Include="ITransferSaves.cs" />
     <Compile Include="IInfoForm.cs" />
+    <Compile Include="LogHelper.cs" />
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>

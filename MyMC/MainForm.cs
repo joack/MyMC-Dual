@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using log4net;
+
 
 
 namespace MyMC
@@ -20,6 +22,8 @@ namespace MyMC
 	/// </summary>
 	public partial class MainForm : Form, ISetExportPath
 	{
+		private static readonly log4net.ILog log = LogHelper.GetLogger();
+		
 	
 		public MainForm()
 		{
@@ -28,7 +32,7 @@ namespace MyMC
 		
 		void MainFormLoad(object sender, EventArgs e)
 		{
-			console.AttachConsole();
+			//console.AttachConsole();
 			
 			
 			hourLabel.Text = DateTime.Now.ToString( "HH:mm:ss" );
@@ -982,7 +986,7 @@ namespace MyMC
 		
 		void EnableToolStripMenuItemCheckedChanged(object sender, EventArgs e)
 		{
-			IConsoleLog consoleLog = console as IConsoleLog;
+			IConsoleLog consoleLog = ConsoleLog.getInstance() as IConsoleLog;
 			
 			if((sender as ToolStripMenuItem).Checked)
 			{				
@@ -994,6 +998,11 @@ namespace MyMC
 			}else{
 				if( consoleLog != null ){ consoleLog.DetachConsole(); }
 			}
+		}
+		
+		void LogTestToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			log.Debug("Hola");			
 		}
 	}
 }

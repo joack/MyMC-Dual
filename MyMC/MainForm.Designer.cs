@@ -92,6 +92,8 @@ namespace MyMC
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.logTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -108,7 +110,8 @@ namespace MyMC
 									this.exportToolStripMenuItem,
 									this.configToolStripMenuItem,
 									this.debugToolStripMenuItem,
-									this.aboutToolStripMenuItem});
+									this.aboutToolStripMenuItem,
+									this.testToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(920, 24);
@@ -593,6 +596,21 @@ namespace MyMC
 			this.label2.TabIndex = 6;
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// testToolStripMenuItem
+			// 
+			this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+									this.logTestToolStripMenuItem});
+			this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+			this.testToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+			this.testToolStripMenuItem.Text = "test";
+			// 
+			// logTestToolStripMenuItem
+			// 
+			this.logTestToolStripMenuItem.Name = "logTestToolStripMenuItem";
+			this.logTestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.logTestToolStripMenuItem.Text = "log test";
+			this.logTestToolStripMenuItem.Click += new System.EventHandler(this.LogTestToolStripMenuItemClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -625,6 +643,8 @@ namespace MyMC
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.ToolStripMenuItem logTestToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem enableToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
