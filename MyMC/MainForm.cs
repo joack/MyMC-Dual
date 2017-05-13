@@ -28,6 +28,9 @@ namespace MyMC
 		
 		void MainFormLoad(object sender, EventArgs e)
 		{
+			console.AttachConsole();
+			
+			
 			hourLabel.Text = DateTime.Now.ToString( "HH:mm:ss" );
 			util = Util.getUtil( util_MyMc );
 			util.SetECCChecker = util_ECCChecker;
@@ -355,28 +358,41 @@ namespace MyMC
 			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
 							  "Export Save Button Click\n");
 #endregion
-	
-			MemoryCard memCard = null;
-			
-			
-			switch (focusedMemmoryCard.Name) 
-			{
-				case "dataGridView1":
-					memCard = memoryCardOne;
-					break;
-					
-				case "dataGridView2":
-					memCard = memoryCardTwo;
-					break;
-				default:
-					
-					break;
-			}
+
+
+				DataGridView dgv = getDataGridView( focusedMemmoryCard );
+				MemoryCard card = getActualCard(dgv.Name);
+//				
+//				if (card != null) 
+//				{
+//					DoBatchDelete( card.GetPath(), dgv.SelectedRows );
+//					UpdateCard(dgv, card);	
+//				}
+
+
+//			MemoryCard memCard = null;
+//			
+//			
+//			switch (focusedMemmoryCard.Name) 
+//			{
+//				case "dataGridView1":
+//					memCard = memoryCardOne;
+//					break;
+//					
+//				case "dataGridView2":
+//					memCard = memoryCardTwo;
+//					break;
+//				default:
+//					
+//					break;
+//			}
 			
 
-			if (memCard != null) 
+//			if (memCard != null) 
+			if(card != null )
 			{
-				DataGridViewSelectedRowCollection savesCollection = focusedMemmoryCard.SelectedRows;
+//				DataGridViewSelectedRowCollection savesCollection = focusedMemmoryCard.SelectedRows;
+				DataGridViewSelectedRowCollection savesCollection = dgv.SelectedRows;
 				string filePath = String.Empty;
 
 #region Debug
@@ -386,7 +402,9 @@ namespace MyMC
 	
 				foreach (DataGridViewRow row in savesCollection) 
 				{
-					util.ExportSaveUtil(memCard.GetPath(), row.Cells[0].Value.ToString(), userExportFolder, mode );
+//					util.ExportSaveUtil(memCard.GetPath(), row.Cells[0].Value.ToString(), userExportFolder, mode );
+					util.ExportSaveUtil(card.GetPath(), row.Cells[0].Value.ToString(), userExportFolder, mode );
+					
 #region Debug
 					Console.WriteLine("{0,-20} {1,5} {2,-25} {3}",row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), 
 					                  								  row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
@@ -722,15 +740,7 @@ namespace MyMC
 					string mcPath = card.GetPath();
 					DataGridViewSelectedRowCollection savesCollection = focusedMemmoryCard.SelectedRows;
 					
-					DoBatchDelete( mcPath, savesCollection );
-					
-//					foreach (DataGridViewRow row in savesCollection) 
-//					{
-//#region Debug
-//						Console.WriteLine(row.Cells[0].Value.ToString());
-//#endregion
-//						util.DeleteSaveUtil(mcPath, row.Cells[0].Value.ToString());
-//					}				
+					DoBatchDelete( mcPath, savesCollection );			
 									
 					return RefreshMemoryCard( card, focusedMemmoryCard);
 				}						
@@ -972,17 +982,17 @@ namespace MyMC
 		
 		void EnableToolStripMenuItemCheckedChanged(object sender, EventArgs e)
 		{
-			IConsoleLog console = ConsoleLog.getInstance() as IConsoleLog;
+			IConsoleLog consoleLog = console as IConsoleLog;
 			
 			if((sender as ToolStripMenuItem).Checked)
 			{				
-				if( console != null )
+				if( consoleLog != null )
 				{ 
-					console.AttachConsole();
+					consoleLog.AttachConsole();
 					Console.WriteLine("Debug Console.");
 				}
 			}else{
-				if( console != null ){ console.DetachConsole(); }
+				if( consoleLog != null ){ consoleLog.DetachConsole(); }
 			}
 		}
 	}

@@ -34,6 +34,7 @@ namespace MyMC
 		public void AttachConsole()
 		{
 			NativeMethods.AllocConsole();
+			
 		}
 		
 		public void DetachConsole()
