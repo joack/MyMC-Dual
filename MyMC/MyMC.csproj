@@ -57,7 +57,7 @@
     </Reference>
     <Reference Include="Nini">
       <HintPath>bin\Debug\dll\Nini.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -90,7 +90,7 @@
     <Compile Include="InfoVMC.Designer.cs">
       <DependentUpon>InfoVMC.cs</DependentUpon>
     </Compile>
-    <Compile Include="ISetExportPath.cs" />
+    <Compile Include="IPreferencesPaths.cs" />
     <Compile Include="ITransferSaves.cs" />
     <Compile Include="IInfoForm.cs" />
     <Compile Include="LogHelper.cs" />

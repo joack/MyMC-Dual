@@ -15,7 +15,7 @@ namespace MyMC
 	/// <summary>
 	/// Description of ExportPathChooser.
 	/// </summary>
-	public partial class ExportPathChooser : Form, ISetExportPath
+	public partial class ExportPathChooser : Form//, IPreferencesPaths
 	{
 		
 		private string selectedPath = String.Empty;
@@ -61,12 +61,12 @@ namespace MyMC
 		
 		void AcceptButtonClick(object sender, EventArgs e)
 		{
-			ISetExportPath IForm = this.Owner as ISetExportPath;
-
-			if (IForm != null) 
-			{
-				IForm.SetPath(textBox1.Text);
-			}			
+//			IPreferencesPaths IForm = this.Owner as IPreferencesPaths;
+//
+//			if (IForm != null) 
+//			{
+//				IForm.SetPath(textBox1.Text);
+//			}			
 		}
 	
 		void CloseButtonClick(object sender, EventArgs e)

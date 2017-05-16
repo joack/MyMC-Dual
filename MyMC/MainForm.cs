@@ -12,6 +12,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using log4net;
+using Nini.Config;
+using Nini.Ini;
 
 
 
@@ -20,7 +22,7 @@ namespace MyMC
 	/// <summary>
 	/// Description of MainForm.
 	/// </summary>
-	public partial class MainForm : Form, ISetExportPath
+	public partial class MainForm : Form, IPreferencesPaths
 	{
 		private static readonly log4net.ILog log = LogHelper.GetLogger();
 		
@@ -32,7 +34,7 @@ namespace MyMC
 		
 		void MainFormLoad(object sender, EventArgs e)
 		{
-			//console.AttachConsole();
+			
 			
 			
 			hourLabel.Text = DateTime.Now.ToString( "HH:mm:ss" );
@@ -43,7 +45,9 @@ namespace MyMC
 			label1.Text = "Memory Card Name: ";
 			label2.Text = "Memory Card Name: ";
 			
-			userExportFolder = exportFolder;
+			LoadConfig();
+			
+			//userExportFolder = exportFolder;
 			
 			dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 			
@@ -58,6 +62,13 @@ namespace MyMC
 		{
 			userExportFolder = path;
 		}
+		
+		public void SetPaths(string saveExportPath, string cardsFolderPath, string saveFolderPath)
+		{
+			userExportFolder	= saveExportPath;
+			lastOpenMcDir		= cardsFolderPath;
+			lastOpenSaveDir		= saveFolderPath;
+		}		
 
 #endregion
 				
@@ -130,6 +141,7 @@ namespace MyMC
 			vmcForm.SetConverter	= util_Converter;
 			vmcForm.SetTempCleaner  = util_TempCleaner;
 			vmcForm.SetTempFolder	= tempFolder;
+			vmcForm.SetDirectory	= lastOpenMcDir;
 					
 			vmcForm.ShowDialog();
 #region Debug
@@ -204,6 +216,17 @@ namespace MyMC
 #endregion	
 		}
 
+		void PreferencesToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			Preference preferences	= new Preference();
+			
+			preferences.ExportPath	= userExportFolder;
+			preferences.FolderCards	= lastOpenMcDir;
+			preferences.SavesFolder	= lastOpenSaveDir;
+			
+			preferences.ShowDialog(this);
+		}		
+		
 
 		void MyMcDualToolStripMenuItemClick(object sender, EventArgs e)
 		{
@@ -975,10 +998,7 @@ namespace MyMC
 			}
 		}
 		
-		
-		
 
-		
 		void EnableToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			(sender as ToolStripMenuItem).Checked = !(sender as ToolStripMenuItem).Checked;
@@ -1004,5 +1024,25 @@ namespace MyMC
 		{
 			log.Debug("Hola");			
 		}
+		
+
+		
+		
+		private void LoadConfig()
+		{
+			IniConfigSource config = new IniConfigSource(configFile);
+			
+			userExportFolder	= config.Configs["Paths"].GetString("ExportFolder"	);
+			lastOpenMcDir		= config.Configs["Paths"].GetString("McFolder"		);
+			lastOpenSaveDir		= config.Configs["Paths"].GetString("SaveFolder"	);
+		
+		}
+		
+		private void SaveConfig()
+		{
+		
+		}
+		
+
 	}
 }

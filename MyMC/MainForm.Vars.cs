@@ -20,6 +20,8 @@ namespace MyMC
 		//private	ConsoleLog 		console			= ConsoleLog.getInstance();
 		
 		private static string 	rootPath	  	= Application.StartupPath + "\\";
+		
+		private static string	configFile		= rootPath + "config.ini";
 		private static string	utilPath	  	= rootPath + "Util\\";
 		private static string	tempFolder 	  	= rootPath + "temp";
 		private static string	exportFolder  	= rootPath + "Exported Files";

@@ -31,6 +31,7 @@ namespace MyMC
 		private string tempFolder		= String.Empty;
 		
 		InfoVMC info;
+		private string startUpDirectory = String.Empty;
 
 #endregion
 		
@@ -44,7 +45,7 @@ namespace MyMC
 		void GenMcLoad(object sender, EventArgs e)
 		{
 			comboBox1.SelectedIndex = 0;
-			textBox2.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+			textBox2.Text = startUpDirectory;
 				
 		}
 
@@ -115,6 +116,11 @@ namespace MyMC
 		public string SetTempCleaner
 		{
 			set{this.utilTempCleaner = value;}
+		}
+	
+		public string SetDirectory
+		{
+			set{startUpDirectory = value;}
 		}
 		
 #endregion
