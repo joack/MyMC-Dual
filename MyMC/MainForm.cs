@@ -1044,5 +1044,66 @@ namespace MyMC
 		}
 		
 
+		void DataGridViewMouseUp(object sender, MouseEventArgs e)
+		{
+			DataGridView dgv = getDataGridView(sender as DataGridView);
+			MemoryCard card = getActualCard(dgv.Name);
+			
+			if (e.Button == MouseButtons.Right && card != null ) 
+			{
+				focusedMemmoryCard = dgv;
+				SetContextMenuItems(dgv.Name);
+				
+				contextMenuStrip1.Show(sender as DataGridView, e.Location);
+			}			
+		}		
+
+		private void SetContextMenuItems(string dgvName)
+		{
+			if (dgvName == "dataGridView1") 
+			{
+				ContextMenuItemCopySavesTo.Text = "Copy saves to MC2";
+				ContextMenuItemMoveSavesTo.Text = "Move saves to MC2";
+				ContextMenuItemCloneCardTo.Text = "Clone card to MC2";				
+			}else{
+				ContextMenuItemCopySavesTo.Text = "Copy saves to MC1";
+				ContextMenuItemMoveSavesTo.Text = "Move saves to MC1";
+				ContextMenuItemCloneCardTo.Text = "Clone card to MC1";			
+			}
+		}
+		
+		
+		private Action<object, EventArgs> GetMethod( string selector )
+		{
+			if( selector == "dataGridView1")
+			{
+				return McOneToMcTwoButtonClick;
+			}else{
+				return McTwoToMcOneButtonClick;
+			}
+		}
+		
+		
+		void ContextMenuItemSelectAllClick(object sender, EventArgs e)
+		{
+			focusedMemmoryCard.SelectAll();
+		}
+		
+	
+		void ContextMenuItemCopySavesToClick(object sender, EventArgs e)
+		{
+			Action<object, EventArgs> doCopy = GetMethod(focusedMemmoryCard.Name);
+			doCopy(null, null);
+		}
+		
+		void ContextMenuItemMoveSavesToClick(object sender, EventArgs e)
+		{
+			
+		}
+		
+		void ContextMenuItemCloneCardToClick(object sender, EventArgs e)
+		{
+			
+		}
 	}
 }
