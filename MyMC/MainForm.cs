@@ -8,6 +8,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
@@ -387,8 +388,8 @@ namespace MyMC
 #endregion
 
 
-				DataGridView dgv = getDataGridView( focusedMemmoryCard );
-				MemoryCard card = getActualCard(dgv.Name);
+				DataGridView dgv = getDataGridView( focusedMemoryCard );
+				MemoryCard card = GetActualCard(dgv.Name);
 //				
 //				if (card != null) 
 //				{
@@ -465,17 +466,19 @@ namespace MyMC
 			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
 							  "Mc1 to Mc2 file transfer Button Click\n");
 #endregion
-			if (memoryCardTwo != null)
-			{
-				TransferSaves( memoryCardOne, memoryCardTwo, dataGridView1 );
-				memoryCardTwo = RefreshMemoryCard( memoryCardTwo, dataGridView2);
-#region Debug
-				DebugMc(memoryCardTwo);
-#endregion
-				
-			}else{
-				MessageBox.Show("You must open a memory card on the side 2.");
-			}
+//			if (memoryCardTwo != null)
+//			{
+//				TransferSaves( memoryCardOne, memoryCardTwo, dataGridView1.SelectedRows );
+//				memoryCardTwo = RefreshMemoryCard( memoryCardTwo, dataGridView2);
+//#region Debug
+//				DebugMc(memoryCardTwo);
+//#endregion
+//				
+//			}else{
+//				MessageBox.Show("You must open a memory card on the side 2.");
+//			}
+			TransferSavesMcOneToMcTwo(dataGridView1.SelectedRows);
+
 #region debug
 			Console.WriteLine("\nMc1 to Mc2 file transfer Button Click - Exit.\n" +
                   			  "───────────────────────────────────────────────────────────────────────────────");	
@@ -488,17 +491,19 @@ namespace MyMC
 			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
 							  "Mc2 to Mc1 file transfer Button Click\n");
 #endregion
-			if (memoryCardOne != null)
-			{
-				TransferSaves( memoryCardTwo, memoryCardOne, dataGridView2 );
-				memoryCardOne = RefreshMemoryCard( memoryCardOne, dataGridView1);
-				
-#region	Debug
-				DebugMc(memoryCardOne);	
-#endregion				
-			}else{
-				MessageBox.Show("You must open a memory card on the side 1.");
-			}
+//			if (memoryCardOne != null)
+//			{
+//				TransferSaves( memoryCardTwo, memoryCardOne, dataGridView2.SelectedRows );
+//				memoryCardOne = RefreshMemoryCard( memoryCardOne, dataGridView1);
+//				
+//#region	Debug
+//				DebugMc(memoryCardOne);	
+//#endregion				
+//			}else{
+//				MessageBox.Show("You must open a memory card on the side 1.");
+//			}
+			
+			TransferSavesMcTwoToMcOne(dataGridView2.SelectedRows);
 #region debug
 			Console.WriteLine("\nMc2 to Mc1 file transfer Button Click - Exit.\n" +
                   			  "───────────────────────────────────────────────────────────────────────────────");	
@@ -513,7 +518,7 @@ namespace MyMC
 							  "Delete Save Button Click\n\n" +
                   			  "Deleting file(s):\n");
 #endregion			
-			if (focusedMemmoryCard.Name == "dataGridView1") 
+			if (focusedMemoryCard.Name == "dataGridView1") 
 			{
 				memoryCardOne = DoDelete( ref memoryCardOne );
 				
@@ -657,10 +662,10 @@ namespace MyMC
 		
 		private void OnFocusMemoryCard(object sender, EventArgs e)
 		{
-		 	focusedMemmoryCard = sender as DataGridView;	
+		 	focusedMemoryCard = sender as DataGridView;	
 
 			
-			switch (focusedMemmoryCard.Name) {
+			switch (focusedMemoryCard.Name) {
 				case "dataGridView1":
 		 			
 		 			if (memoryCardOne != null)
@@ -715,7 +720,7 @@ namespace MyMC
 			return destinyDir + fileFullName;
 		}
 			
-		private void TransferSaves( MemoryCard cardFrom, MemoryCard cardTo, DataGridView selectedCard )
+		private void TransferSaves( MemoryCard cardFrom, MemoryCard cardTo, /*DataGridView*/ IEnumerable savesCollection )
 		{
 			if(	cardTo != null )
 			{
@@ -724,17 +729,15 @@ namespace MyMC
 				Console.WriteLine("From: {0}", cardFrom.GetPath());
 				Console.WriteLine("To: {0}\n", cardTo.GetPath());
 #endregion
-
-				DataGridViewSelectedRowCollection savesCollection = selectedCard.SelectedRows;
 				
 				string filePath 	= String.Empty;
 				string saveName		= String.Empty;
 				string mcPathFrom 	= cardFrom.GetPath();
 				string mcPathTo 	= cardTo.GetPath();
 				
-				foreach (DataGridViewRow row in savesCollection) 
+				foreach (DataGridViewRow saveRow in savesCollection )
 				{
-					saveName = row.Cells[0].Value.ToString();
+					saveName = saveRow.Cells[0].Value.ToString();
 #region Debug
 					Console.WriteLine("Exporting file {0} from {1}", saveName, mcPathFrom );
 #endregion					
@@ -753,6 +756,36 @@ namespace MyMC
 			}
 		}
 
+		private void TransferSavesMcOneToMcTwo( IEnumerable saveCollection)
+		{
+			if (memoryCardTwo != null)
+			{
+				TransferSaves( memoryCardOne, memoryCardTwo, saveCollection );
+				UpdateCard(dataGridView2, memoryCardTwo);
+#region Debug
+				DebugMc(memoryCardTwo);
+#endregion
+				
+			}else{
+				MessageBox.Show("You must open a memory card on the side 2.");
+			}		
+		}
+				
+		private void TransferSavesMcTwoToMcOne( IEnumerable saveCollection )
+		{
+			if (memoryCardOne != null)
+			{
+				TransferSaves( memoryCardTwo, memoryCardOne, saveCollection );
+				UpdateCard(dataGridView1, memoryCardOne);
+				
+#region	Debug
+				DebugMc(memoryCardOne);	
+#endregion				
+			}else{
+				MessageBox.Show("You must open a memory card on the side 1.");
+			}		
+		}	
+		
 		private MemoryCard DoDelete( ref MemoryCard card )
 		{		
 			if (card != null && card.LoadSaves().Count > 2)
@@ -765,11 +798,11 @@ namespace MyMC
 				Console.WriteLine("Ok button");
 #endregion					
 					string mcPath = card.GetPath();
-					DataGridViewSelectedRowCollection savesCollection = focusedMemmoryCard.SelectedRows;
+					DataGridViewSelectedRowCollection savesCollection = focusedMemoryCard.SelectedRows;
 					
 					DoBatchDelete( mcPath, savesCollection );			
 									
-					return RefreshMemoryCard( card, focusedMemmoryCard);
+					return RefreshMemoryCard( card, focusedMemoryCard);
 				}						
 #region Debug
 				Console.WriteLine("Cancel button");
@@ -792,20 +825,6 @@ namespace MyMC
 			}		
 		
 		}
-		
-#region Others
-//		private void RefreshMemoryCard(ref MemoryCard card, DataGridView view)
-//		{
-//			string mcPath = card.GetPath();
-//			
-//			card = null;
-//			
-//			card = new MemoryCard( mcPath, util.loadFiles( mcPath ), util.GetMcFreeSpace( mcPath ) );
-//			
-//			
-//			ShowMcContent( card, view );	
-//		}
-#endregion
 		
 		private MemoryCard RefreshMemoryCard( MemoryCard memCard, DataGridView view)
 		{
@@ -891,6 +910,108 @@ namespace MyMC
 				util.AddRawFile( mcPath, folder);
 			}
 		}
+
+		private void SetContextMenuItems(string dgvName)
+		{
+			if (dgvName == "dataGridView1") 
+			{
+				ContextMenuItemCopySavesTo.Text	= "Copy saves to MC2";
+				ContextMenuItemMoveSavesTo.Text	= "Move saves to MC2";
+				ContextMenuItemCopyAllTo.Text	= "Copy All to MC2";				
+			}else{
+				ContextMenuItemCopySavesTo.Text	= "Copy saves to MC1";
+				ContextMenuItemMoveSavesTo.Text	= "Move saves to MC1";
+				ContextMenuItemCopyAllTo.Text	= "Copy All to MC1";			
+			}
+		}		
+
+		private Action<object, EventArgs> GetCopyMethod( string selector )
+		{
+			if( selector == "dataGridView1")
+			{
+				return McOneToMcTwoButtonClick;
+			}else{
+				return McTwoToMcOneButtonClick;
+			}
+		}
+			
+		private Action<IEnumerable> GetCopyAllMethod( string selector )
+		{
+			if(selector == "dataGridView1")
+			{
+				return TransferSavesMcOneToMcTwo;
+			}else{
+				return TransferSavesMcTwoToMcOne;
+			}
+		}
+
+		private MemoryCard GetActualCard( string focusedCard )
+		{
+			var cardMap = new Dictionary<string, MemoryCard>()
+			{
+				{ "dataGridView1", memoryCardOne },
+				{ "dataGridView2", memoryCardTwo }
+			};
+			
+			MemoryCard tempCard;
+			
+			return cardMap.TryGetValue(focusedCard, out tempCard) ? tempCard : null;			
+		}
+
+		private MemoryCard GetUnfocusedCard(string unfocusedCard )
+		{
+			var cardMap = new Dictionary<string, MemoryCard>()
+			{
+				{ "dataGridView1", memoryCardTwo },
+				{ "dataGridView2", memoryCardOne }
+			};
+			
+			MemoryCard tempCard;
+			
+			return cardMap.TryGetValue(unfocusedCard, out tempCard) ? tempCard : null;			
+		}			
+		
+		private void UpdateCard(DataGridView slot, MemoryCard card )
+		{
+			switch (slot.Name) 
+			{
+				case "dataGridView1":
+					memoryCardOne = RefreshMemoryCard(card, slot);
+					break;
+				case "dataGridView2":
+					memoryCardTwo = RefreshMemoryCard(card, slot);
+					break;
+			}
+		}
+
+		private void LoadConfig()
+		{
+			IniConfigSource config = new IniConfigSource(configFile);
+			
+			userExportFolder	= config.Configs["Paths"].GetString("ExportFolder"	);
+			lastOpenMcDir		= config.Configs["Paths"].GetString("McFolder"		);
+			lastOpenSaveDir		= config.Configs["Paths"].GetString("SaveFolder"	);
+		
+		}
+		
+		private void SaveConfig()
+		{
+		
+		}
+
+		private DataGridView getDataGridView( DataGridView dgv )
+		{
+			var map = new Dictionary<string, DataGridView>()
+			{
+				{ "dataGridView1", dataGridView1 },
+				{ "dataGridView2", dataGridView2 }
+			};
+			
+			DataGridView temp;
+			
+			return map.TryGetValue(dgv.Name, out temp) ? temp : null;
+			
+		}		
 		
 #endregion		
 
@@ -938,172 +1059,85 @@ namespace MyMC
 			}
 		}
 			
-		
-		private DataGridView getDataGridView( DataGridView dgv )
-		{
-			var map = new Dictionary<string, DataGridView>()
-			{
-				{ "dataGridView1", dataGridView1 },
-				{ "dataGridView2", dataGridView2 }
-			};
-			
-			DataGridView temp;
-			
-			return map.TryGetValue(dgv.Name, out temp) ? temp : null;
-			
-		}
-				
 		void DataGridViewKeyDown(object sender, KeyEventArgs e)
 		{	
 			if (e.KeyCode == Keys.Delete) 
-			{
-				
+			{			
 				DeleteSaveButtonClick( sender, null );
-				
-				
-//				DataGridView dgv = getDataGridView( sender as DataGridView );
-//				MemoryCard card = getActualCard(dgv.Name);
-//				
-//				if (card != null) 
-//				{
-//					DoBatchDelete( card.GetPath(), dgv.SelectedRows );
-//					UpdateCard(dgv, card);	
-//				}				
-			}
-		}
-		
-		private MemoryCard getActualCard( string focusedCard )
-		{
-			var cardMap = new Dictionary<string, MemoryCard>()
-			{
-				{ "dataGridView1", memoryCardOne },
-				{ "dataGridView2", memoryCardTwo }
-			};
-			
-			MemoryCard tempCard;
-			
-			return cardMap.TryGetValue(focusedCard, out tempCard) ? tempCard : null;			
-		}
-		
-		private void UpdateCard(DataGridView slot, MemoryCard card )
-		{
-			switch (slot.Name) 
-			{
-				case "dataGridView1":
-					memoryCardOne = RefreshMemoryCard(card, slot);
-					break;
-				case "dataGridView2":
-					memoryCardTwo = RefreshMemoryCard(card, slot);
-					break;
-			}
-		}
-		
-
-		void EnableToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			(sender as ToolStripMenuItem).Checked = !(sender as ToolStripMenuItem).Checked;
-		}
-		
-		void EnableToolStripMenuItemCheckedChanged(object sender, EventArgs e)
-		{
-			IConsoleLog consoleLog = ConsoleLog.getInstance() as IConsoleLog;
-			
-			if((sender as ToolStripMenuItem).Checked)
-			{				
-				if( consoleLog != null )
-				{ 
-					consoleLog.AttachConsole();
-					Console.WriteLine("Debug Console.");
-				}
-			}else{
-				if( consoleLog != null ){ consoleLog.DetachConsole(); }
 			}
 		}
 		
 		void LogTestToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			log.Debug("Hola");			
-		}
+		}	
 		
-
-		
-		
-		private void LoadConfig()
-		{
-			IniConfigSource config = new IniConfigSource(configFile);
-			
-			userExportFolder	= config.Configs["Paths"].GetString("ExportFolder"	);
-			lastOpenMcDir		= config.Configs["Paths"].GetString("McFolder"		);
-			lastOpenSaveDir		= config.Configs["Paths"].GetString("SaveFolder"	);
-		
-		}
-		
-		private void SaveConfig()
-		{
-		
-		}
-		
-
 		void DataGridViewMouseUp(object sender, MouseEventArgs e)
 		{
 			DataGridView dgv = getDataGridView(sender as DataGridView);
-			MemoryCard card = getActualCard(dgv.Name);
+			MemoryCard card = GetActualCard(dgv.Name);
 			
 			if (e.Button == MouseButtons.Right && card != null ) 
 			{
-				focusedMemmoryCard = dgv;
+				focusedMemoryCard = dgv;
 				SetContextMenuItems(dgv.Name);
 				
 				contextMenuStrip1.Show(sender as DataGridView, e.Location);
 			}			
 		}		
 
-		private void SetContextMenuItems(string dgvName)
-		{
-			if (dgvName == "dataGridView1") 
-			{
-				ContextMenuItemCopySavesTo.Text = "Copy saves to MC2";
-				ContextMenuItemMoveSavesTo.Text = "Move saves to MC2";
-				ContextMenuItemCloneCardTo.Text = "Clone card to MC2";				
-			}else{
-				ContextMenuItemCopySavesTo.Text = "Copy saves to MC1";
-				ContextMenuItemMoveSavesTo.Text = "Move saves to MC1";
-				ContextMenuItemCloneCardTo.Text = "Clone card to MC1";			
-			}
-		}
+
 		
 		
-		private Action<object, EventArgs> GetMethod( string selector )
-		{
-			if( selector == "dataGridView1")
-			{
-				return McOneToMcTwoButtonClick;
-			}else{
-				return McTwoToMcOneButtonClick;
-			}
-		}
+
 		
+		
+#region	ContextMenuItems
 		
 		void ContextMenuItemSelectAllClick(object sender, EventArgs e)
 		{
-			focusedMemmoryCard.SelectAll();
+			focusedMemoryCard.SelectAll();
 		}
 		
-	
 		void ContextMenuItemCopySavesToClick(object sender, EventArgs e)
 		{
-			Action<object, EventArgs> doCopy = GetMethod(focusedMemmoryCard.Name);
+			Action<object, EventArgs> doCopy = GetCopyMethod(focusedMemoryCard.Name);
 			doCopy(null, null);
 		}
 		
 		void ContextMenuItemMoveSavesToClick(object sender, EventArgs e)
 		{
+			ContextMenuItemCopySavesToClick(null, null);
 			
+			MemoryCard cardFrom = GetActualCard(focusedMemoryCard.Name);
+			MemoryCard cardTo = GetUnfocusedCard(focusedMemoryCard.Name);
+			
+			if (cardTo != null) 
+			{
+				DoBatchDelete( cardFrom.GetPath(), focusedMemoryCard.SelectedRows );
+				UpdateCard(focusedMemoryCard, cardFrom);	
+			}
 		}
 		
-		void ContextMenuItemCloneCardToClick(object sender, EventArgs e)
+		void ContextMenuItemCopyAllToClick(object sender, EventArgs e)
 		{
-			
+			Action<IEnumerable> doCopyAll = GetCopyAllMethod(focusedMemoryCard.Name);
+			doCopyAll(focusedMemoryCard.Rows);
 		}
+
+		void ContextMenuItemDeleteSelectedsClick(object sender, EventArgs e)
+		{
+			DeleteSaveButtonClick( focusedMemoryCard, null );
+		}
+		
+#endregion
+		
+		
+		
+		void DeleteAllToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			MessageBox.Show("Empty Method");
+		}
+
 	}
 }

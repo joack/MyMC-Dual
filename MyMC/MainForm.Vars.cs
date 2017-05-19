@@ -37,7 +37,7 @@ namespace MyMC
 		private MemoryCard memoryCardTwo;
 		private Util util;
 		
-		private DataGridView focusedMemmoryCard; 
+		private DataGridView focusedMemoryCard; 
 		
 		private const string NO_CARD  		= "Memory Card not Inserted";
 		private const string EMPTY_CARD 	= "Empty";

@@ -83,10 +83,13 @@ namespace MyMC
 			this.file_Modyfied = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.ContextMenuItemSelectAl = new System.Windows.Forms.ToolStripMenuItem();
+			this.ContextMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
 			this.ContextMenuItemCopySavesTo = new System.Windows.Forms.ToolStripMenuItem();
+			this.ContextMenuItemCopyAllTo = new System.Windows.Forms.ToolStripMenuItem();
 			this.ContextMenuItemMoveSavesTo = new System.Windows.Forms.ToolStripMenuItem();
-			this.ContextMenuItemCloneCardTo = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.deleteSelectedsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.dataGridView2 = new System.Windows.Forms.DataGridView();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -516,40 +519,62 @@ namespace MyMC
 			// contextMenuStrip1
 			// 
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.ContextMenuItemSelectAl,
+									this.ContextMenuItemSelectAll,
 									this.ContextMenuItemCopySavesTo,
+									this.ContextMenuItemCopyAllTo,
 									this.ContextMenuItemMoveSavesTo,
-									this.ContextMenuItemCloneCardTo});
+									this.toolStripSeparator2,
+									this.deleteSelectedsToolStripMenuItem,
+									this.deleteAllToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
+			this.contextMenuStrip1.Size = new System.Drawing.Size(159, 142);
 			// 
-			// ContextMenuItemSelectAl
+			// ContextMenuItemSelectAll
 			// 
-			this.ContextMenuItemSelectAl.Name = "ContextMenuItemSelectAl";
-			this.ContextMenuItemSelectAl.Size = new System.Drawing.Size(152, 22);
-			this.ContextMenuItemSelectAl.Text = "Select All";
-			this.ContextMenuItemSelectAl.Click += new System.EventHandler(this.ContextMenuItemSelectAllClick);
+			this.ContextMenuItemSelectAll.Name = "ContextMenuItemSelectAll";
+			this.ContextMenuItemSelectAll.Size = new System.Drawing.Size(158, 22);
+			this.ContextMenuItemSelectAll.Text = "Select All";
+			this.ContextMenuItemSelectAll.Click += new System.EventHandler(this.ContextMenuItemSelectAllClick);
 			// 
 			// ContextMenuItemCopySavesTo
 			// 
 			this.ContextMenuItemCopySavesTo.Name = "ContextMenuItemCopySavesTo";
-			this.ContextMenuItemCopySavesTo.Size = new System.Drawing.Size(152, 22);
+			this.ContextMenuItemCopySavesTo.Size = new System.Drawing.Size(158, 22);
 			this.ContextMenuItemCopySavesTo.Text = "Copy saves to";
 			this.ContextMenuItemCopySavesTo.Click += new System.EventHandler(this.ContextMenuItemCopySavesToClick);
+			// 
+			// ContextMenuItemCopyAllTo
+			// 
+			this.ContextMenuItemCopyAllTo.Name = "ContextMenuItemCopyAllTo";
+			this.ContextMenuItemCopyAllTo.Size = new System.Drawing.Size(158, 22);
+			this.ContextMenuItemCopyAllTo.Text = "Copy All to";
+			this.ContextMenuItemCopyAllTo.Click += new System.EventHandler(this.ContextMenuItemCopyAllToClick);
 			// 
 			// ContextMenuItemMoveSavesTo
 			// 
 			this.ContextMenuItemMoveSavesTo.Name = "ContextMenuItemMoveSavesTo";
-			this.ContextMenuItemMoveSavesTo.Size = new System.Drawing.Size(152, 22);
+			this.ContextMenuItemMoveSavesTo.Size = new System.Drawing.Size(158, 22);
 			this.ContextMenuItemMoveSavesTo.Text = "Move saves to";
 			this.ContextMenuItemMoveSavesTo.Click += new System.EventHandler(this.ContextMenuItemMoveSavesToClick);
 			// 
-			// ContextMenuItemCloneCardTo
+			// toolStripSeparator2
 			// 
-			this.ContextMenuItemCloneCardTo.Name = "ContextMenuItemCloneCardTo";
-			this.ContextMenuItemCloneCardTo.Size = new System.Drawing.Size(152, 22);
-			this.ContextMenuItemCloneCardTo.Text = "Clone card to";
-			this.ContextMenuItemCloneCardTo.Click += new System.EventHandler(this.ContextMenuItemCloneCardToClick);
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(155, 6);
+			// 
+			// deleteSelectedsToolStripMenuItem
+			// 
+			this.deleteSelectedsToolStripMenuItem.Name = "deleteSelectedsToolStripMenuItem";
+			this.deleteSelectedsToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+			this.deleteSelectedsToolStripMenuItem.Text = "Delete selecteds";
+			this.deleteSelectedsToolStripMenuItem.Click += new System.EventHandler(this.ContextMenuItemDeleteSelectedsClick);
+			// 
+			// deleteAllToolStripMenuItem
+			// 
+			this.deleteAllToolStripMenuItem.Name = "deleteAllToolStripMenuItem";
+			this.deleteAllToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+			this.deleteAllToolStripMenuItem.Text = "Delete All";
+			this.deleteAllToolStripMenuItem.Click += new System.EventHandler(this.DeleteAllToolStripMenuItemClick);
 			// 
 			// groupBox2
 			// 
@@ -678,10 +703,13 @@ namespace MyMC
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
-		private System.Windows.Forms.ToolStripMenuItem ContextMenuItemCloneCardTo;
+		private System.Windows.Forms.ToolStripMenuItem deleteAllToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem deleteSelectedsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripMenuItem ContextMenuItemCopyAllTo;
 		private System.Windows.Forms.ToolStripMenuItem ContextMenuItemMoveSavesTo;
 		private System.Windows.Forms.ToolStripMenuItem ContextMenuItemCopySavesTo;
-		private System.Windows.Forms.ToolStripMenuItem ContextMenuItemSelectAl;
+		private System.Windows.Forms.ToolStripMenuItem ContextMenuItemSelectAll;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem logTestToolStripMenuItem;
