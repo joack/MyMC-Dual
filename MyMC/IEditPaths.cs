@@ -13,9 +13,10 @@ namespace MyMC
 	/// <summary>
 	/// Description of ISetExportPath.
 	/// </summary>
-	public interface IPreferencesPaths
+	public interface IEditPaths
 	{
-		//void SetPath( string path );
-		void SetPaths( string saveExportPath, string cardsFolderPath, string saveFolderPath );
+		void SetOptionPath( string anOption, string aValue );
+		
+		void SetPaths( string saveExportPath, string cardsFolderPath, string saveFolderPath, string newCardsPath );
 	}
 }

@@ -18,7 +18,7 @@ namespace MyMC
 	/// <summary>
 	/// Description of GenMc.
 	/// </summary>
-	public partial class GenMc : Form, IInfoForm
+	public partial class GenMc : Form, IInfoForm, IEditPaths
 	{
 
 #region Vars
@@ -52,10 +52,13 @@ namespace MyMC
 		void BrowseButtonClick(object sender, EventArgs e)
 		{
 			FolderBrowserDialog fbd = new FolderBrowserDialog();
+			fbd.SelectedPath = startUpDirectory;
 			
 			if(fbd.ShowDialog() == DialogResult.OK )
 			{
 				textBox2.Text = fbd.SelectedPath;
+				
+				SaveOption(fbd.SelectedPath);
 			}
 		}		
 	
@@ -216,5 +219,19 @@ namespace MyMC
 		
 #endregion
 		
+		private void SaveOption(string path)
+		{
+			IEditPaths configPath = this.Owner as IEditPaths;
+			
+			if (configPath != null) 
+			{
+				configPath.SetOptionPath("NewCardsFolder", path);
+			}
+		}
+		
+		
+		public void SetOptionPath(string anOption, string aValue){}
+		
+		public void SetPaths(string saveExportPath, string cardsFolderPath, string saveFolderPath, string newCardsPath){}
 	}
 }

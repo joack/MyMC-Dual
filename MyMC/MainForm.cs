@@ -23,7 +23,7 @@ namespace MyMC
 	/// <summary>
 	/// Description of MainForm.
 	/// </summary>
-	public partial class MainForm : Form, IPreferencesPaths
+	public partial class MainForm : Form, IEditPaths
 	{
 		private static readonly log4net.ILog log = LogHelper.GetLogger();
 		
@@ -64,11 +64,14 @@ namespace MyMC
 			userExportFolder = path;
 		}
 		
-		public void SetPaths(string saveExportPath, string cardsFolderPath, string saveFolderPath)
+		public void SetPaths(string saveExportPath, string cardsFolderPath, string saveFolderPath, string newCardsFolderPath)
 		{
 			userExportFolder	= saveExportPath;
 			lastOpenMcDir		= cardsFolderPath;
 			lastOpenSaveDir		= saveFolderPath;
+			newCardsFolder		= newCardsFolderPath;
+			
+			SaveConfig();
 		}		
 
 #endregion
@@ -79,7 +82,7 @@ namespace MyMC
 		void CloseMC1ToolStripMenuItemClick(object sender, EventArgs e)
 		{
 #region Debug
-							 //┌─────────────────────────────────────────────────────────────────────────────┐
+							//┌─────────────────────────────────────────────────────────────────────────────┐
 			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
                   			  "Close Mc1 button click.");
 #endregion
@@ -142,9 +145,9 @@ namespace MyMC
 			vmcForm.SetConverter	= util_Converter;
 			vmcForm.SetTempCleaner  = util_TempCleaner;
 			vmcForm.SetTempFolder	= tempFolder;
-			vmcForm.SetDirectory	= lastOpenMcDir;
+			vmcForm.SetDirectory	= newCardsFolder;
 					
-			vmcForm.ShowDialog();
+			vmcForm.ShowDialog(this);
 #region Debug
 			Console.WriteLine("Create Mc button click - Exit." +
                   			  "\n───────────────────────────────────────────────────────────────────────────────");
@@ -221,9 +224,10 @@ namespace MyMC
 		{
 			Preference preferences	= new Preference();
 			
-			preferences.ExportPath	= userExportFolder;
-			preferences.FolderCards	= lastOpenMcDir;
-			preferences.SavesFolder	= lastOpenSaveDir;
+			preferences.ExportPath		= userExportFolder;
+			preferences.FolderCards		= lastOpenMcDir;
+			preferences.SavesFolder		= lastOpenSaveDir;
+			preferences.NewCardsFolder	= newCardsFolder;
 			
 			preferences.ShowDialog(this);
 		}		
@@ -260,7 +264,8 @@ namespace MyMC
 #endregion				
 				label1.Text = "Memory Card Name: " + Path.GetFileName(memoryCardOne.GetPath());
 				EnableMcOneButtons();
-				ShowMcContent( memoryCardOne, dataGridView1 );				
+				ShowMcContent( memoryCardOne, dataGridView1 );	
+				
 			}
 #region	Debug		
 			else{
@@ -332,6 +337,7 @@ namespace MyMC
 					util.ImportSaveUtil( mcPath, importFile );
 				}
 				
+				SetOptionPath("SaveFolder", lastOpenSaveDir);
 			}
 #region debug
 			else{
@@ -532,10 +538,7 @@ namespace MyMC
 				DebugMc(memoryCardTwo);
 #endregion
 			}
-#region debug
-			Console.WriteLine("\nDelete Save Button Click - Exit.\n" +
-                  			  "───────────────────────────────────────────────────────────────────────────────");	
-#endregion
+
 			
 		}	
 		
@@ -579,11 +582,13 @@ namespace MyMC
 			if( mcOpenDialog.ShowDialog() == DialogResult.OK )
 			{
 #region Debug
-				Console.WriteLine("Ok button");
+				Console.WriteLine("Ok button\n\n");
 #endregion
 				string mc = mcOpenDialog.FileName;
 				lastOpenMcDir = Path.GetDirectoryName( mcOpenDialog.FileName );
 	
+				SetOptionPath("McFolder", lastOpenMcDir);
+				
 				return new MemoryCard( mc, util.loadFiles( mc ), util.GetMcFreeSpace( mc ) );
 			}	
 #region Debug
@@ -795,22 +800,32 @@ namespace MyMC
 				if (result == DialogResult.OK) 
 				{
 #region Debug
-				Console.WriteLine("Ok button");
+					Console.WriteLine("Ok button");
 #endregion					
 					string mcPath = card.GetPath();
 					DataGridViewSelectedRowCollection savesCollection = focusedMemoryCard.SelectedRows;
 					
 					DoBatchDelete( mcPath, savesCollection );			
-									
+					
+#region debug
+			Console.WriteLine("\nDelete Save Button Click - Exit.\n" +
+                  			  "───────────────────────────────────────────────────────────────────────────────");	
+#endregion					
+					
 					return RefreshMemoryCard( card, focusedMemoryCard);
 				}						
 #region Debug
 				Console.WriteLine("Cancel button");
-#endregion				
+#endregion		
+
 			}else{
 				MessageBox.Show("Unable to delete.");
 			}	
 
+#region debug
+			Console.WriteLine("\nDelete Save Button Click - Exit.\n" +
+                  			  "───────────────────────────────────────────────────────────────────────────────");	
+#endregion			
 			return card;
 		}
 
@@ -819,7 +834,7 @@ namespace MyMC
 			foreach (DataGridViewRow row in savesCollection) 
 			{
 #region Debug
-				Console.WriteLine(row.Cells[0].Value.ToString());
+				log.Info(row.Cells[0].Value.ToString());
 #endregion
 				util.DeleteSaveUtil(mcPath, row.Cells[0].Value.ToString());
 			}		
@@ -991,12 +1006,20 @@ namespace MyMC
 			userExportFolder	= config.Configs["Paths"].GetString("ExportFolder"	);
 			lastOpenMcDir		= config.Configs["Paths"].GetString("McFolder"		);
 			lastOpenSaveDir		= config.Configs["Paths"].GetString("SaveFolder"	);
+			newCardsFolder		= config.Configs["Paths"].GetString("NewCardsFolder");
 		
 		}
 		
 		private void SaveConfig()
 		{
-		
+			IniConfigSource config = new IniConfigSource(configFile);
+			
+			config.Configs["Paths"].Set("ExportFolder"	,	userExportFolder);
+			config.Configs["Paths"].Set("McFolder"		,	lastOpenMcDir	);
+			config.Configs["Paths"].Set("SaveFolder"	,	lastOpenSaveDir	);
+			config.Configs["Paths"].Set("NewCardsFolder",	newCardsFolder	);	
+
+			config.Save();
 		}
 
 		private DataGridView getDataGridView( DataGridView dgv )
@@ -1009,8 +1032,7 @@ namespace MyMC
 			
 			DataGridView temp;
 			
-			return map.TryGetValue(dgv.Name, out temp) ? temp : null;
-			
+			return map.TryGetValue(dgv.Name, out temp) ? temp : null;	
 		}		
 		
 #endregion		
@@ -1021,29 +1043,29 @@ namespace MyMC
 	private void DebugMc(MemoryCard memory)
 	{
 		// ─ │┌ ┐└ ┘├ ┤┬ ┴ ┼
-		Console.WriteLine("┌─────────────────────┐");
-		Console.WriteLine("│     MEMORY CARD     │");
-		Console.WriteLine("└─────────────────────┘\n");
+		log.Debug("┌─────────────────────┐");
+		log.Debug("│     MEMORY CARD     │");
+		log.Debug("└─────────────────────┘\n");
 		
-		Console.WriteLine("Memory card Path: {0}", memory.GetPath());
-		Console.WriteLine("Memory card Free space: {0}", memory.GetFreeSpace());
-		Console.WriteLine("Memory card save count: {0}\n", memory.LoadSaves().Count -2);
+		log.Debug(String.Format("Memory card Path: {0}", memory.GetPath()));
+		log.Debug(String.Format("Memory card Free space: {0}", memory.GetFreeSpace()));
+		log.Debug(String.Format("Memory card save count: {0}\n", memory.LoadSaves().Count -2));
 		
-		Console.WriteLine("Memory card Save List:\n");
+		log.Debug("Memory card Save List:\n");
 		
 		List<SaveFile> saveList = memory.LoadSaves();
 
 		for( int i = 2; i < saveList.Count; i++ )
 		{
-			Console.WriteLine("┌─────────────────────────────────────────────────────────────────────────────┐");
-			Console.WriteLine("│  FILE Nº {0,-67}│", String.Format("{0:D3}", i -1));
-			Console.WriteLine("├─────────────────────────────────────────────────────────────────────────────┤");
-			Console.WriteLine("│ Save Name: {0,-65}|", saveList[i].FileName );
-			Console.WriteLine("│ Save Size: {0,-65}|", saveList[i].FileSize);
-			Console.WriteLine("│ Save Date: {0,-65}|", saveList[i].FileDate);
-			Console.WriteLine("│ Save Description: {0,-58}|", saveList[i].FileDescription);
-			Console.WriteLine("└─────────────────────────────────────────────────────────────────────────────┘");
-			Console.WriteLine();
+			log.Debug(					"┌─────────────────────────────────────────────────────────────────────────────┐");
+			log.Debug(String.Format(	"│  FILE Nº {0,-67}│", String.Format("{0:D3}", i -1)));
+			log.Debug(					"├─────────────────────────────────────────────────────────────────────────────┤");
+			log.Debug(String.Format(	"│ Save Name: {0,-65}|", saveList[i].FileName ));
+			log.Debug(String.Format(	"│ Save Size: {0,-65}|", saveList[i].FileSize));
+			log.Debug(String.Format(	"│ Save Date: {0,-65}|", saveList[i].FileDate));
+			log.Debug(String.Format(	"│ Save Description: {0,-58}|", saveList[i].FileDescription));
+			log.Debug(					"└─────────────────────────────────────────────────────────────────────────────┘\n");
+			//Console.WriteLine();
 		}
 	}
 
@@ -1085,11 +1107,6 @@ namespace MyMC
 				contextMenuStrip1.Show(sender as DataGridView, e.Location);
 			}			
 		}		
-
-
-		
-		
-
 		
 		
 #region	ContextMenuItems
@@ -1133,11 +1150,25 @@ namespace MyMC
 #endregion
 		
 		
+		private void SaveOption( string anOption, string aValue)
+		{
+			IConfigSource config = new IniConfigSource(configFile);
+			
+			config.Configs["Paths"].Set(anOption, aValue);
+			config.Save();
+		}
+		
 		
 		void DeleteAllToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			MessageBox.Show("Empty Method");
 		}
 
+		
+		public void SetOptionPath(string anOption, string aValue)
+		{
+			SaveOption(anOption, aValue);
+			LoadConfig();
+		}
 	}
 }

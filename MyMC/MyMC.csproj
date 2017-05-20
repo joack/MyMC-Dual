@@ -90,7 +90,7 @@
     <Compile Include="InfoVMC.Designer.cs">
       <DependentUpon>InfoVMC.cs</DependentUpon>
     </Compile>
-    <Compile Include="IPreferencesPaths.cs" />
+    <Compile Include="IEditPaths.cs" />
     <Compile Include="ITransferSaves.cs" />
     <Compile Include="IInfoForm.cs" />
     <Compile Include="LogHelper.cs" />

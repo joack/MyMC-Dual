@@ -49,7 +49,7 @@ namespace MyMC
 		private string userExportFolder = String.Empty;
 		private string lastOpenMcDir 	= Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 		private string lastOpenSaveDir 	= Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
+		private string newCardsFolder	= String.Empty;
 
 		
 #endregion		
