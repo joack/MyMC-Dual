@@ -75,16 +75,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleLog.cs" />
-    <Compile Include="ExportPathChooser.cs" />
-    <Compile Include="ExportPathChooser.Designer.cs">
-      <DependentUpon>ExportPathChooser.cs</DependentUpon>
-    </Compile>
     <Compile Include="GenMc.cs" />
     <Compile Include="GenMc.Designer.cs">
       <DependentUpon>GenMc.cs</DependentUpon>
     </Compile>
-    <Compile Include="IConsoleLog.cs" />
     <Compile Include="IMemoryCard.cs" />
     <Compile Include="InfoVMC.cs" />
     <Compile Include="InfoVMC.Designer.cs">
@@ -118,9 +112,6 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ExportPathChooser.resx">
-      <DependentUpon>ExportPathChooser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GenMc.resx">
       <DependentUpon>GenMc.cs</DependentUpon>
     </EmbeddedResource>

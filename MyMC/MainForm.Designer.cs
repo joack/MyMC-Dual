@@ -53,12 +53,9 @@ namespace MyMC
 			this.asPSUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.asmaxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.outputDirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.myMcDualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.logTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -117,8 +114,7 @@ namespace MyMC
 									this.fileToolStripMenuItem,
 									this.exportToolStripMenuItem,
 									this.configToolStripMenuItem,
-									this.aboutToolStripMenuItem,
-									this.testToolStripMenuItem});
+									this.aboutToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(920, 24);
@@ -142,7 +138,7 @@ namespace MyMC
 			// 
 			this.closeMC1ToolStripMenuItem.Enabled = false;
 			this.closeMC1ToolStripMenuItem.Name = "closeMC1ToolStripMenuItem";
-			this.closeMC1ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+			this.closeMC1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.closeMC1ToolStripMenuItem.Text = "Close MC1";
 			this.closeMC1ToolStripMenuItem.Click += new System.EventHandler(this.CloseMC1ToolStripMenuItemClick);
 			// 
@@ -150,31 +146,31 @@ namespace MyMC
 			// 
 			this.closeMC2ToolStripMenuItem.Enabled = false;
 			this.closeMC2ToolStripMenuItem.Name = "closeMC2ToolStripMenuItem";
-			this.closeMC2ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+			this.closeMC2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.closeMC2ToolStripMenuItem.Text = "Close MC2";
 			this.closeMC2ToolStripMenuItem.Click += new System.EventHandler(this.CloseMC2ToolStripMenuItemClick);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
 			// 
 			// exportSaveToolStripMenuItem
 			// 
 			this.exportSaveToolStripMenuItem.Name = "exportSaveToolStripMenuItem";
-			this.exportSaveToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+			this.exportSaveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.exportSaveToolStripMenuItem.Text = "C&reate MC...";
 			this.exportSaveToolStripMenuItem.Click += new System.EventHandler(this.CreateMcToolStripMenuItemClick);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(136, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
@@ -215,19 +211,10 @@ namespace MyMC
 			// configToolStripMenuItem
 			// 
 			this.configToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.outputDirToolStripMenuItem,
 									this.preferencesToolStripMenuItem});
 			this.configToolStripMenuItem.Name = "configToolStripMenuItem";
 			this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
 			this.configToolStripMenuItem.Text = "&Config";
-			// 
-			// outputDirToolStripMenuItem
-			// 
-			this.outputDirToolStripMenuItem.Enabled = false;
-			this.outputDirToolStripMenuItem.Name = "outputDirToolStripMenuItem";
-			this.outputDirToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-			this.outputDirToolStripMenuItem.Text = "Output Dir...";
-			this.outputDirToolStripMenuItem.Click += new System.EventHandler(this.OutputDirToolStripMenuItemClick);
 			// 
 			// preferencesToolStripMenuItem
 			// 
@@ -250,21 +237,6 @@ namespace MyMC
 			this.myMcDualToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.myMcDualToolStripMenuItem.Text = "MyMc Dual...";
 			this.myMcDualToolStripMenuItem.Click += new System.EventHandler(this.MyMcDualToolStripMenuItemClick);
-			// 
-			// testToolStripMenuItem
-			// 
-			this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.logTestToolStripMenuItem});
-			this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-			this.testToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-			this.testToolStripMenuItem.Text = "test";
-			// 
-			// logTestToolStripMenuItem
-			// 
-			this.logTestToolStripMenuItem.Name = "logTestToolStripMenuItem";
-			this.logTestToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-			this.logTestToolStripMenuItem.Text = "log test";
-			this.logTestToolStripMenuItem.Click += new System.EventHandler(this.LogTestToolStripMenuItemClick);
 			// 
 			// statusStrip1
 			// 
@@ -712,12 +684,9 @@ namespace MyMC
 		private System.Windows.Forms.ToolStripMenuItem ContextMenuItemSelectAll;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem logTestToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem myMcDualToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem outputDirToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem asmaxToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem asPSUToolStripMenuItem;

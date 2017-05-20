@@ -59,11 +59,6 @@ namespace MyMC
 		
 #region Interface methods
 
-		public void SetPath( string path )
-		{
-			userExportFolder = path;
-		}
-		
 		public void SetPaths(string saveExportPath, string cardsFolderPath, string saveFolderPath, string newCardsFolderPath)
 		{
 			userExportFolder	= saveExportPath;
@@ -74,6 +69,12 @@ namespace MyMC
 			SaveConfig();
 		}		
 
+		public void SetOptionPath(string anOption, string aValue)
+		{
+			SaveOption(anOption, aValue);
+			LoadConfig();
+		}		
+		
 #endregion
 				
 
@@ -200,25 +201,6 @@ namespace MyMC
 #endregion
 		}
 			
-		
-		void OutputDirToolStripMenuItemClick(object sender, EventArgs e)
-		{
-#region Debug
-							 //┌─────────────────────────────────────────────────────────────────────────────┐
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-                  			  "Output Dir button click.\n");
-		 	Console.WriteLine("Old Path = {0}", userExportFolder);
-#endregion
-			ExportPathChooser form = new ExportPathChooser();
-			form.Path = userExportFolder;
-			
-			form.ShowDialog(this);
-#region Debug
-			Console.WriteLine("New Path = {0}\n", userExportFolder);
-			Console.WriteLine("Output Dir button click - Exit." +
-                  			  "\n───────────────────────────────────────────────────────────────────────────────");
-#endregion	
-		}
 
 		void PreferencesToolStripMenuItemClick(object sender, EventArgs e)
 		{
@@ -1034,6 +1016,14 @@ namespace MyMC
 			
 			return map.TryGetValue(dgv.Name, out temp) ? temp : null;	
 		}		
+	
+		private void SaveOption( string anOption, string aValue)
+		{
+			IConfigSource config = new IniConfigSource(configFile);
+			
+			config.Configs["Paths"].Set(anOption, aValue);
+			config.Save();
+		}
 		
 #endregion		
 
@@ -1070,9 +1060,7 @@ namespace MyMC
 	}
 
 #endregion
-
 	
-		
 		void DataGridViewDragEnter(object sender, DragEventArgs e)
 		{
 			if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true ) 
@@ -1088,11 +1076,7 @@ namespace MyMC
 				DeleteSaveButtonClick( sender, null );
 			}
 		}
-		
-		void LogTestToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			log.Debug("Hola");			
-		}	
+			
 		
 		void DataGridViewMouseUp(object sender, MouseEventArgs e)
 		{
@@ -1107,8 +1091,7 @@ namespace MyMC
 				contextMenuStrip1.Show(sender as DataGridView, e.Location);
 			}			
 		}		
-		
-		
+				
 #region	ContextMenuItems
 		
 		void ContextMenuItemSelectAllClick(object sender, EventArgs e)
@@ -1146,29 +1129,13 @@ namespace MyMC
 		{
 			DeleteSaveButtonClick( focusedMemoryCard, null );
 		}
-		
-#endregion
-		
-		
-		private void SaveOption( string anOption, string aValue)
-		{
-			IConfigSource config = new IniConfigSource(configFile);
-			
-			config.Configs["Paths"].Set(anOption, aValue);
-			config.Save();
-		}
-		
-		
+	
 		void DeleteAllToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			MessageBox.Show("Empty Method");
 		}
-
 		
-		public void SetOptionPath(string anOption, string aValue)
-		{
-			SaveOption(anOption, aValue);
-			LoadConfig();
-		}
+#endregion
+			
 	}
 }
