@@ -811,7 +811,7 @@ namespace MyMC
 			return card;
 		}
 
-		private void DoBatchDelete( string mcPath , DataGridViewSelectedRowCollection savesCollection )
+		private void DoBatchDelete( string mcPath , /*DataGridViewSelectedRowCollection*/ IEnumerable savesCollection )
 		{
 			foreach (DataGridViewRow row in savesCollection) 
 			{
@@ -1132,7 +1132,18 @@ namespace MyMC
 	
 		void DeleteAllToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			MessageBox.Show("Empty Method");
+			MemoryCard card = GetActualCard(focusedMemoryCard.Name);
+			
+			DoBatchDelete( card.GetPath(), focusedMemoryCard.Rows);
+			UpdateCard(focusedMemoryCard, card);
+
+			
+#region Debug
+			DebugMc(GetActualCard(focusedMemoryCard.Name));
+#endregion			
+			
+			
+
 		}
 		
 #endregion

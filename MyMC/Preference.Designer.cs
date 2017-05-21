@@ -42,8 +42,8 @@ namespace MyMC
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.AccepButton = new System.Windows.Forms.Button();
-			this.CancelButton = new System.Windows.Forms.Button();
+			this.AccepBtn = new System.Windows.Forms.Button();
+			this.CancelBtn = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
 			this.button3 = new System.Windows.Forms.Button();
 			this.textBox3 = new System.Windows.Forms.TextBox();
@@ -104,25 +104,25 @@ namespace MyMC
 			this.label2.TabIndex = 5;
 			this.label2.Text = "Load Cards Path:";
 			// 
-			// AccepButton
+			// AccepBtn
 			// 
-			this.AccepButton.Location = new System.Drawing.Point(135, 256);
-			this.AccepButton.Name = "AccepButton";
-			this.AccepButton.Size = new System.Drawing.Size(75, 23);
-			this.AccepButton.TabIndex = 6;
-			this.AccepButton.Text = "Accept";
-			this.AccepButton.UseVisualStyleBackColor = true;
-			this.AccepButton.Click += new System.EventHandler(this.AccepButtonClick);
+			this.AccepBtn.Location = new System.Drawing.Point(135, 256);
+			this.AccepBtn.Name = "AccepBtn";
+			this.AccepBtn.Size = new System.Drawing.Size(75, 23);
+			this.AccepBtn.TabIndex = 6;
+			this.AccepBtn.Text = "Accept";
+			this.AccepBtn.UseVisualStyleBackColor = true;
+			this.AccepBtn.Click += new System.EventHandler(this.AccepButtonClick);
 			// 
-			// CancelButton
+			// CancelBtn
 			// 
-			this.CancelButton.Location = new System.Drawing.Point(283, 256);
-			this.CancelButton.Name = "CancelButton";
-			this.CancelButton.Size = new System.Drawing.Size(75, 23);
-			this.CancelButton.TabIndex = 7;
-			this.CancelButton.Text = "Cancel";
-			this.CancelButton.UseVisualStyleBackColor = true;
-			this.CancelButton.Click += new System.EventHandler(this.CancelButtonClick);
+			this.CancelBtn.Location = new System.Drawing.Point(283, 256);
+			this.CancelBtn.Name = "CancelBtn";
+			this.CancelBtn.Size = new System.Drawing.Size(75, 23);
+			this.CancelBtn.TabIndex = 7;
+			this.CancelBtn.Text = "Cancel";
+			this.CancelBtn.UseVisualStyleBackColor = true;
+			this.CancelBtn.Click += new System.EventHandler(this.CancelButtonClick);
 			// 
 			// label3
 			// 
@@ -201,8 +201,8 @@ namespace MyMC
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(501, 291);
 			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.CancelButton);
-			this.Controls.Add(this.AccepButton);
+			this.Controls.Add(this.CancelBtn);
+			this.Controls.Add(this.AccepBtn);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "Preference";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -219,8 +219,8 @@ namespace MyMC
 		private System.Windows.Forms.TextBox textBox3;
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Button CancelButton;
-		private System.Windows.Forms.Button AccepButton;
+		private System.Windows.Forms.Button CancelBtn;
+		private System.Windows.Forms.Button AccepBtn;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox textBox2;

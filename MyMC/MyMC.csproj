@@ -107,6 +107,10 @@
     <Compile Include="Util.Vars.cs">
       <DependentUpon>Util.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
+    <Compile Include="Utils.Vars.cs">
+      <DependentUpon>Utils.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
