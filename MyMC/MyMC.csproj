@@ -87,6 +87,7 @@
     <Compile Include="IEditPaths.cs" />
     <Compile Include="ITransferSaves.cs" />
     <Compile Include="IInfoForm.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">

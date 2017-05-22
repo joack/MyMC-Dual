@@ -17,6 +17,8 @@ using log4net;
 using Nini.Config;
 using Nini.Ini;
 
+//[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+
 namespace MyMC
 {
 	/// <summary>
@@ -30,6 +32,8 @@ namespace MyMC
 		public MainForm()
 		{
 			InitializeComponent();
+			//log4net.Config.XmlConfigurator.Configure();
+			Logger.Setup();
 		}		
 		
 		void MainFormLoad(object sender, EventArgs e)
@@ -814,14 +818,15 @@ namespace MyMC
 			return card;
 		}
 
-		private void DoBatchDelete( string mcPath , /*DataGridViewSelectedRowCollection*/ IEnumerable savesCollection )
+		private void DoBatchDelete( string mcPath , IEnumerable savesCollection )
 		{
 			foreach (DataGridViewRow row in savesCollection) 
 			{
 #region Debug
 				log.Info(row.Cells[0].Value.ToString());
 #endregion
-				util.DeleteSaveUtil(mcPath, row.Cells[0].Value.ToString());
+				//util.DeleteSaveUtil(mcPath, row.Cells[0].Value.ToString());
+				Utils.Card.DeleteSave(mcPath, row.Cells[0].Value.ToString());
 			}		
 		
 		}
@@ -830,8 +835,8 @@ namespace MyMC
 		{
 			string mcPath = memCard.GetPath();
 			
-			MemoryCard card = new MemoryCard( mcPath, util.loadFiles( mcPath ), util.GetMcFreeSpace( mcPath ) );
-			
+			//MemoryCard card = new MemoryCard( mcPath, util.loadFiles( mcPath ), util.GetMcFreeSpace( mcPath ) );
+			MemoryCard card = new MemoryCard( mcPath, Utils.Card.LoadFiles( mcPath ), Utils.Card.GetMcFreeSpace( mcPath ) );
 			
 			ShowMcContent( card, view );
 
@@ -854,7 +859,8 @@ namespace MyMC
 		{
 			ToolStripMenuItem item = sender as ToolStripMenuItem;
 			
-			foreach (ToolStripMenuItem menuItem in item.GetCurrentParent().Items)
+			//foreach (ToolStripMenuItem menuItem in item.GetCurrentParent().Items)
+			foreach (ToolStripMenuItem menuItem in exportToolStripMenuItem1.DropDownItems)	
 			{
 				menuItem.Checked = false;
 			}
@@ -1151,5 +1157,52 @@ namespace MyMC
 		
 #endregion
 			
+		
+		void AsPSUToolStripMenuItemMouseUp(object sender, MouseEventArgs e)
+		{
+#region Debug
+							 //┌─────────────────────────────────────────────────────────────────────────────┐
+			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
+                  			  "As PSU Mc Checked.");
+#endregion
+			ToolStripMenuItem item = sender as ToolStripMenuItem;
+			
+			if( item.Checked )
+			{
+				mode = MODE_PSU;
+			}			
+#region Debug
+			Console.WriteLine("\nMODE = {0}\n", mode);
+			Console.WriteLine("As PSU Checked - Exit." +
+                  			  "\n───────────────────────────────────────────────────────────────────────────────");
+#endregion			
+		}
+		
+
+		
+		void AsmaxToolStripMenuItemMouseUp(object sender, MouseEventArgs e)
+		{
+#region Debug
+							 //┌─────────────────────────────────────────────────────────────────────────────┐
+			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
+                  			  "As MAX Checked.");
+#endregion
+			ToolStripMenuItem item = sender as ToolStripMenuItem;
+			
+			if( item.Checked )
+			{
+				mode = MODE_MAX;
+			}			
+#region Debug
+			Console.WriteLine("\nMODE = {0}\n", mode);
+			Console.WriteLine("As MAX Checked - Exit." +
+                  			  "\n───────────────────────────────────────────────────────────────────────────────");
+#endregion			
+		}
+		
+		void ImportToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			MessageBox.Show("There's nothing here.");
+		}
 	}
 }

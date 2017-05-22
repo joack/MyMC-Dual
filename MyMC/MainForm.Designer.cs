@@ -99,6 +99,8 @@ namespace MyMC
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.vmcConverterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -114,6 +116,7 @@ namespace MyMC
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
 									this.fileToolStripMenuItem,
 									this.exportToolStripMenuItem,
+									this.toolsToolStripMenuItem,
 									this.configToolStripMenuItem,
 									this.aboutToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -191,7 +194,7 @@ namespace MyMC
 									this.asPSUToolStripMenuItem,
 									this.asmaxToolStripMenuItem});
 			this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
-			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
+			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 			this.exportToolStripMenuItem1.Text = "Export";
 			// 
 			// asPSUToolStripMenuItem
@@ -202,6 +205,8 @@ namespace MyMC
 			this.asPSUToolStripMenuItem.Name = "asPSUToolStripMenuItem";
 			this.asPSUToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
 			this.asPSUToolStripMenuItem.Text = "as .psu";
+			this.asPSUToolStripMenuItem.Click += new System.EventHandler(this.UncheckOtherToolStripMenuItems);
+			this.asPSUToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AsPSUToolStripMenuItemMouseUp);
 			// 
 			// asmaxToolStripMenuItem
 			// 
@@ -209,12 +214,15 @@ namespace MyMC
 			this.asmaxToolStripMenuItem.Name = "asmaxToolStripMenuItem";
 			this.asmaxToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
 			this.asmaxToolStripMenuItem.Text = "as .max";
+			this.asmaxToolStripMenuItem.Click += new System.EventHandler(this.UncheckOtherToolStripMenuItems);
+			this.asmaxToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AsmaxToolStripMenuItemMouseUp);
 			// 
 			// importToolStripMenuItem
 			// 
 			this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-			this.importToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.importToolStripMenuItem.Text = "Import";
+			this.importToolStripMenuItem.Click += new System.EventHandler(this.ImportToolStripMenuItemClick);
 			// 
 			// configToolStripMenuItem
 			// 
@@ -227,7 +235,7 @@ namespace MyMC
 			// preferencesToolStripMenuItem
 			// 
 			this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.preferencesToolStripMenuItem.Text = "Preferences...";
 			this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.PreferencesToolStripMenuItemClick);
 			// 
@@ -650,6 +658,20 @@ namespace MyMC
 			this.label2.TabIndex = 6;
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// toolsToolStripMenuItem
+			// 
+			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+									this.vmcConverterToolStripMenuItem});
+			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+			this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+			this.toolsToolStripMenuItem.Text = "Tools";
+			// 
+			// vmcConverterToolStripMenuItem
+			// 
+			this.vmcConverterToolStripMenuItem.Name = "vmcConverterToolStripMenuItem";
+			this.vmcConverterToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+			this.vmcConverterToolStripMenuItem.Text = "VMC Converter...";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -683,6 +705,8 @@ namespace MyMC
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.ToolStripMenuItem vmcConverterToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem deleteAllToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem deleteSelectedsToolStripMenuItem;

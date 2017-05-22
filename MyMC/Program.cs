@@ -7,11 +7,12 @@
  * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
  */
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Reflection;
 
-
-[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+//[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace MyMC
 {
@@ -28,6 +29,7 @@ namespace MyMC
 		[STAThread]
 		private static void Main(string[] args)
 		{  
+			
 			if (args.Length > 0) 
 			{
 				if (args[0] == "/debug") 
@@ -36,7 +38,9 @@ namespace MyMC
 					Console.WriteLine("Debug console.");
 				}	
 			}
-			log4net.Config.XmlConfigurator.Configure();
+			
+			
+			//log4net.Config.XmlConfigurator.Configure();
 			
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);			
