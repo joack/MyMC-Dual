@@ -39,7 +39,6 @@ namespace MyMC
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.eccBlockCheck = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.button3 = new System.Windows.Forms.Button();
@@ -49,14 +48,15 @@ namespace MyMC
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
+			this.extensionChooser = new System.Windows.Forms.ComboBox();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.extensionChooser);
 			this.groupBox1.Controls.Add(this.eccBlockCheck);
 			this.groupBox1.Controls.Add(this.label5);
-			this.groupBox1.Controls.Add(this.label4);
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Controls.Add(this.button3);
@@ -76,7 +76,7 @@ namespace MyMC
 			this.eccBlockCheck.Location = new System.Drawing.Point(181, 86);
 			this.eccBlockCheck.Name = "eccBlockCheck";
 			this.eccBlockCheck.Size = new System.Drawing.Size(91, 17);
-			this.eccBlockCheck.TabIndex = 8;
+			this.eccBlockCheck.TabIndex = 3;
 			this.eccBlockCheck.Text = "ECC Block";
 			this.eccBlockCheck.UseVisualStyleBackColor = true;
 			// 
@@ -87,14 +87,6 @@ namespace MyMC
 			this.label5.Size = new System.Drawing.Size(32, 14);
 			this.label5.TabIndex = 6;
 			this.label5.Text = "Mb.";
-			// 
-			// label4
-			// 
-			this.label4.Location = new System.Drawing.Point(193, 42);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(79, 14);
-			this.label4.TabIndex = 7;
-			this.label4.Text = ".bin";
 			// 
 			// label3
 			// 
@@ -117,7 +109,7 @@ namespace MyMC
 			this.button3.Location = new System.Drawing.Point(112, 157);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(75, 20);
-			this.button3.TabIndex = 4;
+			this.button3.TabIndex = 5;
 			this.button3.Text = "Browse";
 			this.button3.UseVisualStyleBackColor = true;
 			this.button3.Click += new System.EventHandler(this.BrowseButtonClick);
@@ -127,7 +119,7 @@ namespace MyMC
 			this.textBox2.Location = new System.Drawing.Point(15, 131);
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(257, 20);
-			this.textBox2.TabIndex = 3;
+			this.textBox2.TabIndex = 4;
 			// 
 			// comboBox1
 			// 
@@ -149,7 +141,7 @@ namespace MyMC
 			this.label1.Location = new System.Drawing.Point(15, 22);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(89, 14);
-			this.label1.TabIndex = 1;
+			this.label1.TabIndex = 7;
 			this.label1.Text = "Name:";
 			// 
 			// textBox1
@@ -179,6 +171,18 @@ namespace MyMC
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.CloseButtonClick);
 			// 
+			// extensionChooser
+			// 
+			this.extensionChooser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.extensionChooser.FormattingEnabled = true;
+			this.extensionChooser.Items.AddRange(new object[] {
+									".bin",
+									".ps2"});
+			this.extensionChooser.Location = new System.Drawing.Point(193, 39);
+			this.extensionChooser.Name = "extensionChooser";
+			this.extensionChooser.Size = new System.Drawing.Size(58, 21);
+			this.extensionChooser.TabIndex = 1;
+			// 
 			// GenMc
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,6 +200,7 @@ namespace MyMC
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.ComboBox extensionChooser;
 		private System.Windows.Forms.CheckBox eccBlockCheck;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox textBox1;
@@ -205,7 +210,6 @@ namespace MyMC
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.GroupBox groupBox1;

@@ -10,13 +10,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using System.IO;
 using log4net;
 using Nini.Config;
 using Nini.Ini;
-
-
 
 namespace MyMC
 {
@@ -35,7 +34,7 @@ namespace MyMC
 		
 		void MainFormLoad(object sender, EventArgs e)
 		{
-			
+
 			
 			
 			hourLabel.Text = DateTime.Now.ToString( "HH:mm:ss" );
@@ -55,7 +54,7 @@ namespace MyMC
 			dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;			
 			
 		}
-
+		
 		
 #region Interface methods
 
@@ -564,14 +563,15 @@ namespace MyMC
 			if( mcOpenDialog.ShowDialog() == DialogResult.OK )
 			{
 #region Debug
-				Console.WriteLine("Ok button\n\n");
+				Console.WriteLine("Ok button\n");
 #endregion
 				string mc = mcOpenDialog.FileName;
 				lastOpenMcDir = Path.GetDirectoryName( mcOpenDialog.FileName );
 	
 				SetOptionPath("McFolder", lastOpenMcDir);
 				
-				return new MemoryCard( mc, util.loadFiles( mc ), util.GetMcFreeSpace( mc ) );
+				//return new MemoryCard( mc, util.loadFiles( mc ), util.GetMcFreeSpace( mc ) );
+				return new MemoryCard( mc, Utils.Card.LoadFiles( mc ), Utils.Card.GetMcFreeSpace( mc ) );
 			}	
 #region Debug
 				Console.WriteLine("Cancel button");
@@ -728,17 +728,20 @@ namespace MyMC
 #region Debug
 					Console.WriteLine("Exporting file {0} from {1}", saveName, mcPathFrom );
 #endregion					
-					util.ExportSaveUtil(mcPathFrom, saveName, tempFolder, MODE_PSU);
+					//util.ExportSaveUtil(mcPathFrom, saveName, tempFolder, MODE_PSU);
+					Utils.Card.ExportSave(mcPathFrom,saveName, tempFolder,MODE_PSU);
 					
 					filePath = String.Format("{0}\\{1}{2}", tempFolder, saveName, ".psu");
 #region Debug
 					Console.WriteLine("Importing file {0} to {1}", saveName, mcPathTo );
 #endregion						
-					util.ImportSaveUtil(mcPathTo, filePath);
+					//util.ImportSaveUtil(mcPathTo, filePath);
+					Utils.Card.ImportSave(mcPathTo, filePath);
 #region Debug
 					Console.WriteLine("Deleting  file {0}\n", filePath);
 #endregion					
-					File.Delete(filePath);
+					//File.Delete(filePath);
+					Utils.Cleaner.DeleteTemp(filePath);
 				}	
 			}
 		}

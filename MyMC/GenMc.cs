@@ -32,7 +32,7 @@ namespace MyMC
 		
 		InfoVMC info;
 		private string startUpDirectory = String.Empty;
-
+		
 #endregion
 		
 		public GenMc()
@@ -45,6 +45,7 @@ namespace MyMC
 		void GenMcLoad(object sender, EventArgs e)
 		{
 			comboBox1.SelectedIndex = 0;
+			extensionChooser.SelectedIndex = 0;
 			textBox2.Text = startUpDirectory;
 				
 		}
@@ -68,6 +69,7 @@ namespace MyMC
 			string 	dirPath 	= textBox2.Text;
 			string 	cardName	= FormatedMcName( textBox1.Text );
 			bool	isECC		= eccBlockCheck.Checked;
+			string 	extension	= extensionChooser.SelectedItem.ToString();
 			
 			
 			InitInfo();
@@ -83,7 +85,11 @@ namespace MyMC
 				Update("\nMemory card with ECC Block.\n");
 				
 				DoCreate( utilVMC,  String.Format("{0} \"{1}\\{2}.bin\"", size, tempFolder, cardName) );
-				DoConvert( utilConverter, String.Format("\"{0}\\{1}.bin\" -2p \"{2}\\{3}.bin\"", tempFolder, cardName, dirPath, cardName ));
+				//DoConvert( utilConverter, String.Format("\"{0}\\{1}.bin\" -2p \"{2}\\{3}.bin\"", tempFolder, cardName, dirPath, cardName ));
+				//DoDeleteTemp( utilTempCleaner, String.Format("{0}.bin", cardName));
+				
+				//DoConvert(cardName, dirPath);
+				DoConvert(cardName, dirPath, extension);
 				DoDeleteTemp( utilTempCleaner, String.Format("{0}.bin", cardName));
 					
 			}else{
@@ -171,7 +177,14 @@ namespace MyMC
 		{
 			if ( info != null ) 
 			{
-				info.Invoke(new Action(()=> info.UpdateTextBox(updateText)));
+				IInfoForm form = info as IInfoForm;	
+
+				form.UpdateTextBox(updateText);				
+#region				
+//				info.Invoke(new Action(()=> info.UpdateTextBox(updateText)));	
+//				var form = info as IInfoForm;
+//				form.UpdateTextBox(updateText);
+#endregion
 			}
 		}
 	
@@ -196,25 +209,58 @@ namespace MyMC
 			//thread.Join();
 		}
 		
-		private void DoConvert( string utility, string args )
+//		private void DoConvert( string utility, string args )
+//		{
+//			DoCreate(utility, args);
+//			
+//		}
+		
+		private void DoConvert(string cardName, string dirPath)
 		{
-			DoCreate(utility, args);
+			Utils.Convert.ConvertToBin(cardName, dirPath );
 		}
+		
+		private void DoConvert(string cardName, string dirPath, string extension )
+		{
+			Action<string, string> ConvertEccMethod = GetEccMethod(extension);
+			
+			ConvertEccMethod(cardName, dirPath);
+			
+			//Utils.Convert.ConvertToBin(cardName, dirPath );
+		}
+		
+		private Action<string, string> GetEccMethod(string extension)
+		{
+			if(extension == ".bin")
+			{
+				return Utils.Convert.ConvertToBinECC;
+			}
+			
+			return Utils.Convert.ConvertToPs2ECC;
+		}
+		
 		
 		private void DoDeleteTemp( string utility,  string tempFile )
 		{
-			Process p = new Process();
-			p.StartInfo.FileName = utility;
-			p.StartInfo.WorkingDirectory = tempFolder;
-			p.StartInfo.Arguments = tempFile;
-			
-			p.StartInfo.UseShellExecute = false;
-			p.StartInfo.CreateNoWindow = true;
-			p.StartInfo.RedirectStandardOutput = true;			
-			
-			p.Start();
-			p.WaitForExit();
-
+#region			
+//			Process p = new Process();
+//			p.StartInfo.FileName = utility;
+//			p.StartInfo.WorkingDirectory = tempFolder;
+//			p.StartInfo.Arguments = tempFile;
+//			
+//			p.StartInfo.UseShellExecute = false;
+//			p.StartInfo.CreateNoWindow = true;
+//			p.StartInfo.RedirectStandardOutput = true;			
+//			
+//			p.Start();
+//			p.WaitForExit();
+#endregion		
+			Utils.Cleaner.DeleteTemp(tempFile);
+		}		
+		
+		private void DoDeleteTemp( string tempFile )
+		{		
+			Utils.Cleaner.DeleteTemp(tempFile);
 		}
 		
 #endregion

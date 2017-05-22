@@ -17,6 +17,7 @@ namespace MyMC
 	/// </summary>
 	public partial class InfoVMC : Form, IInfoForm
 	{
+		
 		public InfoVMC()
 		{
 			InitializeComponent();
@@ -27,13 +28,12 @@ namespace MyMC
 		public void UpdateTextBox( string updateText )
 		{
 			Console.WriteLine(updateText);
-			richTextBox1.Invoke(new Action (() => richTextBox1.AppendText(updateText + "\n")));
-			richTextBox1.ScrollToCaret();			
+			richTextBox1.Invoke(new Action (() => UpdateText(updateText)));
 		}
 		
 #endregion		
 
-#region Event Button
+#region Event Buttons
 
 		void HideButtonClick(object sender, EventArgs e)
 		{
@@ -41,6 +41,12 @@ namespace MyMC
 		}
 
 #endregion
+		
+		void UpdateText(string text)
+		{
+			richTextBox1.AppendText(text + "\n");
+			richTextBox1.ScrollToCaret();
+		}
 		
 	}
 }

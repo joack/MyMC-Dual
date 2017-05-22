@@ -52,6 +52,7 @@ namespace MyMC
 			this.exportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.asPSUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.asmaxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,7 +99,6 @@ namespace MyMC
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -139,7 +139,7 @@ namespace MyMC
 			// 
 			this.closeMC1ToolStripMenuItem.Enabled = false;
 			this.closeMC1ToolStripMenuItem.Name = "closeMC1ToolStripMenuItem";
-			this.closeMC1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.closeMC1ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
 			this.closeMC1ToolStripMenuItem.Text = "Close MC1";
 			this.closeMC1ToolStripMenuItem.Click += new System.EventHandler(this.CloseMC1ToolStripMenuItemClick);
 			// 
@@ -147,31 +147,31 @@ namespace MyMC
 			// 
 			this.closeMC2ToolStripMenuItem.Enabled = false;
 			this.closeMC2ToolStripMenuItem.Name = "closeMC2ToolStripMenuItem";
-			this.closeMC2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.closeMC2ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
 			this.closeMC2ToolStripMenuItem.Text = "Close MC2";
 			this.closeMC2ToolStripMenuItem.Click += new System.EventHandler(this.CloseMC2ToolStripMenuItemClick);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
 			// 
 			// exportSaveToolStripMenuItem
 			// 
 			this.exportSaveToolStripMenuItem.Name = "exportSaveToolStripMenuItem";
-			this.exportSaveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exportSaveToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
 			this.exportSaveToolStripMenuItem.Text = "C&reate MC...";
 			this.exportSaveToolStripMenuItem.Click += new System.EventHandler(this.CreateMcToolStripMenuItemClick);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(136, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
@@ -191,7 +191,7 @@ namespace MyMC
 									this.asPSUToolStripMenuItem,
 									this.asmaxToolStripMenuItem});
 			this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
-			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
 			this.exportToolStripMenuItem1.Text = "Export";
 			// 
 			// asPSUToolStripMenuItem
@@ -200,15 +200,21 @@ namespace MyMC
 			this.asPSUToolStripMenuItem.CheckOnClick = true;
 			this.asPSUToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.asPSUToolStripMenuItem.Name = "asPSUToolStripMenuItem";
-			this.asPSUToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.asPSUToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
 			this.asPSUToolStripMenuItem.Text = "as .psu";
 			// 
 			// asmaxToolStripMenuItem
 			// 
 			this.asmaxToolStripMenuItem.CheckOnClick = true;
 			this.asmaxToolStripMenuItem.Name = "asmaxToolStripMenuItem";
-			this.asmaxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.asmaxToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
 			this.asmaxToolStripMenuItem.Text = "as .max";
+			// 
+			// importToolStripMenuItem
+			// 
+			this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+			this.importToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.importToolStripMenuItem.Text = "Import";
 			// 
 			// configToolStripMenuItem
 			// 
@@ -221,7 +227,7 @@ namespace MyMC
 			// preferencesToolStripMenuItem
 			// 
 			this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.preferencesToolStripMenuItem.Text = "Preferences...";
 			this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.PreferencesToolStripMenuItemClick);
 			// 
@@ -643,12 +649,6 @@ namespace MyMC
 			this.label2.Size = new System.Drawing.Size(434, 21);
 			this.label2.TabIndex = 6;
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// importToolStripMenuItem
-			// 
-			this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-			this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.importToolStripMenuItem.Text = "Import";
 			// 
 			// MainForm
 			// 
