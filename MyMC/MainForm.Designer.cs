@@ -114,11 +114,11 @@ namespace MyMC
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.fileToolStripMenuItem,
-			this.exportToolStripMenuItem,
-			this.toolsToolStripMenuItem,
-			this.configToolStripMenuItem,
-			this.aboutToolStripMenuItem});
+									this.fileToolStripMenuItem,
+									this.exportToolStripMenuItem,
+									this.toolsToolStripMenuItem,
+									this.configToolStripMenuItem,
+									this.aboutToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(920, 24);
@@ -128,12 +128,12 @@ namespace MyMC
 			// fileToolStripMenuItem
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.closeMC1ToolStripMenuItem,
-			this.closeMC2ToolStripMenuItem,
-			this.toolStripSeparator1,
-			this.exportSaveToolStripMenuItem,
-			this.toolStripSeparator3,
-			this.exitToolStripMenuItem});
+									this.closeMC1ToolStripMenuItem,
+									this.closeMC2ToolStripMenuItem,
+									this.toolStripSeparator1,
+									this.exportSaveToolStripMenuItem,
+									this.toolStripSeparator3,
+									this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
 			this.fileToolStripMenuItem.Text = "&File";
@@ -142,7 +142,7 @@ namespace MyMC
 			// 
 			this.closeMC1ToolStripMenuItem.Enabled = false;
 			this.closeMC1ToolStripMenuItem.Name = "closeMC1ToolStripMenuItem";
-			this.closeMC1ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+			this.closeMC1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.closeMC1ToolStripMenuItem.Text = "Close MC1";
 			this.closeMC1ToolStripMenuItem.Click += new System.EventHandler(this.CloseMC1ToolStripMenuItemClick);
 			// 
@@ -150,31 +150,31 @@ namespace MyMC
 			// 
 			this.closeMC2ToolStripMenuItem.Enabled = false;
 			this.closeMC2ToolStripMenuItem.Name = "closeMC2ToolStripMenuItem";
-			this.closeMC2ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+			this.closeMC2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.closeMC2ToolStripMenuItem.Text = "Close MC2";
 			this.closeMC2ToolStripMenuItem.Click += new System.EventHandler(this.CloseMC2ToolStripMenuItemClick);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
 			// 
 			// exportSaveToolStripMenuItem
 			// 
 			this.exportSaveToolStripMenuItem.Name = "exportSaveToolStripMenuItem";
-			this.exportSaveToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+			this.exportSaveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.exportSaveToolStripMenuItem.Text = "C&reate MC...";
 			this.exportSaveToolStripMenuItem.Click += new System.EventHandler(this.CreateMcToolStripMenuItemClick);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(136, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
@@ -182,8 +182,8 @@ namespace MyMC
 			// 
 			this.exportToolStripMenuItem.CheckOnClick = true;
 			this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.exportToolStripMenuItem1,
-			this.importToolStripMenuItem});
+									this.exportToolStripMenuItem1,
+									this.importToolStripMenuItem});
 			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
 			this.exportToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
 			this.exportToolStripMenuItem.Text = "&Batch actions";
@@ -191,10 +191,10 @@ namespace MyMC
 			// exportToolStripMenuItem1
 			// 
 			this.exportToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.asPSUToolStripMenuItem,
-			this.asmaxToolStripMenuItem});
+									this.asPSUToolStripMenuItem,
+									this.asmaxToolStripMenuItem});
 			this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
-			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
+			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 			this.exportToolStripMenuItem1.Text = "Export";
 			// 
 			// asPSUToolStripMenuItem
@@ -203,7 +203,7 @@ namespace MyMC
 			this.asPSUToolStripMenuItem.CheckOnClick = true;
 			this.asPSUToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.asPSUToolStripMenuItem.Name = "asPSUToolStripMenuItem";
-			this.asPSUToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+			this.asPSUToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.asPSUToolStripMenuItem.Text = "as .psu";
 			this.asPSUToolStripMenuItem.Click += new System.EventHandler(this.UncheckOtherToolStripMenuItems);
 			this.asPSUToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AsPSUToolStripMenuItemMouseUp);
@@ -212,22 +212,24 @@ namespace MyMC
 			// 
 			this.asmaxToolStripMenuItem.CheckOnClick = true;
 			this.asmaxToolStripMenuItem.Name = "asmaxToolStripMenuItem";
-			this.asmaxToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+			this.asmaxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.asmaxToolStripMenuItem.Text = "as .max";
 			this.asmaxToolStripMenuItem.Click += new System.EventHandler(this.UncheckOtherToolStripMenuItems);
 			this.asmaxToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AsmaxToolStripMenuItemMouseUp);
 			// 
 			// importToolStripMenuItem
 			// 
+			this.importToolStripMenuItem.Enabled = false;
 			this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-			this.importToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.importToolStripMenuItem.Text = "Import";
 			this.importToolStripMenuItem.Click += new System.EventHandler(this.ImportToolStripMenuItemClick);
 			// 
 			// toolsToolStripMenuItem
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.vmcConverterToolStripMenuItem});
+									this.vmcConverterToolStripMenuItem});
+			this.toolsToolStripMenuItem.Enabled = false;
 			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
 			this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
 			this.toolsToolStripMenuItem.Text = "Tools";
@@ -242,7 +244,7 @@ namespace MyMC
 			// configToolStripMenuItem
 			// 
 			this.configToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.preferencesToolStripMenuItem});
+									this.preferencesToolStripMenuItem});
 			this.configToolStripMenuItem.Name = "configToolStripMenuItem";
 			this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
 			this.configToolStripMenuItem.Text = "&Config";
@@ -250,14 +252,14 @@ namespace MyMC
 			// preferencesToolStripMenuItem
 			// 
 			this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.preferencesToolStripMenuItem.Text = "Preferences...";
 			this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.PreferencesToolStripMenuItemClick);
 			// 
 			// aboutToolStripMenuItem
 			// 
 			this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.myMcDualToolStripMenuItem});
+									this.myMcDualToolStripMenuItem});
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
 			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
 			this.aboutToolStripMenuItem.Text = "&About";
@@ -272,9 +274,9 @@ namespace MyMC
 			// statusStrip1
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.toolStripStatusLabel1,
-			this.toolStripStatusLabel2,
-			this.hourLabel});
+									this.toolStripStatusLabel1,
+									this.toolStripStatusLabel2,
+									this.hourLabel});
 			this.statusStrip1.Location = new System.Drawing.Point(0, 446);
 			this.statusStrip1.Name = "statusStrip1";
 			this.statusStrip1.Size = new System.Drawing.Size(920, 24);
@@ -286,8 +288,8 @@ namespace MyMC
 			// 
 			this.toolStripStatusLabel1.AutoSize = false;
 			this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
 			this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
 			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
 			this.toolStripStatusLabel1.Size = new System.Drawing.Size(600, 19);
@@ -297,8 +299,8 @@ namespace MyMC
 			// 
 			this.toolStripStatusLabel2.AutoSize = false;
 			this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
 			this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
 			this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
 			this.toolStripStatusLabel2.Size = new System.Drawing.Size(190, 19);
@@ -307,8 +309,8 @@ namespace MyMC
 			// 
 			this.hourLabel.AutoSize = false;
 			this.hourLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
 			this.hourLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
 			this.hourLabel.Name = "hourLabel";
 			this.hourLabel.Size = new System.Drawing.Size(127, 19);
@@ -317,18 +319,18 @@ namespace MyMC
 			// 
 			this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.OpenMcOneButton,
-			this.OpenMcTwoButton,
-			this.toolStripSeparator4,
-			this.importToMcOneButton,
-			this.importToMcTwoButton,
-			this.toolStripSeparator5,
-			this.ExportSaveButton,
-			this.toolStripSeparator6,
-			this.mcOneToMcTwoButton,
-			this.mcTwoToMcOneButton,
-			this.toolStripSeparator7,
-			this.deleteSaveButton});
+									this.OpenMcOneButton,
+									this.OpenMcTwoButton,
+									this.toolStripSeparator4,
+									this.importToMcOneButton,
+									this.importToMcTwoButton,
+									this.toolStripSeparator5,
+									this.ExportSaveButton,
+									this.toolStripSeparator6,
+									this.mcOneToMcTwoButton,
+									this.mcTwoToMcOneButton,
+									this.toolStripSeparator7,
+									this.deleteSaveButton});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 24);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(920, 39);
@@ -466,10 +468,10 @@ namespace MyMC
 			this.dataGridView1.AllowUserToResizeRows = false;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-			this.file_Name,
-			this.file_Size,
-			this.file_Modyfied,
-			this.Column1});
+									this.file_Name,
+									this.file_Size,
+									this.file_Modyfied,
+									this.Column1});
 			this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
 			this.dataGridView1.Location = new System.Drawing.Point(6, 19);
 			this.dataGridView1.Name = "dataGridView1";
@@ -522,13 +524,13 @@ namespace MyMC
 			// contextMenuStrip1
 			// 
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.ContextMenuItemSelectAll,
-			this.ContextMenuItemCopySavesTo,
-			this.ContextMenuItemCopyAllTo,
-			this.ContextMenuItemMoveSavesTo,
-			this.toolStripSeparator2,
-			this.deleteSelectedsToolStripMenuItem,
-			this.deleteAllToolStripMenuItem});
+									this.ContextMenuItemSelectAll,
+									this.ContextMenuItemCopySavesTo,
+									this.ContextMenuItemCopyAllTo,
+									this.ContextMenuItemMoveSavesTo,
+									this.toolStripSeparator2,
+									this.deleteSelectedsToolStripMenuItem,
+									this.deleteAllToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.Size = new System.Drawing.Size(159, 142);
 			// 
@@ -598,10 +600,10 @@ namespace MyMC
 			this.dataGridView2.AllowUserToResizeRows = false;
 			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-			this.dataGridViewTextBoxColumn1,
-			this.dataGridViewTextBoxColumn2,
-			this.dataGridViewTextBoxColumn3,
-			this.dataGridViewTextBoxColumn4});
+									this.dataGridViewTextBoxColumn1,
+									this.dataGridViewTextBoxColumn2,
+									this.dataGridViewTextBoxColumn3,
+									this.dataGridViewTextBoxColumn4});
 			this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
 			this.dataGridView2.Location = new System.Drawing.Point(6, 19);
 			this.dataGridView2.Name = "dataGridView2";
@@ -705,7 +707,6 @@ namespace MyMC
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
 		private System.Windows.Forms.ToolStripMenuItem vmcConverterToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
