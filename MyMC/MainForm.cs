@@ -7,17 +7,12 @@
  * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
  */
 using System;
-using System.Collections.Generic;
 using System.Collections;
-using System.Drawing;
-using System.Threading;
-using System.Windows.Forms;
+using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 using log4net;
 using Nini.Config;
-using Nini.Ini;
-
-//[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace MyMC
 {
@@ -26,13 +21,12 @@ namespace MyMC
 	/// </summary>
 	public partial class MainForm : Form, IEditPaths
 	{
-		private static readonly log4net.ILog log = LogHelper.GetLogger();
+		private static readonly ILog log = LogHelper.GetLogger();
 		
 	
 		public MainForm()
 		{
 			InitializeComponent();
-			//log4net.Config.XmlConfigurator.Configure();
 			Logger.Setup();
 		}		
 		
@@ -51,7 +45,6 @@ namespace MyMC
 			
 			LoadConfig();
 			
-			//userExportFolder = exportFolder;
 			
 			dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 			
@@ -163,20 +156,15 @@ namespace MyMC
 			Close();
 		}
 
-		
-		void AsPSUToolStripMenuItemCheckedChanged(object sender, EventArgs e)
+		void AsPSUToolStripMenuItemMouseUp(object sender, MouseEventArgs e)
 		{
 #region Debug
 							 //┌─────────────────────────────────────────────────────────────────────────────┐
 			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
                   			  "As PSU Mc Checked.");
 #endregion
-			ToolStripMenuItem item = sender as ToolStripMenuItem;
-			
-			if( item.Checked )
-			{
-				mode = MODE_PSU;
-			}			
+			mode = MODE_PSU;
+		
 #region Debug
 			Console.WriteLine("\nMODE = {0}\n", mode);
 			Console.WriteLine("As PSU Checked - Exit." +
@@ -184,27 +172,22 @@ namespace MyMC
 #endregion			
 		}
 		
-		void AsmaxToolStripMenuItemCheckedChanged(object sender, EventArgs e)
+		void AsmaxToolStripMenuItemMouseUp(object sender, MouseEventArgs e)
 		{
 #region Debug
 							 //┌─────────────────────────────────────────────────────────────────────────────┐
 			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
                   			  "As MAX Checked.");
 #endregion
-			ToolStripMenuItem item = sender as ToolStripMenuItem;
+			mode = MODE_MAX;
 			
-			if( item.Checked )
-			{
-				mode = MODE_MAX;
-			}			
 #region Debug
 			Console.WriteLine("\nMODE = {0}\n", mode);
 			Console.WriteLine("As MAX Checked - Exit." +
                   			  "\n───────────────────────────────────────────────────────────────────────────────");
-#endregion
+#endregion			
 		}
-			
-
+		
 		void PreferencesToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			Preference preferences	= new Preference();
@@ -217,7 +200,6 @@ namespace MyMC
 			preferences.ShowDialog(this);
 		}		
 		
-
 		void MyMcDualToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			MessageBox.Show("MyMc Dual:\n" +
@@ -530,7 +512,7 @@ namespace MyMC
 #endregion
 		
 
-#region StatusStrip		
+#region StatusBarItems		
 		
 		void ToolStripStatusLabel1Click(object sender, EventArgs e)
 		{
@@ -711,7 +693,7 @@ namespace MyMC
 			return destinyDir + fileFullName;
 		}
 			
-		private void TransferSaves( MemoryCard cardFrom, MemoryCard cardTo, /*DataGridView*/ IEnumerable savesCollection )
+		private void TransferSaves( MemoryCard cardFrom, MemoryCard cardTo, IEnumerable savesCollection )
 		{
 			if(	cardTo != null )
 			{
@@ -1158,51 +1140,18 @@ namespace MyMC
 #endregion
 			
 		
-		void AsPSUToolStripMenuItemMouseUp(object sender, MouseEventArgs e)
-		{
-#region Debug
-							 //┌─────────────────────────────────────────────────────────────────────────────┐
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-                  			  "As PSU Mc Checked.");
-#endregion
-			ToolStripMenuItem item = sender as ToolStripMenuItem;
-			
-			if( item.Checked )
-			{
-				mode = MODE_PSU;
-			}			
-#region Debug
-			Console.WriteLine("\nMODE = {0}\n", mode);
-			Console.WriteLine("As PSU Checked - Exit." +
-                  			  "\n───────────────────────────────────────────────────────────────────────────────");
-#endregion			
-		}
-		
 
-		
-		void AsmaxToolStripMenuItemMouseUp(object sender, MouseEventArgs e)
-		{
-#region Debug
-							 //┌─────────────────────────────────────────────────────────────────────────────┐
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-                  			  "As MAX Checked.");
-#endregion
-			ToolStripMenuItem item = sender as ToolStripMenuItem;
-			
-			if( item.Checked )
-			{
-				mode = MODE_MAX;
-			}			
-#region Debug
-			Console.WriteLine("\nMODE = {0}\n", mode);
-			Console.WriteLine("As MAX Checked - Exit." +
-                  			  "\n───────────────────────────────────────────────────────────────────────────────");
-#endregion			
-		}
 		
 		void ImportToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			MessageBox.Show("There's nothing here.");
+		}
+		
+		
+		void VmcConverterToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var vmcConverter = new VmcConverter();
+			vmcConverter.ShowDialog();
 		}
 	}
 }

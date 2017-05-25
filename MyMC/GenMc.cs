@@ -85,15 +85,11 @@ namespace MyMC
 				Update("\nMemory card with ECC Block.\n");
 				
 				DoCreate( utilVMC,  String.Format("{0} \"{1}\\{2}.bin\"", size, tempFolder, cardName) );
-				//DoConvert( utilConverter, String.Format("\"{0}\\{1}.bin\" -2p \"{2}\\{3}.bin\"", tempFolder, cardName, dirPath, cardName ));
-				//DoDeleteTemp( utilTempCleaner, String.Format("{0}.bin", cardName));
-				
-				//DoConvert(cardName, dirPath);
 				DoConvert(cardName, dirPath, extension);
 				DoDeleteTemp( utilTempCleaner, String.Format("{0}.bin", cardName));
 					
 			}else{
-				DoCreate( utilVMC,  String.Format("{0} \"{1}\\{2}.bin\"", size, dirPath, cardName) );
+				DoCreate( utilVMC,  String.Format("{0} \"{1}\\{2}{3}\"", size, dirPath, cardName, extension) );
 			}
 			
 		}
