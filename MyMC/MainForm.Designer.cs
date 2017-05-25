@@ -203,7 +203,7 @@ namespace MyMC
 			this.asPSUToolStripMenuItem.CheckOnClick = true;
 			this.asPSUToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.asPSUToolStripMenuItem.Name = "asPSUToolStripMenuItem";
-			this.asPSUToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.asPSUToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
 			this.asPSUToolStripMenuItem.Text = "as .psu";
 			this.asPSUToolStripMenuItem.Click += new System.EventHandler(this.UncheckOtherToolStripMenuItems);
 			this.asPSUToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AsPSUToolStripMenuItemMouseUp);
@@ -212,14 +212,13 @@ namespace MyMC
 			// 
 			this.asmaxToolStripMenuItem.CheckOnClick = true;
 			this.asmaxToolStripMenuItem.Name = "asmaxToolStripMenuItem";
-			this.asmaxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.asmaxToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
 			this.asmaxToolStripMenuItem.Text = "as .max";
 			this.asmaxToolStripMenuItem.Click += new System.EventHandler(this.UncheckOtherToolStripMenuItems);
 			this.asmaxToolStripMenuItem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AsmaxToolStripMenuItemMouseUp);
 			// 
 			// importToolStripMenuItem
 			// 
-			this.importToolStripMenuItem.Enabled = false;
 			this.importToolStripMenuItem.Name = "importToolStripMenuItem";
 			this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.importToolStripMenuItem.Text = "Import";
@@ -229,7 +228,6 @@ namespace MyMC
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
 									this.vmcConverterToolStripMenuItem});
-			this.toolsToolStripMenuItem.Enabled = false;
 			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
 			this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
 			this.toolsToolStripMenuItem.Text = "Tools";
@@ -267,7 +265,7 @@ namespace MyMC
 			// myMcDualToolStripMenuItem
 			// 
 			this.myMcDualToolStripMenuItem.Name = "myMcDualToolStripMenuItem";
-			this.myMcDualToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+			this.myMcDualToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.myMcDualToolStripMenuItem.Text = "MyMc Dual...";
 			this.myMcDualToolStripMenuItem.Click += new System.EventHandler(this.MyMcDualToolStripMenuItemClick);
 			// 
