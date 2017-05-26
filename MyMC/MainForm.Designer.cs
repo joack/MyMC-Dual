@@ -53,6 +53,9 @@ namespace MyMC
 			this.asPSUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.asmaxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.allMAXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.allPSUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.allCBSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.vmcConverterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,6 +104,8 @@ namespace MyMC
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this.allNPOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.allFILESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -142,7 +147,7 @@ namespace MyMC
 			// 
 			this.closeMC1ToolStripMenuItem.Enabled = false;
 			this.closeMC1ToolStripMenuItem.Name = "closeMC1ToolStripMenuItem";
-			this.closeMC1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.closeMC1ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
 			this.closeMC1ToolStripMenuItem.Text = "Close MC1";
 			this.closeMC1ToolStripMenuItem.Click += new System.EventHandler(this.CloseMC1ToolStripMenuItemClick);
 			// 
@@ -150,31 +155,31 @@ namespace MyMC
 			// 
 			this.closeMC2ToolStripMenuItem.Enabled = false;
 			this.closeMC2ToolStripMenuItem.Name = "closeMC2ToolStripMenuItem";
-			this.closeMC2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.closeMC2ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
 			this.closeMC2ToolStripMenuItem.Text = "Close MC2";
 			this.closeMC2ToolStripMenuItem.Click += new System.EventHandler(this.CloseMC2ToolStripMenuItemClick);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
 			// 
 			// exportSaveToolStripMenuItem
 			// 
 			this.exportSaveToolStripMenuItem.Name = "exportSaveToolStripMenuItem";
-			this.exportSaveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exportSaveToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
 			this.exportSaveToolStripMenuItem.Text = "C&reate MC...";
 			this.exportSaveToolStripMenuItem.Click += new System.EventHandler(this.CreateMcToolStripMenuItemClick);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(136, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
@@ -219,10 +224,34 @@ namespace MyMC
 			// 
 			// importToolStripMenuItem
 			// 
+			this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+									this.allMAXToolStripMenuItem,
+									this.allPSUToolStripMenuItem,
+									this.allCBSToolStripMenuItem,
+									this.allNPOToolStripMenuItem,
+									this.allFILESToolStripMenuItem});
 			this.importToolStripMenuItem.Name = "importToolStripMenuItem";
 			this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.importToolStripMenuItem.Text = "Import";
 			this.importToolStripMenuItem.Click += new System.EventHandler(this.ImportToolStripMenuItemClick);
+			// 
+			// allMAXToolStripMenuItem
+			// 
+			this.allMAXToolStripMenuItem.Name = "allMAXToolStripMenuItem";
+			this.allMAXToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.allMAXToolStripMenuItem.Text = "All .MAX";
+			// 
+			// allPSUToolStripMenuItem
+			// 
+			this.allPSUToolStripMenuItem.Name = "allPSUToolStripMenuItem";
+			this.allPSUToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.allPSUToolStripMenuItem.Text = "All .PSU";
+			// 
+			// allCBSToolStripMenuItem
+			// 
+			this.allCBSToolStripMenuItem.Name = "allCBSToolStripMenuItem";
+			this.allCBSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.allCBSToolStripMenuItem.Text = "All .CBS";
 			// 
 			// toolsToolStripMenuItem
 			// 
@@ -250,7 +279,7 @@ namespace MyMC
 			// preferencesToolStripMenuItem
 			// 
 			this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.preferencesToolStripMenuItem.Text = "Preferences...";
 			this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.PreferencesToolStripMenuItemClick);
 			// 
@@ -265,7 +294,7 @@ namespace MyMC
 			// myMcDualToolStripMenuItem
 			// 
 			this.myMcDualToolStripMenuItem.Name = "myMcDualToolStripMenuItem";
-			this.myMcDualToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.myMcDualToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.myMcDualToolStripMenuItem.Text = "MyMc Dual...";
 			this.myMcDualToolStripMenuItem.Click += new System.EventHandler(this.MyMcDualToolStripMenuItemClick);
 			// 
@@ -609,7 +638,7 @@ namespace MyMC
 			this.dataGridView2.RowHeadersVisible = false;
 			this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 			this.dataGridView2.Size = new System.Drawing.Size(422, 307);
-			this.dataGridView2.TabIndex = 1;
+			this.dataGridView2.TabIndex = 0;
 			this.dataGridView2.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnDragAndDrop);
 			this.dataGridView2.DragEnter += new System.Windows.Forms.DragEventHandler(this.DataGridViewDragEnter);
 			this.dataGridView2.Enter += new System.EventHandler(this.OnFocusMemoryCard);
@@ -673,6 +702,18 @@ namespace MyMC
 			this.label2.TabIndex = 6;
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// allNPOToolStripMenuItem
+			// 
+			this.allNPOToolStripMenuItem.Name = "allNPOToolStripMenuItem";
+			this.allNPOToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.allNPOToolStripMenuItem.Text = "All .NPO";
+			// 
+			// allFILESToolStripMenuItem
+			// 
+			this.allFILESToolStripMenuItem.Name = "allFILESToolStripMenuItem";
+			this.allFILESToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.allFILESToolStripMenuItem.Text = "All FILES";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -706,6 +747,11 @@ namespace MyMC
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.ToolStripMenuItem allFILESToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem allNPOToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem allCBSToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem allPSUToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem allMAXToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem vmcConverterToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;

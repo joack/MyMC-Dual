@@ -56,6 +56,8 @@ namespace ECC_Checker
 			var map = new Dictionary<string, bool>()
 			{
 				{"corrected 1", false},
+				{"corrected 2", false},
+				{"corrected 3", false},
 				{".", true}
 			};
 			

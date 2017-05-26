@@ -28,7 +28,11 @@ namespace MyMC
 			private static int aHour = 3;
 			private static int aDirName = 4;
 
-			private static string utilFolder = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\Util";			
+			private static string utilFolder = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\Util";
+			private static string tempFolder = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\temp";	
+
+			private static string mymc = utilFolder + "\\mymc.exe";
+			private static string genvmc = utilFolder + "\\genvmc.exe";
 		}
 	
 		

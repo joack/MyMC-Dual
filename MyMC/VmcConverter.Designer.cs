@@ -22,8 +22,8 @@ namespace MyMC
 		private System.Windows.Forms.RadioButton ps2RadioBtn;
 		private System.Windows.Forms.RadioButton binRadioBtn;
 		private System.Windows.Forms.Button browseFolderBtn;
-		private System.Windows.Forms.TextBox txtFolderPath;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox txtOutputPath;
+		private System.Windows.Forms.TextBox txtNewName;
 		private System.Windows.Forms.CheckBox eccCheck;
 		private System.Windows.Forms.Button convertBtn;
 		private System.Windows.Forms.Button closeBtn;
@@ -60,8 +60,8 @@ namespace MyMC
 			this.browseFolderBtn = new System.Windows.Forms.Button();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.txtFolderPath = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.txtOutputPath = new System.Windows.Forms.TextBox();
+			this.txtNewName = new System.Windows.Forms.TextBox();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.eccCheck = new System.Windows.Forms.CheckBox();
 			this.ps2RadioBtn = new System.Windows.Forms.RadioButton();
@@ -98,18 +98,21 @@ namespace MyMC
 			// 
 			// txtInputPath
 			// 
+			this.txtInputPath.BackColor = System.Drawing.SystemColors.Window;
 			this.txtInputPath.Location = new System.Drawing.Point(6, 19);
 			this.txtInputPath.Name = "txtInputPath";
+			this.txtInputPath.ReadOnly = true;
 			this.txtInputPath.Size = new System.Drawing.Size(374, 20);
 			this.txtInputPath.TabIndex = 0;
+			this.txtInputPath.TabStop = false;
 			// 
 			// groupBox2
 			// 
 			this.groupBox2.Controls.Add(this.browseFolderBtn);
 			this.groupBox2.Controls.Add(this.label2);
 			this.groupBox2.Controls.Add(this.label1);
-			this.groupBox2.Controls.Add(this.txtFolderPath);
-			this.groupBox2.Controls.Add(this.textBox2);
+			this.groupBox2.Controls.Add(this.txtOutputPath);
+			this.groupBox2.Controls.Add(this.txtNewName);
 			this.groupBox2.Controls.Add(this.groupBox3);
 			this.groupBox2.Location = new System.Drawing.Point(12, 108);
 			this.groupBox2.Name = "groupBox2";
@@ -123,7 +126,7 @@ namespace MyMC
 			this.browseFolderBtn.Location = new System.Drawing.Point(152, 206);
 			this.browseFolderBtn.Name = "browseFolderBtn";
 			this.browseFolderBtn.Size = new System.Drawing.Size(75, 23);
-			this.browseFolderBtn.TabIndex = 1;
+			this.browseFolderBtn.TabIndex = 4;
 			this.browseFolderBtn.Text = "Browse";
 			this.browseFolderBtn.UseVisualStyleBackColor = true;
 			this.browseFolderBtn.Click += new System.EventHandler(this.BrowseFolderBtnClick);
@@ -141,22 +144,25 @@ namespace MyMC
 			this.label1.Location = new System.Drawing.Point(6, 112);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(74, 15);
-			this.label1.TabIndex = 2;
+			this.label1.TabIndex = 0;
 			this.label1.Text = "New name: ";
 			// 
-			// txtFolderPath
+			// txtOutputPath
 			// 
-			this.txtFolderPath.Location = new System.Drawing.Point(6, 180);
-			this.txtFolderPath.Name = "txtFolderPath";
-			this.txtFolderPath.Size = new System.Drawing.Size(374, 20);
-			this.txtFolderPath.TabIndex = 1;
+			this.txtOutputPath.BackColor = System.Drawing.SystemColors.Window;
+			this.txtOutputPath.Location = new System.Drawing.Point(6, 180);
+			this.txtOutputPath.Name = "txtOutputPath";
+			this.txtOutputPath.ReadOnly = true;
+			this.txtOutputPath.Size = new System.Drawing.Size(374, 20);
+			this.txtOutputPath.TabIndex = 3;
+			this.txtOutputPath.TabStop = false;
 			// 
-			// textBox2
+			// txtNewName
 			// 
-			this.textBox2.Location = new System.Drawing.Point(6, 130);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(155, 20);
-			this.textBox2.TabIndex = 1;
+			this.txtNewName.Location = new System.Drawing.Point(6, 130);
+			this.txtNewName.Name = "txtNewName";
+			this.txtNewName.Size = new System.Drawing.Size(155, 20);
+			this.txtNewName.TabIndex = 1;
 			// 
 			// groupBox3
 			// 
@@ -178,18 +184,17 @@ namespace MyMC
 			this.eccCheck.TabIndex = 2;
 			this.eccCheck.Text = "ECC Block";
 			this.eccCheck.UseVisualStyleBackColor = true;
-			this.eccCheck.MouseEnter += new System.EventHandler(this.EccCheckMouseEnter);
-			this.eccCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.EccCheckMouseUp);
 			// 
 			// ps2RadioBtn
 			// 
 			this.ps2RadioBtn.Location = new System.Drawing.Point(146, 19);
 			this.ps2RadioBtn.Name = "ps2RadioBtn";
 			this.ps2RadioBtn.Size = new System.Drawing.Size(75, 24);
-			this.ps2RadioBtn.TabIndex = 0;
+			this.ps2RadioBtn.TabIndex = 1;
 			this.ps2RadioBtn.TabStop = true;
 			this.ps2RadioBtn.Text = ".ps2";
 			this.ps2RadioBtn.UseVisualStyleBackColor = true;
+			this.ps2RadioBtn.CheckedChanged += new System.EventHandler(this.RadioBtn_CheckedChanged);
 			// 
 			// binRadioBtn
 			// 
@@ -200,10 +205,11 @@ namespace MyMC
 			this.binRadioBtn.TabStop = true;
 			this.binRadioBtn.Text = ".bin";
 			this.binRadioBtn.UseVisualStyleBackColor = true;
+			this.binRadioBtn.CheckedChanged += new System.EventHandler(this.RadioBtn_CheckedChanged);
 			// 
 			// convertBtn
 			// 
-			this.convertBtn.Location = new System.Drawing.Point(47, 381);
+			this.convertBtn.Location = new System.Drawing.Point(89, 381);
 			this.convertBtn.Name = "convertBtn";
 			this.convertBtn.Size = new System.Drawing.Size(75, 23);
 			this.convertBtn.TabIndex = 2;
@@ -213,10 +219,10 @@ namespace MyMC
 			// 
 			// closeBtn
 			// 
-			this.closeBtn.Location = new System.Drawing.Point(276, 381);
+			this.closeBtn.Location = new System.Drawing.Point(239, 381);
 			this.closeBtn.Name = "closeBtn";
 			this.closeBtn.Size = new System.Drawing.Size(75, 23);
-			this.closeBtn.TabIndex = 2;
+			this.closeBtn.TabIndex = 3;
 			this.closeBtn.Text = "Close";
 			this.closeBtn.UseVisualStyleBackColor = true;
 			this.closeBtn.Click += new System.EventHandler(this.CloseBtnClick);

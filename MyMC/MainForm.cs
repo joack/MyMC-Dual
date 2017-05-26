@@ -74,7 +74,7 @@ namespace MyMC
 #endregion
 				
 
-#region MenuStrip		
+#region MenuBarItem		
 
 		void CloseMC1ToolStripMenuItemClick(object sender, EventArgs e)
 		{
@@ -156,6 +156,12 @@ namespace MyMC
 			Close();
 		}
 
+		
+		void ImportToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			MessageBox.Show("There's nothing here.");
+		}		
+		
 		void AsPSUToolStripMenuItemMouseUp(object sender, MouseEventArgs e)
 		{
 #region Debug
@@ -187,6 +193,14 @@ namespace MyMC
                   			  "\n───────────────────────────────────────────────────────────────────────────────");
 #endregion			
 		}
+
+		
+		void VmcConverterToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var vmcConverter = new VmcConverter();
+			vmcConverter.ShowDialog();
+		}		
+
 		
 		void PreferencesToolStripMenuItemClick(object sender, EventArgs e)
 		{
@@ -199,12 +213,14 @@ namespace MyMC
 			
 			preferences.ShowDialog(this);
 		}		
+	
 		
 		void MyMcDualToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			MessageBox.Show("MyMc Dual:\n" +
-			                "\tThis tool makes use of MYMC PS2 tool command line\n" +
-			                "\tand Genvmc tool command line.\n" +
+			MessageBox.Show("MyMc Dual "+ VERSION +":\n" +
+			                "\tThis tool makes use of\n" +
+			                "\t\t·MYMC PS2 tool command line\n" +
+			                "\t\t·Genvmc tool command line.\n" +
 			                "\tThe thanks goes to the respective authors.\n\n" +
 			               	"Author: Joack.", "About MyMc Dual");
 		}
@@ -212,7 +228,7 @@ namespace MyMC
 #endregion		
 
 		
-#region ToolStrip
+#region MenuIconsBar
 		
 		void OpenMcOneButtonClick(object sender, EventArgs e)
 		{
@@ -805,7 +821,7 @@ namespace MyMC
 			foreach (DataGridViewRow row in savesCollection) 
 			{
 #region Debug
-				log.Info(row.Cells[0].Value.ToString());
+				log.Warn(row.Cells[0].Value.ToString());
 #endregion
 				//util.DeleteSaveUtil(mcPath, row.Cells[0].Value.ToString());
 				Utils.Card.DeleteSave(mcPath, row.Cells[0].Value.ToString());
@@ -1125,16 +1141,18 @@ namespace MyMC
 		{
 			MemoryCard card = GetActualCard(focusedMemoryCard.Name);
 			
-			DoBatchDelete( card.GetPath(), focusedMemoryCard.Rows);
-			UpdateCard(focusedMemoryCard, card);
-
+			if (focusedMemoryCard.Rows.Count > 0) 
+			{
+				DoBatchDelete( card.GetPath(), focusedMemoryCard.Rows);
+				UpdateCard(focusedMemoryCard, card);
+			}else{
+				MessageBox.Show("Tch tch tch... You can't do that! \nThe memory card its empty.");
+			}
 			
 #region Debug
 			DebugMc(GetActualCard(focusedMemoryCard.Name));
 #endregion			
 			
-			
-
 		}
 		
 #endregion
@@ -1142,16 +1160,6 @@ namespace MyMC
 		
 
 		
-		void ImportToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			MessageBox.Show("There's nothing here.");
-		}
-		
-		
-		void VmcConverterToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			var vmcConverter = new VmcConverter();
-			vmcConverter.ShowDialog();
-		}
+
 	}
 }

@@ -93,7 +93,7 @@ namespace MyMC
 			this.label1.Location = new System.Drawing.Point(20, 16);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(95, 15);
-			this.label1.TabIndex = 4;
+			this.label1.TabIndex = 8;
 			this.label1.Text = "Save Export Path: ";
 			// 
 			// label2
@@ -101,7 +101,7 @@ namespace MyMC
 			this.label2.Location = new System.Drawing.Point(20, 63);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(95, 15);
-			this.label2.TabIndex = 5;
+			this.label2.TabIndex = 9;
 			this.label2.Text = "Load Cards Path:";
 			// 
 			// AccepBtn
@@ -109,7 +109,7 @@ namespace MyMC
 			this.AccepBtn.Location = new System.Drawing.Point(135, 256);
 			this.AccepBtn.Name = "AccepBtn";
 			this.AccepBtn.Size = new System.Drawing.Size(75, 23);
-			this.AccepBtn.TabIndex = 6;
+			this.AccepBtn.TabIndex = 1;
 			this.AccepBtn.Text = "Accept";
 			this.AccepBtn.UseVisualStyleBackColor = true;
 			this.AccepBtn.Click += new System.EventHandler(this.AccepButtonClick);
@@ -119,7 +119,7 @@ namespace MyMC
 			this.CancelBtn.Location = new System.Drawing.Point(283, 256);
 			this.CancelBtn.Name = "CancelBtn";
 			this.CancelBtn.Size = new System.Drawing.Size(75, 23);
-			this.CancelBtn.TabIndex = 7;
+			this.CancelBtn.TabIndex = 2;
 			this.CancelBtn.Text = "Cancel";
 			this.CancelBtn.UseVisualStyleBackColor = true;
 			this.CancelBtn.Click += new System.EventHandler(this.CancelButtonClick);
@@ -137,7 +137,7 @@ namespace MyMC
 			this.button3.Location = new System.Drawing.Point(366, 130);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(68, 20);
-			this.button3.TabIndex = 9;
+			this.button3.TabIndex = 5;
 			this.button3.Text = "Browse...";
 			this.button3.UseVisualStyleBackColor = true;
 			this.button3.Click += new System.EventHandler(this.Button3Click);
@@ -147,14 +147,14 @@ namespace MyMC
 			this.textBox3.Location = new System.Drawing.Point(20, 130);
 			this.textBox3.Name = "textBox3";
 			this.textBox3.Size = new System.Drawing.Size(340, 20);
-			this.textBox3.TabIndex = 8;
+			this.textBox3.TabIndex = 4;
 			// 
 			// label4
 			// 
 			this.label4.Location = new System.Drawing.Point(20, 165);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(103, 15);
-			this.label4.TabIndex = 13;
+			this.label4.TabIndex = 11;
 			this.label4.Text = "New Cards Path:";
 			// 
 			// button4
@@ -162,7 +162,7 @@ namespace MyMC
 			this.button4.Location = new System.Drawing.Point(366, 183);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(68, 20);
-			this.button4.TabIndex = 12;
+			this.button4.TabIndex = 7;
 			this.button4.Text = "Browse...";
 			this.button4.UseVisualStyleBackColor = true;
 			this.button4.Click += new System.EventHandler(this.Button4Click);
@@ -172,7 +172,7 @@ namespace MyMC
 			this.textBox4.Location = new System.Drawing.Point(20, 183);
 			this.textBox4.Name = "textBox4";
 			this.textBox4.Size = new System.Drawing.Size(340, 20);
-			this.textBox4.TabIndex = 11;
+			this.textBox4.TabIndex = 6;
 			// 
 			// groupBox1
 			// 
@@ -191,7 +191,7 @@ namespace MyMC
 			this.groupBox1.Location = new System.Drawing.Point(20, 12);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(454, 223);
-			this.groupBox1.TabIndex = 14;
+			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Paths:";
 			// 
@@ -211,6 +211,7 @@ namespace MyMC
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
+
 		}
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.TextBox textBox4;

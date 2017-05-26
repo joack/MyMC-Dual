@@ -17,7 +17,7 @@ namespace MyMC
 	partial class MainForm
 	{
 #region Variables
-		//private	ConsoleLog 		console			= ConsoleLog.getInstance();
+		private static string	VERSION			= "v5";
 		
 		private static string 	rootPath	  	= Application.StartupPath + "\\";
 		

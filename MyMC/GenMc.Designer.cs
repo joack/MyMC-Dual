@@ -37,6 +37,7 @@ namespace MyMC
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.extensionChooser = new System.Windows.Forms.ComboBox();
 			this.eccBlockCheck = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@ namespace MyMC
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
-			this.extensionChooser = new System.Windows.Forms.ComboBox();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -70,6 +70,18 @@ namespace MyMC
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "New VMC: ";
+			// 
+			// extensionChooser
+			// 
+			this.extensionChooser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.extensionChooser.FormattingEnabled = true;
+			this.extensionChooser.Items.AddRange(new object[] {
+			".bin",
+			".ps2"});
+			this.extensionChooser.Location = new System.Drawing.Point(193, 39);
+			this.extensionChooser.Name = "extensionChooser";
+			this.extensionChooser.Size = new System.Drawing.Size(58, 21);
+			this.extensionChooser.TabIndex = 0;
 			// 
 			// eccBlockCheck
 			// 
@@ -127,10 +139,10 @@ namespace MyMC
 			this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.comboBox1.FormattingEnabled = true;
 			this.comboBox1.Items.AddRange(new object[] {
-									"8",
-									"16",
-									"32",
-									"64"});
+			"8",
+			"16",
+			"32",
+			"64"});
 			this.comboBox1.Location = new System.Drawing.Point(15, 84);
 			this.comboBox1.Name = "comboBox1";
 			this.comboBox1.Size = new System.Drawing.Size(121, 21);
@@ -171,18 +183,6 @@ namespace MyMC
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.CloseButtonClick);
 			// 
-			// extensionChooser
-			// 
-			this.extensionChooser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.extensionChooser.FormattingEnabled = true;
-			this.extensionChooser.Items.AddRange(new object[] {
-									".bin",
-									".ps2"});
-			this.extensionChooser.Location = new System.Drawing.Point(193, 39);
-			this.extensionChooser.Name = "extensionChooser";
-			this.extensionChooser.Size = new System.Drawing.Size(58, 21);
-			this.extensionChooser.TabIndex = 1;
-			// 
 			// GenMc
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,6 +199,7 @@ namespace MyMC
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
+
 		}
 		private System.Windows.Forms.ComboBox extensionChooser;
 		private System.Windows.Forms.CheckBox eccBlockCheck;

@@ -87,8 +87,9 @@ namespace MyMC
         {
             ColoredConsoleAppender  console = new ColoredConsoleAppender();
             
-        	console.AddMapping(SetLevelColors(LogLevel.DEBUG, LogColor.BLUE_H));
-            console.AddMapping(SetLevelColors(LogLevel.INFO, LogColor.RED_H));
+            console.AddMapping(SetLevelColors(LogLevel.DEBUG	, LogColor.CYAN_H	));
+            console.AddMapping(SetLevelColors(LogLevel.INFO		, LogColor.BLUE_H	));
+            console.AddMapping(SetLevelColors(LogLevel.WARN		, LogColor.RED_H	));
             console.Layout = patternLayout;
             console.ActivateOptions();  
 			

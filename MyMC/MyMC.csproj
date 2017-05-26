@@ -53,11 +53,11 @@
   <ItemGroup>
     <Reference Include="log4net">
       <HintPath>bin\Debug\dll\log4net.dll</HintPath>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Nini">
       <HintPath>bin\Debug\dll\Nini.dll</HintPath>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -119,6 +119,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <EmbeddedResource Include="DLL\log4net.dll" />
+    <EmbeddedResource Include="DLL\Nini.dll" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="GenMc.resx">
@@ -136,6 +138,9 @@
     <EmbeddedResource Include="VmcConverter.resx">
       <DependentUpon>VmcConverter.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DLL" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

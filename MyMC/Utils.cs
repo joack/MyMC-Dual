@@ -13,6 +13,8 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+using log4net;
+using System.Collections;
 
 namespace MyMC
 {
@@ -21,12 +23,14 @@ namespace MyMC
 	/// </summary>
 	public partial class Utils
 	{
+		private static readonly ILog log = LogHelper.GetLogger();
+		
 		public partial class Card
 		{
 			static Card()
 			{
 				process = new Process();
-				process.StartInfo.FileName = utilFolder +"\\mymc.exe";			
+				process.StartInfo.FileName = mymc;			
 				process.StartInfo.UseShellExecute = false;
 				process.StartInfo.CreateNoWindow = true;
 				process.StartInfo.RedirectStandardOutput = true; 
@@ -44,7 +48,6 @@ namespace MyMC
 			public static void ExportSave( string mcPath, string fileName, string outPutDir, string exportMode )
 			{
 				process.StartInfo.Arguments = String.Format("\"{0}\" {1} {2} {3} \"{4}\" {5}", mcPath, "export", exportMode, "-d", outPutDir, fileName);
-				//process.StartInfo.Arguments = "\"${mcPath}\" export ${exportMode} -d \"${outPutDir}\" ${fileName}";
 				
 				process.Start();
 				process.WaitForExit();
@@ -91,7 +94,58 @@ namespace MyMC
 		
 			}
 			
+			public static void CopyAllCard( string mcPathFrom, string mcPathTo )
+			{
+				var listSaves = LoadFiles(mcPathFrom);
+				var filePath = String.Empty;
+				
+				foreach (var save in listSaves) 
+				{
+					filePath = String.Format("{0}\\{1}.psu", tempFolder, save.FileName);
+					
+					ExportSave( mcPathFrom, save.FileName, tempFolder, "-p");
+					ImportSave( mcPathTo, filePath );
+					
+					Cleaner.DeleteTemp( filePath );
+				}
+				log.Debug("Utils.Card class");
+			}
+	
+			public static string CreateCard( string size, string fileName )
+			{
+				var p = new Process();
+				
+				p.StartInfo.FileName = genvmc;
+				p.StartInfo.Arguments = String.Format("{0} \"{1}\\{2}.bin\"", size, tempFolder, fileName);
+				p.StartInfo.UseShellExecute = false;
+				p.StartInfo.CreateNoWindow = true;
+				p.StartInfo.RedirectStandardOutput = true; 	
 
+				p.Start();
+				p.WaitForExit();
+				
+				return String.Format("{0}\\{1}.bin", tempFolder, fileName );
+			}
+			
+//			public static void CopyToCard( string mcPathFrom, string mcPathTo, IEnumerable listSaves )
+//			{
+//				//var listSaves = LoadFiles(mcPathFrom);
+//				var filePath = String.Empty;
+//				
+//				foreach (var save in listSaves) 
+//				{
+//					filePath = String.Format("{0}\\{1}.psu", tempFolder, save.FileName);
+//					
+//					ExportSave( mcPathFrom, save.FileName, tempFolder, "-p");
+//					ImportSave( mcPathTo, filePath );
+//					
+//					Cleaner.DeleteTemp( filePath );
+//				}
+//				log.Debug("Utils.Card class");
+//			}			
+			
+			
+			
 			//===========================================================================================================
 
 			private static List<SaveFile> ProcessOutPut( string mcPath )
@@ -203,7 +257,16 @@ namespace MyMC
 				{
 					return result;	
 				}else{
-					result.RemoveRange(0,3);
+					var sets = new HashSet<string>(){"corrected 1", "corrected 2", "corrected 3"};
+					
+					if (sets.Contains(result[2]))
+					{
+						result.RemoveRange(0,3);
+						
+					}else{
+						result.RemoveRange(0,2);
+					}
+					
 					return result;
 				}
 						
@@ -247,7 +310,12 @@ namespace MyMC
 					process.WaitForExit();					
 				}
 			}
+	
+
+			private static void DoCopy( List<SaveFile> listSave )
+			{
 			
+			}
 		}
 		
 		
@@ -294,27 +362,51 @@ namespace MyMC
 			
 			public static void ConvertToBin(string cardName, string outputDir)
 			{
-				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.ps2\" -2b \"{2}\\{3}.bin\"", tempFolder, cardName, outputDir, cardName);
+				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.bin\" -2b \"{2}\\{1}.bin\"", tempFolder, cardName, outputDir);
 				Start();
 			}
-				
+
+			public static void ConvertToBin(string cardName, string newCardName, string outputDir)
+			{
+				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.bin\" -2b \"{2}\\{3}.bin\"", tempFolder, cardName, outputDir, newCardName);
+				Start();
+			}
+			
 			public static void ConvertToPs2(string cardName, string outputDir)
 			{
-				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.bin\" -2b \"{2}\\{3}.ps2\"", tempFolder, cardName, outputDir, cardName);
+				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.bin\" -2b \"{2}\\{1}.ps2\"", tempFolder, cardName, outputDir);
+				Start();			
+			}
+	
+			public static void ConvertToPs2(string cardName, string newCardName, string outputDir)
+			{
+				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.bin\" -2b \"{2}\\{3}.ps2\"", tempFolder, cardName, outputDir, newCardName);
 				Start();			
 			}
 			
 			public static void ConvertToBinECC(string cardName, string outputDir)
 			{
-				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.bin\" -2p \"{2}\\{3}.bin\"", tempFolder, cardName, outputDir, cardName);
+				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.bin\" -2p \"{2}\\{1}.bin\"", tempFolder, cardName, outputDir);
 				Start();
 			}
 			
+			public static void ConvertToBinECC(string cardName, string newCardName, string outputDir)
+			{
+				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.bin\" -2p \"{2}\\{3}.bin\"", tempFolder, cardName, outputDir, newCardName);
+				Start();
+			}			
+			
 			public static void ConvertToPs2ECC(string cardName, string outputDir)
 			{
-				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.bin\" -2p \"{2}\\{3}.ps2\"", tempFolder, cardName, outputDir, cardName);
+				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.bin\" -2p \"{2}\\{1}.ps2\"", tempFolder, cardName, outputDir);
 				Start();			
 			}
+			
+			public static void ConvertToPs2ECC(string cardName, string newCardName, string outputDir)
+			{
+				p.StartInfo.Arguments = String.Format("\"{0}\\{1}.bin\" -2p \"{2}\\{3}.ps2\"", tempFolder, cardName, outputDir, newCardName);
+				Start();			
+			}			
 
 			private static void Start()
 			{
