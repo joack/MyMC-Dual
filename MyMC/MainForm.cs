@@ -217,11 +217,12 @@ namespace MyMC
 		
 		void MyMcDualToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			MessageBox.Show("MyMc Dual "+ VERSION +":\n" +
-			                "\tThis tool makes use of\n" +
-			                "\t\t·MYMC PS2 tool command line\n" +
-			                "\t\t·Genvmc tool command line.\n" +
-			                "\tThe thanks goes to the respective authors.\n\n" +
+			MessageBox.Show("MyMc Dual "+ VERSION +":\n" 						+
+			                "\tThis tool makes use of\n" 						+
+			                "\t\t·MYMC PS2 tool command line\n" 				+
+			                "\t\t·Genvmc tool command line.\n" 					+
+			                "\t\t·Convpcsx tool command line.\n" 				+
+			                "The thanks goes to the respective authors.\n\n" 	+
 			               	"Author: Joack.", "About MyMc Dual");
 		}
 		
