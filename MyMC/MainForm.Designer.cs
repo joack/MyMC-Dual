@@ -53,9 +53,13 @@ namespace MyMC
 			this.asPSUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.asmaxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.allMAXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuComboBox = new System.Windows.Forms.ToolStripComboBox();
+			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
 			this.allPSUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.allMAXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.allCBSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.allNPOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.allFILESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.vmcConverterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,8 +108,6 @@ namespace MyMC
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.allNPOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.allFILESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -225,33 +227,70 @@ namespace MyMC
 			// importToolStripMenuItem
 			// 
 			this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.allMAXToolStripMenuItem,
+									this.menuComboBox,
+									this.toolStripSeparator8,
 									this.allPSUToolStripMenuItem,
+									this.allMAXToolStripMenuItem,
 									this.allCBSToolStripMenuItem,
 									this.allNPOToolStripMenuItem,
 									this.allFILESToolStripMenuItem});
 			this.importToolStripMenuItem.Name = "importToolStripMenuItem";
 			this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.importToolStripMenuItem.Text = "Import";
-			this.importToolStripMenuItem.Click += new System.EventHandler(this.ImportToolStripMenuItemClick);
 			// 
-			// allMAXToolStripMenuItem
+			// menuComboBox
 			// 
-			this.allMAXToolStripMenuItem.Name = "allMAXToolStripMenuItem";
-			this.allMAXToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.allMAXToolStripMenuItem.Text = "All .MAX";
+			this.menuComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+									"VMC 1",
+									"VMC 2"});
+			this.menuComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.menuComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+			this.menuComboBox.Items.AddRange(new object[] {
+									"VMC 1",
+									"VMC 2"});
+			this.menuComboBox.Name = "menuComboBox";
+			this.menuComboBox.Size = new System.Drawing.Size(121, 23);
+			this.menuComboBox.SelectedIndexChanged += new System.EventHandler(this.MenuComboBoxSelectedIndexChanged);
+			// 
+			// toolStripSeparator8
+			// 
+			this.toolStripSeparator8.Name = "toolStripSeparator8";
+			this.toolStripSeparator8.Size = new System.Drawing.Size(178, 6);
 			// 
 			// allPSUToolStripMenuItem
 			// 
 			this.allPSUToolStripMenuItem.Name = "allPSUToolStripMenuItem";
-			this.allPSUToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.allPSUToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
 			this.allPSUToolStripMenuItem.Text = "All .PSU";
+			this.allPSUToolStripMenuItem.Click += new System.EventHandler(this.AllPSUToolStripMenuItemClick);
+			// 
+			// allMAXToolStripMenuItem
+			// 
+			this.allMAXToolStripMenuItem.Name = "allMAXToolStripMenuItem";
+			this.allMAXToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+			this.allMAXToolStripMenuItem.Text = "All .MAX";
+			this.allMAXToolStripMenuItem.Click += new System.EventHandler(this.AllMAXToolStripMenuItemClick);
 			// 
 			// allCBSToolStripMenuItem
 			// 
 			this.allCBSToolStripMenuItem.Name = "allCBSToolStripMenuItem";
-			this.allCBSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.allCBSToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
 			this.allCBSToolStripMenuItem.Text = "All .CBS";
+			this.allCBSToolStripMenuItem.Click += new System.EventHandler(this.AllCBSToolStripMenuItemClick);
+			// 
+			// allNPOToolStripMenuItem
+			// 
+			this.allNPOToolStripMenuItem.Name = "allNPOToolStripMenuItem";
+			this.allNPOToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+			this.allNPOToolStripMenuItem.Text = "All .NPO";
+			this.allNPOToolStripMenuItem.Click += new System.EventHandler(this.AllNPOToolStripMenuItemClick);
+			// 
+			// allFILESToolStripMenuItem
+			// 
+			this.allFILESToolStripMenuItem.Name = "allFILESToolStripMenuItem";
+			this.allFILESToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+			this.allFILESToolStripMenuItem.Text = "All FILES";
+			this.allFILESToolStripMenuItem.Click += new System.EventHandler(this.AllFILESToolStripMenuItemClick);
 			// 
 			// toolsToolStripMenuItem
 			// 
@@ -702,18 +741,6 @@ namespace MyMC
 			this.label2.TabIndex = 6;
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// allNPOToolStripMenuItem
-			// 
-			this.allNPOToolStripMenuItem.Name = "allNPOToolStripMenuItem";
-			this.allNPOToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.allNPOToolStripMenuItem.Text = "All .NPO";
-			// 
-			// allFILESToolStripMenuItem
-			// 
-			this.allFILESToolStripMenuItem.Name = "allFILESToolStripMenuItem";
-			this.allFILESToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.allFILESToolStripMenuItem.Text = "All FILES";
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -747,6 +774,8 @@ namespace MyMC
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+		private System.Windows.Forms.ToolStripComboBox menuComboBox;
 		private System.Windows.Forms.ToolStripMenuItem allFILESToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem allNPOToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem allCBSToolStripMenuItem;

@@ -10,9 +10,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 using Nini.Config;
+using System.Linq;
 
 namespace MyMC
 {
@@ -32,9 +34,6 @@ namespace MyMC
 		
 		void MainFormLoad(object sender, EventArgs e)
 		{
-
-			
-			
 			hourLabel.Text = DateTime.Now.ToString( "HH:mm:ss" );
 			util = Util.getUtil( util_MyMc );
 			util.SetECCChecker = util_ECCChecker;
@@ -42,6 +41,7 @@ namespace MyMC
 			
 			label1.Text = "Memory Card Name: ";
 			label2.Text = "Memory Card Name: ";
+			menuComboBox.SelectedIndex = 0;
 			
 			LoadConfig();
 			
@@ -1160,7 +1160,112 @@ namespace MyMC
 			
 		
 
+		void AllPSUToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var files = GetFilesByExtensions( lastOpenSaveDir, ".psu");
+			
+			DoProgress(files);
+			
+		}
 		
+		void AllMAXToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var files = GetFilesByExtensions( lastOpenSaveDir, ".max");
+			
+			DoProgress(files);			
+		}
 
+		void AllCBSToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var files = GetFilesByExtensions( lastOpenSaveDir, ".cbs");
+			
+			DoProgress(files);			
+		}
+		
+		void AllNPOToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var files = GetFilesByExtensions( lastOpenSaveDir, ".npo");
+			
+			DoProgress(files);			
+		}		
+
+		void AllFILESToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var files = GetFilesByExtensions( lastOpenSaveDir, ".psu", ".max", ".cbs", ".npo" );
+			
+			DoProgress(files);			
+		}
+		
+		
+		private IEnumerable<FileInfo> GetFilesByExtensions(string pathDir, params string[] extensions)
+		{
+			var dir = new DirectoryInfo(pathDir);
+		    if (extensions == null) 
+		         throw new ArgumentNullException("extensions");
+		    IEnumerable<FileInfo> files = dir.EnumerateFiles();
+		    return files.Where(f => extensions.Contains(f.Extension));
+		}
+		
+		private void DoProgress( IEnumerable<FileInfo> files)
+		{
+			var dgv  = getDataGridView(focusedMemoryCard);
+			var card = GetActualCard(dgv.Name);
+			
+			DoProgressBar(files, card);
+			
+			UpdateCard(dgv, card);
+		}
+		
+		private void DoProgressBar(IEnumerable<FileInfo> files, MemoryCard card)
+		{
+			var formProgress = new ProcessBar();
+			formProgress.SetList = files;
+			formProgress.McPath = card.GetPath();
+			
+			formProgress.ShowDialog();		
+		}
+		
+		
+		
+		void MenuComboBoxSelectedIndexChanged(object sender, EventArgs e)
+		{
+			if(menuComboBox.SelectedItem.ToString() == "VMC 1")
+			{
+				if(memoryCardOne != null )
+				{
+					EnableMenuComboBoxOptions();
+					focusedMemoryCard = dataGridView1;
+				}else{
+					DisableMenuComboBoxOptions();
+				}
+				
+			}else{
+				if(memoryCardTwo != null )
+				{
+					EnableMenuComboBoxOptions();
+					focusedMemoryCard = dataGridView2;
+				}else{
+					DisableMenuComboBoxOptions();
+				}
+			}
+		}
+		
+		private void DisableMenuComboBoxOptions()
+		{
+			allPSUToolStripMenuItem.Enabled = false;
+			allMAXToolStripMenuItem.Enabled = false;
+			allCBSToolStripMenuItem.Enabled = false;
+			allNPOToolStripMenuItem.Enabled = false;
+			allFILESToolStripMenuItem.Enabled = false;
+		}
+		
+		private void EnableMenuComboBoxOptions()
+		{
+			allPSUToolStripMenuItem.Enabled = true;
+			allMAXToolStripMenuItem.Enabled = true;
+			allCBSToolStripMenuItem.Enabled = true;
+			allNPOToolStripMenuItem.Enabled = true;
+			allFILESToolStripMenuItem.Enabled = true;			
+		}		
 	}
 }
