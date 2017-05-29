@@ -259,8 +259,8 @@ namespace MyMC
 		{
 
 			#region	Debug
-			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
-					  "Open Mc1 button click.\n");
+			log.Debug("_______________________________________________________________________________");
+			log.Debug("Open Mc1 button click.\n");
 			#endregion	
 
 			memoryCardOne = OpenMc( memoryCardOne );
@@ -282,8 +282,8 @@ namespace MyMC
 				log.Debug("\nMc1 is null.\n");
 			}
 			
-			log.Debug("\nOpen Mc1 button click - Exit.\n" +
-          			  "───────────────────────────────────────────────────────────────────────────────\n");
+			log.Debug("\nOpen Mc1 button click - Exit.\n");
+          	log.Debug("_______________________________________________________________________________");
 			#endregion						
 		}
 		
@@ -291,8 +291,8 @@ namespace MyMC
 		{
 			
 			#region Debug
-			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
-					  "Open Mc2 button click.\n");	
+			log.Debug("_______________________________________________________________________________");
+			log.Debug("Open Mc2 button click." + Environment.NewLine);	
 			#endregion
 			
 			memoryCardTwo = OpenMc( memoryCardTwo );
@@ -313,8 +313,9 @@ namespace MyMC
 				log.Debug("\nMc2 is null.\n");
 			}
 			
-			log.Debug("Open Mc2 button click - Exit.\n" +
-					  "───────────────────────────────────────────────────────────────────────────────\n");
+			log.Debug("Open Mc2 button click - Exit.\n");
+			
+			log.Debug("_______________________________________________________________________________");
 			#endregion			
 		}
 
