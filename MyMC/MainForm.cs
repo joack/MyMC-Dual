@@ -1129,12 +1129,7 @@ namespace MyMC
 				UpdateCard(focusedMemoryCard, card);
 			}else{
 				MessageBox.Show("Tch tch tch... You can't do that! \nThe memory card its empty.");
-			}
-			
-#region Debug
-			DebugMc(GetActualCard(focusedMemoryCard.Name));
-#endregion			
-			
+			}			
 		}
 		
 #endregion
