@@ -35,7 +35,6 @@ namespace MyMC
 		
 		private MemoryCard memoryCardOne;
 		private MemoryCard memoryCardTwo;
-		private Util util;
 		
 		private DataGridView focusedMemoryCard; 
 		

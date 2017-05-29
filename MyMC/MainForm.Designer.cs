@@ -121,11 +121,11 @@ namespace MyMC
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.fileToolStripMenuItem,
-									this.exportToolStripMenuItem,
-									this.toolsToolStripMenuItem,
-									this.configToolStripMenuItem,
-									this.aboutToolStripMenuItem});
+			this.fileToolStripMenuItem,
+			this.exportToolStripMenuItem,
+			this.toolsToolStripMenuItem,
+			this.configToolStripMenuItem,
+			this.aboutToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(920, 24);
@@ -135,12 +135,12 @@ namespace MyMC
 			// fileToolStripMenuItem
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.closeMC1ToolStripMenuItem,
-									this.closeMC2ToolStripMenuItem,
-									this.toolStripSeparator1,
-									this.exportSaveToolStripMenuItem,
-									this.toolStripSeparator3,
-									this.exitToolStripMenuItem});
+			this.closeMC1ToolStripMenuItem,
+			this.closeMC2ToolStripMenuItem,
+			this.toolStripSeparator1,
+			this.exportSaveToolStripMenuItem,
+			this.toolStripSeparator3,
+			this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
 			this.fileToolStripMenuItem.Text = "&File";
@@ -189,8 +189,8 @@ namespace MyMC
 			// 
 			this.exportToolStripMenuItem.CheckOnClick = true;
 			this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.exportToolStripMenuItem1,
-									this.importToolStripMenuItem});
+			this.exportToolStripMenuItem1,
+			this.importToolStripMenuItem});
 			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
 			this.exportToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
 			this.exportToolStripMenuItem.Text = "&Batch actions";
@@ -198,10 +198,10 @@ namespace MyMC
 			// exportToolStripMenuItem1
 			// 
 			this.exportToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.asPSUToolStripMenuItem,
-									this.asmaxToolStripMenuItem});
+			this.asPSUToolStripMenuItem,
+			this.asmaxToolStripMenuItem});
 			this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
-			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
 			this.exportToolStripMenuItem1.Text = "Export";
 			// 
 			// asPSUToolStripMenuItem
@@ -227,27 +227,27 @@ namespace MyMC
 			// importToolStripMenuItem
 			// 
 			this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.menuComboBox,
-									this.toolStripSeparator8,
-									this.allPSUToolStripMenuItem,
-									this.allMAXToolStripMenuItem,
-									this.allCBSToolStripMenuItem,
-									this.allNPOToolStripMenuItem,
-									this.allFILESToolStripMenuItem});
+			this.menuComboBox,
+			this.toolStripSeparator8,
+			this.allPSUToolStripMenuItem,
+			this.allMAXToolStripMenuItem,
+			this.allCBSToolStripMenuItem,
+			this.allNPOToolStripMenuItem,
+			this.allFILESToolStripMenuItem});
 			this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-			this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.importToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.importToolStripMenuItem.Text = "Import";
 			// 
 			// menuComboBox
 			// 
 			this.menuComboBox.AutoCompleteCustomSource.AddRange(new string[] {
-									"VMC 1",
-									"VMC 2"});
+			"VMC 1",
+			"VMC 2"});
 			this.menuComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.menuComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
 			this.menuComboBox.Items.AddRange(new object[] {
-									"VMC 1",
-									"VMC 2"});
+			"VMC 1",
+			"VMC 2"});
 			this.menuComboBox.Name = "menuComboBox";
 			this.menuComboBox.Size = new System.Drawing.Size(121, 23);
 			this.menuComboBox.SelectedIndexChanged += new System.EventHandler(this.MenuComboBoxSelectedIndexChanged);
@@ -295,7 +295,7 @@ namespace MyMC
 			// toolsToolStripMenuItem
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.vmcConverterToolStripMenuItem});
+			this.vmcConverterToolStripMenuItem});
 			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
 			this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
 			this.toolsToolStripMenuItem.Text = "Tools";
@@ -310,7 +310,7 @@ namespace MyMC
 			// configToolStripMenuItem
 			// 
 			this.configToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.preferencesToolStripMenuItem});
+			this.preferencesToolStripMenuItem});
 			this.configToolStripMenuItem.Name = "configToolStripMenuItem";
 			this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
 			this.configToolStripMenuItem.Text = "&Config";
@@ -325,7 +325,7 @@ namespace MyMC
 			// aboutToolStripMenuItem
 			// 
 			this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.myMcDualToolStripMenuItem});
+			this.myMcDualToolStripMenuItem});
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
 			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
 			this.aboutToolStripMenuItem.Text = "&About";
@@ -340,9 +340,9 @@ namespace MyMC
 			// statusStrip1
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.toolStripStatusLabel1,
-									this.toolStripStatusLabel2,
-									this.hourLabel});
+			this.toolStripStatusLabel1,
+			this.toolStripStatusLabel2,
+			this.hourLabel});
 			this.statusStrip1.Location = new System.Drawing.Point(0, 446);
 			this.statusStrip1.Name = "statusStrip1";
 			this.statusStrip1.Size = new System.Drawing.Size(920, 24);
@@ -354,8 +354,8 @@ namespace MyMC
 			// 
 			this.toolStripStatusLabel1.AutoSize = false;
 			this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
 			this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
 			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
 			this.toolStripStatusLabel1.Size = new System.Drawing.Size(600, 19);
@@ -365,8 +365,8 @@ namespace MyMC
 			// 
 			this.toolStripStatusLabel2.AutoSize = false;
 			this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
 			this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
 			this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
 			this.toolStripStatusLabel2.Size = new System.Drawing.Size(190, 19);
@@ -375,8 +375,8 @@ namespace MyMC
 			// 
 			this.hourLabel.AutoSize = false;
 			this.hourLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-									| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+			| System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
 			this.hourLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
 			this.hourLabel.Name = "hourLabel";
 			this.hourLabel.Size = new System.Drawing.Size(127, 19);
@@ -385,18 +385,18 @@ namespace MyMC
 			// 
 			this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.OpenMcOneButton,
-									this.OpenMcTwoButton,
-									this.toolStripSeparator4,
-									this.importToMcOneButton,
-									this.importToMcTwoButton,
-									this.toolStripSeparator5,
-									this.ExportSaveButton,
-									this.toolStripSeparator6,
-									this.mcOneToMcTwoButton,
-									this.mcTwoToMcOneButton,
-									this.toolStripSeparator7,
-									this.deleteSaveButton});
+			this.OpenMcOneButton,
+			this.OpenMcTwoButton,
+			this.toolStripSeparator4,
+			this.importToMcOneButton,
+			this.importToMcTwoButton,
+			this.toolStripSeparator5,
+			this.ExportSaveButton,
+			this.toolStripSeparator6,
+			this.mcOneToMcTwoButton,
+			this.mcTwoToMcOneButton,
+			this.toolStripSeparator7,
+			this.deleteSaveButton});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 24);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(920, 39);
@@ -534,16 +534,17 @@ namespace MyMC
 			this.dataGridView1.AllowUserToResizeRows = false;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-									this.file_Name,
-									this.file_Size,
-									this.file_Modyfied,
-									this.Column1});
+			this.file_Name,
+			this.file_Size,
+			this.file_Modyfied,
+			this.Column1});
 			this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
 			this.dataGridView1.Location = new System.Drawing.Point(6, 19);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.RowHeadersVisible = false;
 			this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridView1.Size = new System.Drawing.Size(422, 307);
 			this.dataGridView1.TabIndex = 0;
 			this.dataGridView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnDragAndDrop);
@@ -590,13 +591,13 @@ namespace MyMC
 			// contextMenuStrip1
 			// 
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.ContextMenuItemSelectAll,
-									this.ContextMenuItemCopySavesTo,
-									this.ContextMenuItemCopyAllTo,
-									this.ContextMenuItemMoveSavesTo,
-									this.toolStripSeparator2,
-									this.deleteSelectedsToolStripMenuItem,
-									this.deleteAllToolStripMenuItem});
+			this.ContextMenuItemSelectAll,
+			this.ContextMenuItemCopySavesTo,
+			this.ContextMenuItemCopyAllTo,
+			this.ContextMenuItemMoveSavesTo,
+			this.toolStripSeparator2,
+			this.deleteSelectedsToolStripMenuItem,
+			this.deleteAllToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.Size = new System.Drawing.Size(159, 142);
 			// 
@@ -666,16 +667,17 @@ namespace MyMC
 			this.dataGridView2.AllowUserToResizeRows = false;
 			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-									this.dataGridViewTextBoxColumn1,
-									this.dataGridViewTextBoxColumn2,
-									this.dataGridViewTextBoxColumn3,
-									this.dataGridViewTextBoxColumn4});
+			this.dataGridViewTextBoxColumn1,
+			this.dataGridViewTextBoxColumn2,
+			this.dataGridViewTextBoxColumn3,
+			this.dataGridViewTextBoxColumn4});
 			this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
 			this.dataGridView2.Location = new System.Drawing.Point(6, 19);
 			this.dataGridView2.Name = "dataGridView2";
 			this.dataGridView2.ReadOnly = true;
 			this.dataGridView2.RowHeadersVisible = false;
 			this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridView2.Size = new System.Drawing.Size(422, 307);
 			this.dataGridView2.TabIndex = 0;
 			this.dataGridView2.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnDragAndDrop);
@@ -731,6 +733,7 @@ namespace MyMC
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(434, 21);
 			this.label1.TabIndex = 5;
+			this.label1.Text = "Memory Card Name: ";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// label2
@@ -739,6 +742,7 @@ namespace MyMC
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(434, 21);
 			this.label2.TabIndex = 6;
+			this.label2.Text = "Memory Card Name: ";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// MainForm
@@ -773,6 +777,7 @@ namespace MyMC
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
 		private System.Windows.Forms.ToolStripComboBox menuComboBox;

@@ -15,7 +15,7 @@ namespace MyMC
 	/// <summary>
 	/// Description of MemoryCard.
 	/// </summary>
-	public class MemoryCard: IMemoryCard
+	public class MemoryCard
 	{
 		List<SaveFile> savesFiles = new List<SaveFile>();
 		private string mcPath;

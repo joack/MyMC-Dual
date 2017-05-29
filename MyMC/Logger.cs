@@ -20,12 +20,8 @@ namespace MyMC
 	/// <summary>
 	/// Description of Logger.
 	/// </summary>
-	public class Logger
-	{
-		public Logger()
-		{
-		}
-		
+	public static class Logger
+	{	
         public static void Setup()
         {
             Hierarchy hierarchy = (Hierarchy)LogManager.GetRepository();

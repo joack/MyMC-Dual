@@ -79,13 +79,11 @@
     <Compile Include="GenMc.Designer.cs">
       <DependentUpon>GenMc.cs</DependentUpon>
     </Compile>
-    <Compile Include="IMemoryCard.cs" />
     <Compile Include="InfoVMC.cs" />
     <Compile Include="InfoVMC.Designer.cs">
       <DependentUpon>InfoVMC.cs</DependentUpon>
     </Compile>
     <Compile Include="IEditPaths.cs" />
-    <Compile Include="ITransferSaves.cs" />
     <Compile Include="IInfoForm.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="LogHelper.cs" />
@@ -108,10 +106,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveFile.cs" />
-    <Compile Include="Util.cs" />
-    <Compile Include="Util.Vars.cs">
-      <DependentUpon>Util.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utils.cs" />
     <Compile Include="Utils.Vars.cs">
       <DependentUpon>Utils.cs</DependentUpon>

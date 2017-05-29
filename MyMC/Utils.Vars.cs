@@ -10,6 +10,7 @@ using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.IO;
+using log4net;
 
 
 namespace MyMC
@@ -17,9 +18,11 @@ namespace MyMC
 	/// <summary>
 	/// Description of Utils_Vars.
 	/// </summary>
-	public partial class Utils
+	partial class Utils
 	{
-		partial class Card
+		//private static readonly ILog log = LogHelper.GetLogger();
+		
+		public partial class Card
 		{
 			private static Process process;		
 					
@@ -33,10 +36,17 @@ namespace MyMC
 
 			private static string mymc = utilFolder + "\\mymc.exe";
 			private static string genvmc = utilFolder + "\\genvmc.exe";
+			
+
+			
+			public static void lalilulelo()
+			{
+				throw new NotImplementedException();
+			}
 		}
 	
 		
-		partial class ECCChecker
+		public partial class ECCChecker
 		{
 			private static Process p;
 			private static string utilFolder = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\Util";
@@ -44,7 +54,7 @@ namespace MyMC
 
 		
 
-		partial class Convert
+		public partial class Convert
 		{
 			private static Process p;
 			private static string utilFolder = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\Util";
@@ -55,7 +65,7 @@ namespace MyMC
 		
 		
 
-		partial class Cleaner
+		public partial class Cleaner
 		{
 			private static Process p;
 			private static string tempFolder = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\temp";

@@ -8,9 +8,6 @@
  */
 using System;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace MyMC
@@ -25,8 +22,8 @@ namespace MyMC
 		
 		Process process;
 		private string utilVMC			= String.Empty;
-		private string utilConverter	= String.Empty;
-		private string utilTempCleaner	= String.Empty;
+//		private string utilConverter	= String.Empty;
+//		private string utilTempCleaner	= String.Empty;
 		
 		private string tempFolder		= String.Empty;
 		
@@ -86,7 +83,7 @@ namespace MyMC
 				
 				DoCreate( utilVMC,  String.Format("{0} \"{1}\\{2}.bin\"", size, tempFolder, cardName) );
 				DoConvert(cardName, dirPath, extension);
-				DoDeleteTemp( utilTempCleaner, String.Format("{0}.bin", cardName));
+				DoDeleteTemp( String.Format("{0}.bin", cardName));
 					
 			}else{
 				DoCreate( utilVMC,  String.Format("{0} \"{1}\\{2}{3}\"", size, dirPath, cardName, extension) );
@@ -108,20 +105,20 @@ namespace MyMC
 			set{ this.utilVMC = value;}
 		}
 		
-		public string SetConverter
-		{
-			set{this.utilConverter = value;}
-		}
+//		public string SetConverter
+//		{
+//			set{this.utilConverter = value;}
+//		}
 
 		public string SetTempFolder
 		{
 			set{this.tempFolder = value;}
 		}
 		
-		public string SetTempCleaner
-		{
-			set{this.utilTempCleaner = value;}
-		}
+//		public string SetTempCleaner
+//		{
+//			set{this.utilTempCleaner = value;}
+//		}
 	
 		public string SetDirectory
 		{
@@ -133,6 +130,10 @@ namespace MyMC
 #region Interface Method		
 
 		public void UpdateTextBox( string updateText ){}
+		
+		public void SetOptionPath(string anOption, string aValue){}
+		
+		public void SetPaths(string saveExportPath, string cardsFolderPath, string saveFolderPath, string newCardsPath){}		
 
 #endregion
 
@@ -176,11 +177,6 @@ namespace MyMC
 				IInfoForm form = info as IInfoForm;	
 
 				form.UpdateTextBox(updateText);				
-#region				
-//				info.Invoke(new Action(()=> info.UpdateTextBox(updateText)));	
-//				var form = info as IInfoForm;
-//				form.UpdateTextBox(updateText);
-#endregion
 			}
 		}
 	
@@ -199,17 +195,7 @@ namespace MyMC
 		{
 			SetProcess(utility, args);
 			DoProcess();
-			//Thread thread = new Thread(() => process.WaitForExit());
-			
-			//thread.Start();
-			//thread.Join();
 		}
-		
-//		private void DoConvert( string utility, string args )
-//		{
-//			DoCreate(utility, args);
-//			
-//		}
 		
 		private void DoConvert(string cardName, string dirPath)
 		{
@@ -221,8 +207,6 @@ namespace MyMC
 			Action<string, string> ConvertEccMethod = GetEccMethod(extension);
 			
 			ConvertEccMethod(cardName, dirPath);
-			
-			//Utils.Convert.ConvertToBin(cardName, dirPath );
 		}
 		
 		private Action<string, string> GetEccMethod(string extension)
@@ -233,34 +217,13 @@ namespace MyMC
 			}
 			
 			return Utils.Convert.ConvertToPs2ECC;
-		}
-		
-		
-		private void DoDeleteTemp( string utility,  string tempFile )
-		{
-#region			
-//			Process p = new Process();
-//			p.StartInfo.FileName = utility;
-//			p.StartInfo.WorkingDirectory = tempFolder;
-//			p.StartInfo.Arguments = tempFile;
-//			
-//			p.StartInfo.UseShellExecute = false;
-//			p.StartInfo.CreateNoWindow = true;
-//			p.StartInfo.RedirectStandardOutput = true;			
-//			
-//			p.Start();
-//			p.WaitForExit();
-#endregion		
-			Utils.Cleaner.DeleteTemp(tempFile);
-		}		
+		}	
 		
 		private void DoDeleteTemp( string tempFile )
 		{		
 			Utils.Cleaner.DeleteTemp(tempFile);
 		}
-		
-#endregion
-		
+
 		private void SaveOption(string path)
 		{
 			IEditPaths configPath = this.Owner as IEditPaths;
@@ -271,9 +234,7 @@ namespace MyMC
 			}
 		}
 		
-		
-		public void SetOptionPath(string anOption, string aValue){}
-		
-		public void SetPaths(string saveExportPath, string cardsFolderPath, string saveFolderPath, string newCardsPath){}
+#endregion
+
 	}
 }

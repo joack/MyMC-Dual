@@ -82,7 +82,7 @@ namespace MyMC
 			this.txtFile.Name = "txtFile";
 			this.txtFile.Size = new System.Drawing.Size(350, 23);
 			this.txtFile.TabIndex = 1;
-			this.txtFile.Text = "Path:";
+			this.txtFile.Text = "File:";
 			this.txtFile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// ProcessBar

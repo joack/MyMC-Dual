@@ -86,10 +86,10 @@ namespace MyMC
 					    ++actualPercent;
 					    log.Info("Importing: " + file.FullName);
 					    
-					    Utils.Card.ImportSave(McPath, file.FullName);
-					    
-					    txtFile.Text = String.Format("File: {0}", file.Name);
 					    backgroundWorker1.ReportProgress(CalculatePercent(actualPercent));
+					    txtFile.Text = String.Format("File: {0}", file.Name);
+					    
+					    Utils.Card.ImportSave(McPath, file.FullName);
 					}));
 					Thread.Sleep(50);				
 				}

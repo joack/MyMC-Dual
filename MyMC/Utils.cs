@@ -23,7 +23,7 @@ namespace MyMC
 	/// </summary>
 	public partial class Utils
 	{
-		private static readonly ILog log = LogHelper.GetLogger();
+		//private static readonly ILog log = LogHelper.GetLogger();
 		
 		public partial class Card
 		{
@@ -108,7 +108,7 @@ namespace MyMC
 					
 					Cleaner.DeleteTemp( filePath );
 				}
-				log.Debug("Utils.Card class");
+				//log.Debug("Utils.Card class");
 			}
 	
 			public static string CreateCard( string size, string fileName )
@@ -126,6 +126,22 @@ namespace MyMC
 				
 				return String.Format("{0}\\{1}.bin", tempFolder, fileName );
 			}
+			
+			public static string CreateCard( string size, string path, string fileName, string extension )
+			{
+				var p = new Process();
+				
+				p.StartInfo.FileName = genvmc;
+				p.StartInfo.Arguments = String.Format("{0} \"{1}\\{2}{3}\"", size, path, fileName, extension);
+				p.StartInfo.UseShellExecute = false;
+				p.StartInfo.CreateNoWindow = true;
+				p.StartInfo.RedirectStandardOutput = true; 	
+
+				p.Start();
+				p.WaitForExit();
+				
+				return String.Format("{0}\\{1}{2}", path, fileName, extension );
+			}			
 			
 //			public static void CopyToCard( string mcPathFrom, string mcPathTo, IEnumerable listSaves )
 //			{

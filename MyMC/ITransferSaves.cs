@@ -15,6 +15,6 @@ namespace MyMC
 	/// </summary>
 	public interface ITransferSaves
 	{
-		void TransferSave( string aFile, IMemoryCard mcOne, IMemoryCard mcTwo);
+		void TransferSave( string aFile, MemoryCard mcOne, MemoryCard mcTwo);
 	}
 }

@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using log4net;
 using Nini.Config;
 using System.Linq;
+using MyMC;
 
 namespace MyMC
 {
@@ -34,21 +35,11 @@ namespace MyMC
 		
 		void MainFormLoad(object sender, EventArgs e)
 		{
-			hourLabel.Text = DateTime.Now.ToString( "HH:mm:ss" );
-			util = Util.getUtil( util_MyMc );
-			util.SetECCChecker = util_ECCChecker;
+			hourLabel.Text = DateTime.Now.ToString( "HH:mm:ss" );		
 			
+			DisableMenuComboBoxOptions();
 			
-			label1.Text = "Memory Card Name: ";
-			label2.Text = "Memory Card Name: ";
-			menuComboBox.SelectedIndex = 0;
-			
-			LoadConfig();
-			
-			
-			dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-			
-			dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;			
+			LoadConfig();			
 			
 		}
 		
@@ -78,11 +69,10 @@ namespace MyMC
 
 		void CloseMC1ToolStripMenuItemClick(object sender, EventArgs e)
 		{
-#region Debug
-							//┌─────────────────────────────────────────────────────────────────────────────┐
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-                  			  "Close Mc1 button click.");
-#endregion
+			#region Debug				
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
+          			  "Close Mc1 button click.");
+			#endregion
 
 			memoryCardOne = null;
 			
@@ -97,19 +87,19 @@ namespace MyMC
 				toolStripStatusLabel1.Text = NO_CARD;
 				toolStripStatusLabel2.Text = EMPTY_CARD;
 			}
-#region Debug
-			Console.WriteLine("Close Mc1 button click - Exit." +
-                  			  "\n───────────────────────────────────────────────────────────────────────────────");
-#endregion			
+			
+			#region Debug
+			log.Debug("Close Mc1 button click - Exit." +
+          			  "\n───────────────────────────────────────────────────────────────────────────────");
+			#endregion			
 		}
 		
 		void CloseMC2ToolStripMenuItemClick(object sender, EventArgs e)
 		{
-#region Debug
-							 //┌─────────────────────────────────────────────────────────────────────────────┐
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-                  			  "Close Mc2 button click.");
-#endregion
+			#region Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
+          			  "Close Mc2 button click.");
+			#endregion
 
 			memoryCardTwo = null;
 			
@@ -123,76 +113,110 @@ namespace MyMC
 			}else{
 				toolStripStatusLabel1.Text = NO_CARD;
 				toolStripStatusLabel2.Text = EMPTY_CARD;
-			}			
-#region Debug
-			Console.WriteLine("Close Mc2 button click - Exit." +
-                  			  "\n───────────────────────────────────────────────────────────────────────────────");
-#endregion			
+			}	
+			
+			#region Debug
+			log.Debug("Close Mc2 button click - Exit." +
+      				  "\n───────────────────────────────────────────────────────────────────────────────");
+			#endregion			
 		}		
 
 		void CreateMcToolStripMenuItemClick(object sender, EventArgs e)
 		{
-#region Debug
-							 //┌─────────────────────────────────────────────────────────────────────────────┐
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-                  			  "Create Mc button click.");
-#endregion
+			#region Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
+          			  "Create Mc button click.");
+			#endregion
+			
 			GenMc vmcForm			= new GenMc();
 			vmcForm.SetUtil			= util_VMC;
-			vmcForm.SetConverter	= util_Converter;
-			vmcForm.SetTempCleaner  = util_TempCleaner;
+//			vmcForm.SetConverter	= util_Converter;
+//			vmcForm.SetTempCleaner  = util_TempCleaner;
 			vmcForm.SetTempFolder	= tempFolder;
 			vmcForm.SetDirectory	= newCardsFolder;
 					
 			vmcForm.ShowDialog(this);
-#region Debug
-			Console.WriteLine("Create Mc button click - Exit." +
-                  			  "\n───────────────────────────────────────────────────────────────────────────────");
-#endregion			
+			
+			#region Debug
+			log.Debug("Create Mc button click - Exit." +
+          			  "\n───────────────────────────────────────────────────────────────────────────────");
+			#endregion			
 		}
 		
 		void ExitToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			Close();
 		}
-
 		
-		void ImportToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			MessageBox.Show("There's nothing here.");
-		}		
 		
 		void AsPSUToolStripMenuItemMouseUp(object sender, MouseEventArgs e)
 		{
-#region Debug
-							 //┌─────────────────────────────────────────────────────────────────────────────┐
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-                  			  "As PSU Mc Checked.");
-#endregion
+			#region Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
+          			  "As PSU Checked.");
+			#endregion
+			
 			mode = MODE_PSU;
-		
-#region Debug
-			Console.WriteLine("\nMODE = {0}\n", mode);
-			Console.WriteLine("As PSU Checked - Exit." +
-                  			  "\n───────────────────────────────────────────────────────────────────────────────");
-#endregion			
+			
+			#region Debug
+			log.Debug("\nMODE = "+ mode +"\n");
+			log.Debug("As PSU Checked - Exit." +
+          			  "\n───────────────────────────────────────────────────────────────────────────────");
+			#endregion				
 		}
 		
 		void AsmaxToolStripMenuItemMouseUp(object sender, MouseEventArgs e)
 		{
-#region Debug
-							 //┌─────────────────────────────────────────────────────────────────────────────┐
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-                  			  "As MAX Checked.");
-#endregion
+			#region Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
+          			  "As MAX Checked.");
+			#endregion
+			
 			mode = MODE_MAX;
 			
-#region Debug
-			Console.WriteLine("\nMODE = {0}\n", mode);
-			Console.WriteLine("As MAX Checked - Exit." +
-                  			  "\n───────────────────────────────────────────────────────────────────────────────");
-#endregion			
+			#region Debug
+			log.Debug("\nMODE = "+ mode +"\n");
+			log.Debug("As MAX Checked - Exit." +
+          			  "\n───────────────────────────────────────────────────────────────────────────────");
+			#endregion			
 		}
+
+		
+		void AllPSUToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var files = GetFilesByExtensions( lastOpenSaveDir, ".psu");
+			
+			DoProgress(files);
+			
+		}
+		
+		void AllMAXToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var files = GetFilesByExtensions( lastOpenSaveDir, ".max");
+			
+			DoProgress(files);			
+		}
+
+		void AllCBSToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var files = GetFilesByExtensions( lastOpenSaveDir, ".cbs");
+			
+			DoProgress(files);			
+		}
+		
+		void AllNPOToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var files = GetFilesByExtensions( lastOpenSaveDir, ".npo");
+			
+			DoProgress(files);			
+		}		
+
+		void AllFILESToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			var files = GetFilesByExtensions( lastOpenSaveDir, ".psu", ".max", ".cbs", ".npo" );
+			
+			DoProgress(files);			
+}
 
 		
 		void VmcConverterToolStripMenuItemClick(object sender, EventArgs e)
@@ -234,293 +258,252 @@ namespace MyMC
 		void OpenMcOneButtonClick(object sender, EventArgs e)
 		{
 
-#region	Debug
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-							  "Open Mc1 button click.\n");
-#endregion	
+			#region	Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
+					  "Open Mc1 button click.\n");
+			#endregion	
+
 			memoryCardOne = OpenMc( memoryCardOne );
 			
 			if (memoryCardOne != null) 
 			{
-#region	Debug
-				Console.WriteLine("\nMc1 is not null.\n");
+				#region	Debug
+				log.Debug("\nMc1 is not null.\n");
 				DebugMc(memoryCardOne);
-#endregion				
+				#endregion
+				
 				label1.Text = "Memory Card Name: " + Path.GetFileName(memoryCardOne.GetPath());
 				EnableMcOneButtons();
 				ShowMcContent( memoryCardOne, dataGridView1 );	
 				
 			}
-#region	Debug		
+			#region	Debug		
 			else{
-				//Debug prupose
-				Console.WriteLine("\nMc1 is null.\n");
+				log.Debug("\nMc1 is null.\n");
 			}
 			
-			Console.WriteLine("\nOpen Mc1 button click - Exit.\n" +
-                  			  "───────────────────────────────────────────────────────────────────────────────\n");
-#endregion						
+			log.Debug("\nOpen Mc1 button click - Exit.\n" +
+          			  "───────────────────────────────────────────────────────────────────────────────\n");
+			#endregion						
 		}
 		
 		void OpenMcTwoButtonClick(object sender, EventArgs e)
 		{
 			
-#region Debug
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-							  "Open Mc2 button click.\n");	
-#endregion
+			#region Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
+					  "Open Mc2 button click.\n");	
+			#endregion
+			
 			memoryCardTwo = OpenMc( memoryCardTwo );
 			
 			if (memoryCardTwo != null) 
-			{
-				
-#region Debug
-				Console.WriteLine("\nMc2 is not null.\n");
+			{			
+				#region Debug
+				log.Debug("\nMc2 is not null.\n");
 				DebugMc(memoryCardTwo);
-#endregion		
+				#endregion
+				
 				label2.Text = "Memory Card Name: " + Path.GetFileName(memoryCardTwo.GetPath());
 				EnableMcTwoButtons();
 				ShowMcContent( memoryCardTwo, dataGridView2 );				
 			}			
-#region	Debug		
+			#region	Debug		
 			else{
-				//Debug prupose
-				Console.WriteLine("\nMc2 is null.\n");
+				log.Debug("\nMc2 is null.\n");
 			}
 			
-			Console.WriteLine("Open Mc2 button click - Exit.\n" +
-							  "───────────────────────────────────────────────────────────────────────────────\n");
-#endregion			
+			log.Debug("Open Mc2 button click - Exit.\n" +
+					  "───────────────────────────────────────────────────────────────────────────────\n");
+			#endregion			
 		}
 
 
 		void ImportToMcOneButtonClick(object sender, EventArgs e)
 		{
-#region Debug
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-							  "Import to Mc1 button click.\n");	
-#endregion
+			#region Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
+					  "Import to Mc1 button click.\n");	
+			#endregion
 
 			OpenFileDialog importOpenDialog = getImportFileDialog();
 			
 			if(importOpenDialog.ShowDialog() == DialogResult.OK )
 			{
-#region debug
-				Console.WriteLine("Ok button.");
-#endregion
+				#region debug
+				log.Debug("Ok button.");
+				#endregion
+				
 				string mcPath = memoryCardOne.GetPath();
 				lastOpenSaveDir = Path.GetDirectoryName( importOpenDialog.FileNames[0] );
-#region Debug
-				Console.WriteLine("Importing:\n");
-#endregion				
+				
+				#region Debug
+				log.Debug("Importing:\n");
+				#endregion	
+				
 				foreach( string importFile in importOpenDialog.FileNames)
 				{
-#region Debug
-					Console.WriteLine(importFile);
-#endregion
-					util.ImportSaveUtil( mcPath, importFile );
+					#region Debug
+					log.Debug("File: " + importFile);
+					#endregion
+					
+					Utils.Card.ImportSave( mcPath, importFile );
 				}
 				
 				SetOptionPath("SaveFolder", lastOpenSaveDir);
 			}
-#region debug
+			#region debug
 			else{
-				Console.WriteLine("Cancel Button.");
+				log.Debug("Cancel Button.");
 			}
-#endregion	
+			#endregion	
+			
 			memoryCardOne = RefreshMemoryCard(memoryCardOne, dataGridView1);
-#region Debug
-			DebugMc(memoryCardOne);
-			Console.WriteLine("\nImport to Mc1 button click - Exit.\n" +
-                  			  "───────────────────────────────────────────────────────────────────────────────");	
-#endregion
+			
+			#region Debug
+			log.Debug("\nImport to Mc1 button click - Exit.\n" +
+          			  "───────────────────────────────────────────────────────────────────────────────");	
+			#endregion
 			
 		}
 		
 		void ImportToMcTwoButtonClick(object sender, EventArgs e)
 		{
-#region Debug
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-							  "Import to Mc2 button click.\n");	
-#endregion
+			#region Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
+					  "Import to Mc2 button click.\n");	
+			#endregion
+			
 			OpenFileDialog importOpenDialog = getImportFileDialog();
 			
 			if(importOpenDialog.ShowDialog() == DialogResult.OK )
 			{
 				string mcPath = memoryCardTwo.GetPath();
-#region Debug
-				Console.WriteLine("Importing:\n");
-#endregion
+				
+				#region Debug
+				log.Debug("Importing:\n");
+				#endregion
 								
 				foreach( string importFile in importOpenDialog.FileNames)
 				{
-#region Debug
-					Console.WriteLine(importFile);
-#endregion		
-					util.ImportSaveUtil( mcPath, importFile );
+					#region Debug
+					log.Debug("File: " + importFile);
+					#endregion	
+					
+					Utils.Card.ImportSave( mcPath, importFile );
 				}
 			}
 			memoryCardTwo = RefreshMemoryCard(memoryCardTwo, dataGridView2);
 			
-#region Debug
-			DebugMc(memoryCardTwo);
-			Console.WriteLine("\nImport to Mc2 button click - Exit.\n" +
-                  			  "───────────────────────────────────────────────────────────────────────────────");	
-#endregion
+			#region Debug
+			log.Debug("\nImport to Mc2 button click - Exit.\n" +
+          			  "───────────────────────────────────────────────────────────────────────────────");	
+			#endregion
 		}
 
 		
 		void ExportSaveButtonClick(object sender, EventArgs e)
 		{	
-#region Debug
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
+			#region Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
 							  "Export Save Button Click\n");
-#endregion
+			#endregion
 
+			DataGridView dgv = getDataGridView( focusedMemoryCard );
+			MemoryCard card = GetActualCard(dgv.Name);
 
-				DataGridView dgv = getDataGridView( focusedMemoryCard );
-				MemoryCard card = GetActualCard(dgv.Name);
-//				
-//				if (card != null) 
-//				{
-//					DoBatchDelete( card.GetPath(), dgv.SelectedRows );
-//					UpdateCard(dgv, card);	
-//				}
-
-
-//			MemoryCard memCard = null;
-//			
-//			
-//			switch (focusedMemmoryCard.Name) 
-//			{
-//				case "dataGridView1":
-//					memCard = memoryCardOne;
-//					break;
-//					
-//				case "dataGridView2":
-//					memCard = memoryCardTwo;
-//					break;
-//				default:
-//					
-//					break;
-//			}
-			
-
-//			if (memCard != null) 
 			if(card != null )
 			{
-//				DataGridViewSelectedRowCollection savesCollection = focusedMemmoryCard.SelectedRows;
 				DataGridViewSelectedRowCollection savesCollection = dgv.SelectedRows;
 				string filePath = String.Empty;
 
-#region Debug
-				Console.WriteLine("Exporting files\n");
-				Console.WriteLine("{0,-20} {1,5} {2,-25} {3}", "Name", "Size", "Date", "Description\n");
-#endregion					
+				#region Debug
+				log.Debug("Exporting files\n");
+				log.Debug(String.Format("{0,-20} {1,5} {2,-25} {3}", "Name", "Size", "Date", "Description\n"));
+				#endregion					
 	
 				foreach (DataGridViewRow row in savesCollection) 
 				{
-//					util.ExportSaveUtil(memCard.GetPath(), row.Cells[0].Value.ToString(), userExportFolder, mode );
-					util.ExportSaveUtil(card.GetPath(), row.Cells[0].Value.ToString(), userExportFolder, mode );
+					Utils.Card.ExportSave( card.GetPath(), row.Cells[0].Value.ToString(), userExportFolder, mode );
 					
-#region Debug
-					Console.WriteLine("{0,-20} {1,5} {2,-25} {3}",row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), 
-					                  								  row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString());
-#endregion	
+					#region Debug
+					log.Debug(String.Format("{0,-20} {1,5} {2,-25} {3}",row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), 
+                        	  row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString()));
+					#endregion	
 
 				}
-#region Debug
-				Console.WriteLine();
+				#region Debug
+				log.Debug("Export Finished.\n");
+				#endregion
 				
-				MessageBox.Show("Finish export files.");
-#endregion					
-					
+				MessageBox.Show("Finish export files.");				
 			}
-#region Debug
+			#region Debug
 			else{
-				Console.WriteLine("No memory card opened.");
+				log.Debug("No memory card opened.");
 				
 			}
-#endregion				
+			#endregion				
 
-#region Debug
-			Console.WriteLine("Export Save Button Click - Exit\n" +
-			                  "───────────────────────────────────────────────────────────────────────────────");
-#endregion										
+			#region Debug
+			log.Debug("Export Save Button Click - Exit\n" +
+	                  "───────────────────────────────────────────────────────────────────────────────");
+			#endregion										
 		}
 
 	
 		void McOneToMcTwoButtonClick(object sender, EventArgs e)
 		{
-#region Debug
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
+			#region Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
 							  "Mc1 to Mc2 file transfer Button Click\n");
-#endregion
-//			if (memoryCardTwo != null)
-//			{
-//				TransferSaves( memoryCardOne, memoryCardTwo, dataGridView1.SelectedRows );
-//				memoryCardTwo = RefreshMemoryCard( memoryCardTwo, dataGridView2);
-//#region Debug
-//				DebugMc(memoryCardTwo);
-//#endregion
-//				
-//			}else{
-//				MessageBox.Show("You must open a memory card on the side 2.");
-//			}
+			#endregion
+
 			TransferSavesMcOneToMcTwo(dataGridView1.SelectedRows);
 
-#region debug
-			Console.WriteLine("\nMc1 to Mc2 file transfer Button Click - Exit.\n" +
-                  			  "───────────────────────────────────────────────────────────────────────────────");	
-#endregion			
+			#region debug
+			log.Debug("\nMc1 to Mc2 file transfer Button Click - Exit.\n" +
+          			  "───────────────────────────────────────────────────────────────────────────────");	
+			#endregion			
 		}
 		
 		void McTwoToMcOneButtonClick(object sender, EventArgs e)
 		{
-#region Debug
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-							  "Mc2 to Mc1 file transfer Button Click\n");
-#endregion
-//			if (memoryCardOne != null)
-//			{
-//				TransferSaves( memoryCardTwo, memoryCardOne, dataGridView2.SelectedRows );
-//				memoryCardOne = RefreshMemoryCard( memoryCardOne, dataGridView1);
-//				
-//#region	Debug
-//				DebugMc(memoryCardOne);	
-//#endregion				
-//			}else{
-//				MessageBox.Show("You must open a memory card on the side 1.");
-//			}
-			
+			#region Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
+					  "Mc2 to Mc1 file transfer Button Click\n");
+			#endregion
+	
 			TransferSavesMcTwoToMcOne(dataGridView2.SelectedRows);
-#region debug
-			Console.WriteLine("\nMc2 to Mc1 file transfer Button Click - Exit.\n" +
+			
+			#region debug
+			log.Debug("\nMc2 to Mc1 file transfer Button Click - Exit.\n" +
                   			  "───────────────────────────────────────────────────────────────────────────────");	
-#endregion			
+			#endregion			
 		}		
 
 		
 		void DeleteSaveButtonClick(object sender, EventArgs e)
 		{	
-#region Debug
-			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
-							  "Delete Save Button Click\n\n" +
-                  			  "Deleting file(s):\n");
-#endregion			
+			#region Debug
+			log.Debug("───────────────────────────────────────────────────────────────────────────────\n" +
+					  "Delete Save Button Click\n\n" +
+          			  "Deleting file(s):\n");
+			#endregion
+			
 			if (focusedMemoryCard.Name == "dataGridView1") 
 			{
 				memoryCardOne = DoDelete( ref memoryCardOne );
 				
-#region	Debug
+				#region	Debug
 				DebugMc(memoryCardOne);
-#endregion				
+				#endregion				
 			}else{
 				memoryCardTwo = DoDelete( ref memoryCardTwo );
 								
-#region Debug
+				#region Debug
 				DebugMc(memoryCardTwo);
-#endregion
+				#endregion
 			}
 
 			
@@ -560,33 +543,30 @@ namespace MyMC
 			
 			mcOpenDialog.FileName = "";
 			mcOpenDialog.Multiselect = false;
-			
-			
-			
+					
 			if( mcOpenDialog.ShowDialog() == DialogResult.OK )
 			{
-#region Debug
-				Console.WriteLine("Ok button\n");
-#endregion
+				#region Debug
+				log.Debug("Ok button\n");
+				#endregion
+				
 				string mc = mcOpenDialog.FileName;
 				lastOpenMcDir = Path.GetDirectoryName( mcOpenDialog.FileName );
 	
 				SetOptionPath("McFolder", lastOpenMcDir);
 				
-				//return new MemoryCard( mc, util.loadFiles( mc ), util.GetMcFreeSpace( mc ) );
 				return new MemoryCard( mc, Utils.Card.LoadFiles( mc ), Utils.Card.GetMcFreeSpace( mc ) );
 			}	
-#region Debug
-				Console.WriteLine("Cancel button");
-#endregion			
+				#region Debug
+				log.Debug("Cancel button");
+				#endregion			
 			return card;			
 		}
 				
-		private void ShowMcContent( IMemoryCard card, DataGridView mcView )
+		private void ShowMcContent( MemoryCard card, DataGridView mcView )
 		{
 			mcView.Rows.Clear();
-			
-			
+					
 			List<SaveFile> listFiles = card.LoadSaves();
 			
 			for (int i = 2; i <= listFiles.Count -1; i++) 
@@ -664,10 +644,7 @@ namespace MyMC
 		 				toolStripStatusLabel2.Text = memoryCardOne.GetFreeSpace(); 
 		 			}else{
 		 				toolStripStatusLabel1.Text = NO_CARD;
-		 				toolStripStatusLabel2.Text = EMPTY_CARD; 
-		 				
-		 				//focusedMemmoryCard = dataGridView2;
-		 				
+		 				toolStripStatusLabel2.Text = EMPTY_CARD; 		 				
 		 			}
 		 			
 		 			break;
@@ -690,8 +667,6 @@ namespace MyMC
 					toolStripStatusLabel2.Text = EMPTY_CARD;
 					break;
 			}
-			
-		 	//MessageBox.Show(focusedMemmoryCard.Name);
 		}
 		
 		private string DoFileName( string sourceFile , string destinyDir )
@@ -714,11 +689,11 @@ namespace MyMC
 		{
 			if(	cardTo != null )
 			{
-#region Debug
-				Console.WriteLine("Transferring files.\n");
-				Console.WriteLine("From: {0}", cardFrom.GetPath());
-				Console.WriteLine("To: {0}\n", cardTo.GetPath());
-#endregion
+				#region Debug
+				log.Debug("Transferring files.\n");
+				log.Debug(String.Format("From: {0}", cardFrom.GetPath()));
+	          	log.Debug(String.Format("To: {0}\n", cardTo.GetPath()));
+				#endregion
 				
 				string filePath 	= String.Empty;
 				string saveName		= String.Empty;
@@ -728,22 +703,25 @@ namespace MyMC
 				foreach (DataGridViewRow saveRow in savesCollection )
 				{
 					saveName = saveRow.Cells[0].Value.ToString();
-#region Debug
-					Console.WriteLine("Exporting file {0} from {1}", saveName, mcPathFrom );
-#endregion					
-					//util.ExportSaveUtil(mcPathFrom, saveName, tempFolder, MODE_PSU);
-					Utils.Card.ExportSave(mcPathFrom,saveName, tempFolder,MODE_PSU);
+					
+					#region Debug
+					log.Debug(String.Format("Exporting file {0} from {1}", saveName, mcPathFrom ));
+					#endregion					
+				
+					Utils.Card.ExportSave(mcPathFrom, saveName, tempFolder, MODE_PSU);
 					
 					filePath = String.Format("{0}\\{1}{2}", tempFolder, saveName, ".psu");
-#region Debug
-					Console.WriteLine("Importing file {0} to {1}", saveName, mcPathTo );
-#endregion						
-					//util.ImportSaveUtil(mcPathTo, filePath);
+					
+					#region Debug
+					log.Info(String.Format("Importing file {0} to {1}", saveName, mcPathTo ));
+					#endregion						
+					
 					Utils.Card.ImportSave(mcPathTo, filePath);
-#region Debug
-					Console.WriteLine("Deleting  file {0}\n", filePath);
-#endregion					
-					//File.Delete(filePath);
+					
+					#region Debug
+					log.Warn(String.Format("Deleting  file {0}\n", filePath));
+					#endregion					
+					
 					Utils.Cleaner.DeleteTemp(filePath);
 				}	
 			}
@@ -755,9 +733,10 @@ namespace MyMC
 			{
 				TransferSaves( memoryCardOne, memoryCardTwo, saveCollection );
 				UpdateCard(dataGridView2, memoryCardTwo);
-#region Debug
+				
+				#region Debug
 				DebugMc(memoryCardTwo);
-#endregion
+				#endregion
 				
 			}else{
 				MessageBox.Show("You must open a memory card on the side 2.");
@@ -771,9 +750,9 @@ namespace MyMC
 				TransferSaves( memoryCardTwo, memoryCardOne, saveCollection );
 				UpdateCard(dataGridView1, memoryCardOne);
 				
-#region	Debug
+				#region	Debug
 				DebugMc(memoryCardOne);	
-#endregion				
+				#endregion				
 			}else{
 				MessageBox.Show("You must open a memory card on the side 1.");
 			}		
@@ -787,33 +766,34 @@ namespace MyMC
 			
 				if (result == DialogResult.OK) 
 				{
-#region Debug
-					Console.WriteLine("Ok button");
-#endregion					
+					#region Debug
+					log.Debug("Ok button");
+					#endregion	
+					
 					string mcPath = card.GetPath();
 					DataGridViewSelectedRowCollection savesCollection = focusedMemoryCard.SelectedRows;
 					
 					DoBatchDelete( mcPath, savesCollection );			
 					
-#region debug
-			Console.WriteLine("\nDelete Save Button Click - Exit.\n" +
+			#region debug
+			log.Debug("\nDelete Save Button Click - Exit.\n" +
                   			  "───────────────────────────────────────────────────────────────────────────────");	
-#endregion					
+			#endregion					
 					
 					return RefreshMemoryCard( card, focusedMemoryCard);
 				}						
-#region Debug
-				Console.WriteLine("Cancel button");
-#endregion		
+				#region Debug
+				log.Debug("Cancel button");
+				#endregion		
 
 			}else{
 				MessageBox.Show("Unable to delete.");
 			}	
 
-#region debug
-			Console.WriteLine("\nDelete Save Button Click - Exit.\n" +
+			#region debug
+			log.Debug("\nDelete Save Button Click - Exit.\n" +
                   			  "───────────────────────────────────────────────────────────────────────────────");	
-#endregion			
+			#endregion			
 			return card;
 		}
 
@@ -821,10 +801,10 @@ namespace MyMC
 		{
 			foreach (DataGridViewRow row in savesCollection) 
 			{
-#region Debug
+				#region Debug
 				log.Warn(row.Cells[0].Value.ToString());
-#endregion
-				//util.DeleteSaveUtil(mcPath, row.Cells[0].Value.ToString());
+				#endregion
+				
 				Utils.Card.DeleteSave(mcPath, row.Cells[0].Value.ToString());
 			}		
 		
@@ -834,10 +814,11 @@ namespace MyMC
 		{
 			string mcPath = memCard.GetPath();
 			
-			//MemoryCard card = new MemoryCard( mcPath, util.loadFiles( mcPath ), util.GetMcFreeSpace( mcPath ) );
 			MemoryCard card = new MemoryCard( mcPath, Utils.Card.LoadFiles( mcPath ), Utils.Card.GetMcFreeSpace( mcPath ) );
 			
 			ShowMcContent( card, view );
+			
+			DebugMc(card);
 
 			return card;
 		}		
@@ -858,7 +839,6 @@ namespace MyMC
 		{
 			ToolStripMenuItem item = sender as ToolStripMenuItem;
 			
-			//foreach (ToolStripMenuItem menuItem in item.GetCurrentParent().Items)
 			foreach (ToolStripMenuItem menuItem in exportToolStripMenuItem1.DropDownItems)	
 			{
 				menuItem.Checked = false;
@@ -869,10 +849,10 @@ namespace MyMC
 	
 		private void OnDragAndDrop( object sender, DragEventArgs e )
 		{
-#region Debug
+			#region Debug
 			Console.WriteLine("───────────────────────────────────────────────────────────────────────────────\n" +
 							  "Drag and Drop event\n");
-#endregion			
+			#endregion			
 			
 			DataGridView focusedCard = sender as DataGridView;
 			string[] droppedFolders = (string[])e.Data.GetData(DataFormats.FileDrop);
@@ -912,7 +892,7 @@ namespace MyMC
 			
 			foreach (string folder in droppedFolders ) 
 			{
-				util.AddRawFile( mcPath, folder);
+				Utils.Card.AddRawFile(mcPath, folder);
 			}
 		}
 
@@ -1158,45 +1138,7 @@ namespace MyMC
 		
 #endregion
 			
-		
-
-		void AllPSUToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			var files = GetFilesByExtensions( lastOpenSaveDir, ".psu");
-			
-			DoProgress(files);
-			
-		}
-		
-		void AllMAXToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			var files = GetFilesByExtensions( lastOpenSaveDir, ".max");
-			
-			DoProgress(files);			
-		}
-
-		void AllCBSToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			var files = GetFilesByExtensions( lastOpenSaveDir, ".cbs");
-			
-			DoProgress(files);			
-		}
-		
-		void AllNPOToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			var files = GetFilesByExtensions( lastOpenSaveDir, ".npo");
-			
-			DoProgress(files);			
-		}		
-
-		void AllFILESToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			var files = GetFilesByExtensions( lastOpenSaveDir, ".psu", ".max", ".cbs", ".npo" );
-			
-			DoProgress(files);			
-		}
-		
-		
+	
 		private IEnumerable<FileInfo> GetFilesByExtensions(string pathDir, params string[] extensions)
 		{
 			var dir = new DirectoryInfo(pathDir);
@@ -1224,9 +1166,7 @@ namespace MyMC
 			
 			formProgress.ShowDialog();		
 		}
-		
-		
-		
+			
 		void MenuComboBoxSelectedIndexChanged(object sender, EventArgs e)
 		{
 			if(menuComboBox.SelectedItem.ToString() == "VMC 1")
