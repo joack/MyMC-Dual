@@ -10,6 +10,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using log4net;
+using MyMCLibrary;
 
 namespace MyMC
 {
@@ -18,8 +19,10 @@ namespace MyMC
 	/// </summary>
 	public partial class VmcConverter : Form
 	{
-		private static readonly ILog log = LogHelper.GetLogger(); 			
-		private string extension = String.Empty;	
+		//private static readonly ILog log = LogHelper.GetLogger(); 			
+		private static readonly ILog log = LogHelper.Get_Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.FullName);
+		
+		private string extension = String.Empty;
 		
 		public VmcConverter(){InitializeComponent();}
 		

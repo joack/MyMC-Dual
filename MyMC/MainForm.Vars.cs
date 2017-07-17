@@ -8,6 +8,7 @@
  */
 using System;
 using System.Windows.Forms;
+using MyMCLibrary;
 
 namespace MyMC
 {

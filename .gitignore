@@ -1,1 +1,12 @@
 
+/MyMCLibrary/obj
+/MyMCLibrary/obj/Debug
+/MyMCLibrary/obj/Debug/CoreCompileInputs.cache
+/MyMCLibrary/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/MyMCLibrary/obj/Release/CoreCompileInputs.cache
+/MyMCLibrary/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
+/MyMC_Debug/obj/Debug/CoreCompileInputs.cache
+/MyMC_Debug/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/MyMC_Debug/obj/Release/CoreCompileInputs.cache
+/MyMC_Debug/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
+/MyMC_XP/bin/Release/Logs/log.txt

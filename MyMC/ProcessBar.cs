@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using log4net;
+using MyMCLibrary;
 
 namespace MyMC
 {
@@ -22,7 +23,8 @@ namespace MyMC
 	/// </summary>
 	public partial class ProcessBar : Form
 	{
-		private static readonly ILog log = LogHelper.GetLogger();
+		//private static readonly ILog log = LogHelper.GetLogger();
+		private static readonly ILog log = LogHelper.Get_Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.FullName);
 		
 		private IEnumerable<FileInfo> list;
 		private int totalFiles;

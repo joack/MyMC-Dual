@@ -9,13 +9,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 using Nini.Config;
 using System.Linq;
-using MyMC;
+using MyMCLibrary;
+
 
 namespace MyMC
 {
@@ -24,8 +26,9 @@ namespace MyMC
 	/// </summary>
 	public partial class MainForm : Form, IEditPaths
 	{
-		private static readonly ILog log = LogHelper.GetLogger();
-		
+        //private static readonly ILog log = LogHelper.GetLogger();
+
+        private static readonly ILog log = LogHelper.Get_Logger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.FullName);
 	
 		public MainForm()
 		{
@@ -327,7 +330,7 @@ namespace MyMC
 					  "Import to Mc1 button click.\n");	
 			#endregion
 
-			OpenFileDialog importOpenDialog = getImportFileDialog();
+			OpenFileDialog importOpenDialog = GetImportFileDialog();
 			
 			if(importOpenDialog.ShowDialog() == DialogResult.OK )
 			{
@@ -375,7 +378,7 @@ namespace MyMC
 					  "Import to Mc2 button click.\n");	
 			#endregion
 			
-			OpenFileDialog importOpenDialog = getImportFileDialog();
+			OpenFileDialog importOpenDialog = GetImportFileDialog();
 			
 			if(importOpenDialog.ShowDialog() == DialogResult.OK )
 			{
@@ -410,7 +413,7 @@ namespace MyMC
 							  "Export Save Button Click\n");
 			#endregion
 
-			DataGridView dgv = getDataGridView( focusedMemoryCard );
+			DataGridView dgv = GetDataGridView( focusedMemoryCard );
 			MemoryCard card = GetActualCard(dgv.Name);
 
 			if(card != null )
@@ -824,7 +827,7 @@ namespace MyMC
 			return card;
 		}		
 
-		private OpenFileDialog getImportFileDialog()
+		private OpenFileDialog GetImportFileDialog()
 		{
 			OpenFileDialog openDialog = new OpenFileDialog();
 
@@ -993,7 +996,7 @@ namespace MyMC
 			config.Save();
 		}
 
-		private DataGridView getDataGridView( DataGridView dgv )
+		private DataGridView GetDataGridView( DataGridView dgv )
 		{
 			var map = new Dictionary<string, DataGridView>()
 			{
@@ -1069,7 +1072,7 @@ namespace MyMC
 		
 		void DataGridViewMouseUp(object sender, MouseEventArgs e)
 		{
-			DataGridView dgv = getDataGridView(sender as DataGridView);
+			DataGridView dgv = GetDataGridView(sender as DataGridView);
 			MemoryCard card = GetActualCard(dgv.Name);
 			
 			if (e.Button == MouseButtons.Right && card != null ) 
@@ -1146,7 +1149,7 @@ namespace MyMC
 		
 		private void DoProgress( IEnumerable<FileInfo> files)
 		{
-			var dgv  = getDataGridView(focusedMemoryCard);
+			var dgv  = GetDataGridView(focusedMemoryCard);
 			var card = GetActualCard(dgv.Name);
 			
 			DoProgressBar(files, card);

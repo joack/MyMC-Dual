@@ -9,6 +9,7 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using MyMCLibrary;
 
 namespace MyMC
 {
@@ -104,21 +105,11 @@ namespace MyMC
 		{
 			set{ this.utilVMC = value;}
 		}
-		
-//		public string SetConverter
-//		{
-//			set{this.utilConverter = value;}
-//		}
 
 		public string SetTempFolder
 		{
 			set{this.tempFolder = value;}
 		}
-		
-//		public string SetTempCleaner
-//		{
-//			set{this.utilTempCleaner = value;}
-//		}
 	
 		public string SetDirectory
 		{
