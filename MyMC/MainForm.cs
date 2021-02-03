@@ -541,7 +541,7 @@ namespace MyMC
 		private MemoryCard OpenMc( MemoryCard card )
 		{
 			mcOpenDialog.Reset();
-			mcOpenDialog.Filter = "PS2 File Format|*.ps2|PS2 File Bin Format|*.bin";
+			mcOpenDialog.Filter = "PS2 File Format|*.ps2|PS2 File Bin Format|*.bin|PS2 File VM2 Format|*.vm2|All Files |*.*";
 			mcOpenDialog.FilterIndex = 2;
 			mcOpenDialog.InitialDirectory = lastOpenMcDir;
 			
